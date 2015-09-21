@@ -1,0 +1,32 @@
+% This file contains all formating options
+% the content -> chapters are included in separate files
+% \include{} - forces a page break , ideal for chapters
+% \input{} - adds content without page breaks, can be nested, 
+% input that has other inputs inside
+\documentclass{report}
+%packages in separate style file
+\usepackage{mystyle}
+%list of included files in compilation
+
+\begin{document}
+
+\subfile{docs/Title_Page}
+
+\tableofcontents
+\subfile{docs/Abstract}
+
+\subfile{docs/Preamble}
+
+\subfile{docs/Chapter_1}
+
+\subfile{docs/Chapter_2}
+
+\subfile{docs/Summary}
+
+\subfile{docs/Appendix_1}
+
+\subfile{docs/Appendix_2}
+
+\bibliographystyle{plain}
+\bibliography{bibliogr} 
+\end{document}  
