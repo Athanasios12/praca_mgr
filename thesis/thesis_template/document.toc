@@ -1,0 +1,23 @@
+\contentsline {chapter}{\numberline {1}Streszczenie}{3}{chapter.1}
+\contentsline {chapter}{\numberline {2}Wst\IeC {\k e}p}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Systemy wbudowane}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Zastosowania system\IeC {\'o}w wbudowanych}{4}{section.2.2}
+\contentsline {chapter}{\numberline {3}Uk\IeC {\l }ady FPGA}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Opis budowy i zasady dzia\IeC {\l }ania}{5}{section.3.1}
+\contentsline {section}{\numberline {3.2}J\IeC {\k e}zyki programowania}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}Zastosowania uk\IeC {\l }ad\IeC {\'o}w FPGA}{5}{section.3.3}
+\contentsline {chapter}{\numberline {4}Przetwarzanie i analiza obrazu}{6}{chapter.4}
+\contentsline {section}{\numberline {4.1}Filtracja obrazu}{6}{section.4.1}
+\contentsline {section}{\numberline {4.2}Binaryzacja i progowanie}{6}{section.4.2}
+\contentsline {section}{\numberline {4.3}Operacje morfologiczne}{6}{section.4.3}
+\contentsline {section}{\numberline {4.4}Metody opisu i lokalizacji obiekt\IeC {\'o}w}{6}{section.4.4}
+\contentsline {chapter}{\numberline {5}Implementacja systemu}{7}{chapter.5}
+\contentsline {section}{\numberline {5.1}Procesor i system operacyjny}{7}{section.5.1}
+\contentsline {section}{\numberline {5.2}Komunikacja z uk\IeC {\l }adem FPGA}{7}{section.5.2}
+\contentsline {section}{\numberline {5.3}Komunikacja z kamer\IeC {\k a}}{7}{section.5.3}
+\contentsline {section}{\numberline {5.4}Aplikacja procesora}{7}{section.5.4}
+\contentsline {section}{\numberline {5.5}Aplikacja dla uk\IeC {\l }adu FPGA}{7}{section.5.5}
+\contentsline {chapter}{\numberline {6}Opis wynik\IeC {\'o}w do\IeC {\'s}wiadcze\IeC {\'n}}{8}{chapter.6}
+\contentsline {chapter}{\numberline {7}Zako\IeC {\'n}czenie}{9}{chapter.7}
+\contentsline {chapter}{\numberline {8}Za\IeC {\l }\IeC {\k a}cznik B}{10}{chapter.8}
+\contentsline {chapter}{\numberline {9}Za\IeC {\l }\IeC {\k a}cznik A}{11}{chapter.9}
