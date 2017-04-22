@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  2 NOV 2016 14:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  22 APR 2017 13:14
 entering extended mode
 **./document.tex
 (document.tex
@@ -551,7 +551,14 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip43
 )
-(F:\MiKTex29\tex\latex\geometry\geometry.sty
+(F:\MiKTex29\tex\latex\tocbibind\tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has chapter divisions on input line 50.
+
+
+Package tocbibind Note: Using chapter style headings, unless overridden.
+
+) (F:\MiKTex29\tex\latex\geometry\geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@cnth=\count99
 \Gm@cntv=\count100
@@ -651,7 +658,7 @@ LaTeX Info: Redefining \nameref on input line 11.
 * \headsep=25.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=65.0pt
+* \marginparwidth=57.0pt
 * \marginparsep=11.0pt
 * \columnsep=10.0pt
 * \skip\footins=9.0pt plus 4.0pt minus 2.0pt
@@ -664,7 +671,7 @@ LaTeX Info: Redefining \nameref on input line 11.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(docs/Title_Page.tex <imgs/logoNew.png, id=95, 543.02875pt x 378.41376pt>
+(docs/Title_Page.tex <imgs/logoNew.png, id=107, 543.02875pt x 378.41376pt>
 File: imgs/logoNew.png Graphic file (type png)
 
 <use imgs/logoNew.png>
@@ -727,52 +734,50 @@ Rozdzia\PlPrIeC {\l } 4.
 
 ]
 Rozdzia\PlPrIeC {\l } 5.
-) (docs/Chapter_4.tex [7
+) (docs/Summary.tex [7
 
 ]
 Rozdzia\PlPrIeC {\l } 6.
-) (docs/Summary.tex [8
+) (docs/Appendix_1.tex [8
 
 ]
 Rozdzia\PlPrIeC {\l } 7.
-) (docs/Appendix_1.tex [9
+) (docs/Appendix_2.tex [9
 
 ]
 Rozdzia\PlPrIeC {\l } 8.
-) (docs/Appendix_2.tex [10
+) (document.bbl [10
 
 ]
 Rozdzia\PlPrIeC {\l } 9.
-) (document.bbl [11
-
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 36.
- [12
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 34.
+ [11
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 36.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 34.
  (document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 36.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 36.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 34.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 34.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: FB077000E8F8F389F701C1F53CAA5D5C;1505.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 36.
+(rerunfilecheck)             Checksum: 4EFB7FCBC1E3E89EED408F982D9F95C0;2132.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 34.
  ) 
 Here is how much of TeX's memory you used:
- 6261 strings out of 493335
- 88722 string characters out of 3147024
- 178483 words of memory out of 3000000
- 9624 multiletter control sequences out of 15000+200000
+ 6345 strings out of 493335
+ 89962 string characters out of 3147024
+ 181294 words of memory out of 3000000
+ 9706 multiletter control sequences out of 15000+200000
  14598 words of font info for 42 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,5n,29p,248b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,5n,29p,262b,348s stack positions out of 5000i,500n,10000p,200000b,50000s
 {F:/MiKTex29/fonts/enc/dvips/pl/plit.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm
 .enc}<F:/MiKTex29/fonts/type1/public/pl/plbx10.pfb><F:/MiKTex29/fonts/type1/pub
 lic/pl/plbx12.pfb><F:/MiKTex29/fonts/type1/public/pl/plr10.pfb><F:/MiKTex29/fon
 ts/type1/public/pl/plr12.pfb><F:/MiKTex29/fonts/type1/public/pl/plti10.pfb>
-Output written on document.pdf (12 pages, 86519 bytes).
+Output written on document.pdf (11 pages, 92444 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 190 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 228 PDF objects out of 1000 (max. 8388607)
+ 42 named destinations out of 1000 (max. 500000)
+ 214 words of extra memory for PDF output out of 10000 (max. 10000000)
 
