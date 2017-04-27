@@ -1,16 +1,36 @@
 \begin{thebibliography}{1}
 
+\bibitem{Machine_Vision_Intro}
+Cognex.
+\newblock Introduction to machine vision.
+\newblock
+  \url{http://www.assemblymag.com/ext/resources/White_Papers/Sep16/Introduction-to-Machine-Vision.pdf},
+  2016.
+
+\bibitem{Davies_Machine_Vision}
+E.R. Davies.
+\newblock {\em Computer and Machine Vision: Theory, Algorithms,
+  Practicalities}.
+\newblock Elsevier, 225 WYman Street, Waltham, 02451, USA, 2012.
+
 \bibitem{goossens93}
 Michel Goossens, Frank Mittelbach, and Alexander Samarin.
 \newblock {\em The LaTeX Companion}.
-\newblock Number~3. Addison-Wesley, Reading, Massachusetts, 1993.
+\newblock Addison-Wesley, Reading, Massachusetts, 1993.
+
+\bibitem{Mazurek_Robot_Viterbi}
+Przemysław~Mazurek Grzegorz~Matczak.
+\newblock Line following with real-time viterbi trac-before-detect algorithm.
+\newblock {\em Przegląd Elektrotechniczny}, 1/2017:69--72, 2017.
 
 \bibitem{wikipedia2}
 Wikipedia.
-\newblock Acripting language, 2014.
+\newblock Acripting language.
+\newblock \url{http://en.wikipedia.org/wiki/Scripting_language}, 2014.
 
 \bibitem{wikipedia1}
 Wikipedia.
-\newblock Scripting language, 2014.
+\newblock Scripting language.
+\newblock \url{http://en.wikipedia.org/wiki/Scripting_language}, 2014.
 
 \end{thebibliography}

@@ -1,10 +1,11 @@
 \documentclass[document.tex]{subfiles}
+\long\def\/*#1*/{}
 \begin{document}
 \chapter{Wstęp}
 
 \section{Przetwarzanie obrazu i jego rola w automatyce przemysłowej}
 	\indent W zagadnieniach technik pomiarowych oraz analizy otoczenia coraz częściej stosowane
-	są rozwiązania wykorzystujące systemy wizyjne. Do najpopularniejszych zastosowań przemysłowych wizji maszynowej należą\cite{Machine_Vision_Intro}:
+	są rozwiązania wykorzystujące systemy wizyjne. Do najpopularniejszych zastosowań przemysłowych wizji maszynowej należą \cite{Machine_Vision_Intro}:
 	\begin{itemize}
 		\item inspekcja elementów na linii technologiczej
 		\item określanie właściwej orientacji i położenia elementów
@@ -18,36 +19,37 @@
 	akwizycji obrazu zajmuje się jego przetwarzaniem i analizą.\cite{Machine_Vision_Intro}\cite{Davies_Machine_Vision}
 	
 	% obrazek : może scieżkę dodac wczesniej w mystyle albo w dokument.tex, wtedy odwoływac się tylko do nazwy
-	\begin{figure}[h]
-	\includegraphics[width=0.5\textwidth, inner]{imgs/inspection_img}
-	\caption{Przykład zautomatyzowanej linii technologicznej wykorzystującej system wizyjny\cite{vision_systems_article}}
-	\label{fig:inspekcja}
-	\end{figure}
-	
+
+%	\begin{figure}[h]
+%	\includegraphics[width=0.5\textwidth, inner]{imgs/inspection_img}
+%	\caption{Przykład zautomatyzowanej linii technologicznej wykorzystującej system wizyjny\cite{vision_systems_article}}
+%	\label{fig:inspekcja}
+%	\end{figure}
+
 	\indent Sprawdzanie orientacji i położenia elementów w przemyśle jest wykorzystywane
 	między innymi w technologii montażu, gdzie informacje z urządzeń wizyjnych są wykorzystywane
 	przez manipulatory przemysłowe do zautomatyzowanego montażu, sortowania oraz paletyzacji wyrobów.\cite{Machine_Vision_Intro}
-	
+
 	%obrazek - sprawdzanie orientacji
-	\begin{figure}[h]
-	\includegraphics[width=0.5\textwidth, inner]{imgs/pos_oritent_img}
-	\caption{Przykład obrazów używanych w testowaniu pozycji i orientacji elementów\cite{Machine_Vision_Intro}}
-	\label{fig:pozycja_orientacja}
-	\end{figure}	
-	
+%	\begin{figure}[h]
+%	\includegraphics[width=0.5\textwidth, inner]{imgs/pos_oritent_img}
+%	\caption{Przykład obrazów używanych w testowaniu pozycji i orientacji elementów\cite{Machine_Vision_Intro}}
+%	\label{fig:pozycja_orientacja}
+%	\end{figure}	
+
 	\indent Identyfikowanie produktów na bazie obrazu cyfrowego jest wykorzystywane przy sortowaniu
 	oraz monitorowaniu przepływu elementów i lokalizacji wązkich gardeł.
 	Przykładowe metody indentyfikacji to stosowanie kodów kreskowych i kodów DataMatrix.\cite{Machine_Vision_Intro}
-	
+
 	%identyfikacja
-	\begin{figure}[h]
-	\includegraphics[width=0.5\textwidth, inner]{imgs/identyfication_img}
-	\caption{Przykład wizyjnej identyfikacji\cite{Machine_Vision_Intro}}
-	\label{fig:identyfikacja}
-	\end{figure}
-	
+%	\begin{figure}[h]
+%	\includegraphics[width=0.5\textwidth, inner]{imgs/identyfication_img}
+%	\caption{Przykład wizyjnej identyfikacji\cite{Machine_Vision_Intro}}
+%	\label{fig:identyfikacja}
+%	\end{figure}
+
 \section{Istotność szybkości obliczeń w problemach wizji maszynowej}
-podrozdział 2
+podrozdział 2 \cite{Mazurek_Robot_Viterbi}
 \section{Cel, zakres i zastosowania pracy}
 podrozdział 3
 \end{document}
