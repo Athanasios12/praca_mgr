@@ -1,5 +1,6 @@
 \BOOKMARK [0][-]{chapter.1}{Streszczenie}{}% 1
 \BOOKMARK [0][-]{chapter.2}{Wstep}{}% 2
+<<<<<<< HEAD
 \BOOKMARK [1][-]{section.2.1}{Systemy wbudowane}{chapter.2}% 3
 \BOOKMARK [1][-]{section.2.2}{Zastosowania system\363w wbudowanych}{chapter.2}% 4
 \BOOKMARK [0][-]{chapter.3}{Uk\233ady FPGA}{}% 5
@@ -21,3 +22,10 @@
 \BOOKMARK [0][-]{chapter.7}{Zakonczenie}{}% 21
 \BOOKMARK [0][-]{chapter.8}{Za\233acznik B}{}% 22
 \BOOKMARK [0][-]{chapter.9}{Za\233acznik A}{}% 23
+=======
+\BOOKMARK [0][-]{chapter.3}{Rozdzia\233 1}{}% 3
+\BOOKMARK [0][-]{chapter.4}{Rozdzia\233 2}{}% 4
+\BOOKMARK [0][-]{chapter.5}{Zakonczenie}{}% 5
+\BOOKMARK [0][-]{chapter.6}{Za\233acznik B}{}% 6
+\BOOKMARK [0][-]{chapter.7}{Za\233acznik A}{}% 7
+>>>>>>> 020fb12bae7b8695c0ed28be864f8155238c562f
