@@ -1,6 +1,7 @@
 \contentsline {chapter}{\numberline {1}Streszczenie}{3}{chapter.1}
 \contentsline {chapter}{\numberline {2}Wst\IeC {\k e}p}{4}{chapter.2}
 <<<<<<< HEAD
+<<<<<<< HEAD
 \contentsline {section}{\numberline {2.1}Systemy wbudowane}{4}{section.2.1}
 \contentsline {section}{\numberline {2.2}Zastosowania system\IeC {\'o}w wbudowanych}{4}{section.2.2}
 \contentsline {chapter}{\numberline {3}Uk\IeC {\l }ady FPGA}{5}{chapter.3}
@@ -29,3 +30,30 @@
 \contentsline {chapter}{\numberline {6}Za\IeC {\l }\IeC {\k a}cznik B}{8}{chapter.6}
 \contentsline {chapter}{\numberline {7}Za\IeC {\l }\IeC {\k a}cznik A}{9}{chapter.7}
 >>>>>>> 020fb12bae7b8695c0ed28be864f8155238c562f
+=======
+\contentsline {section}{\numberline {2.1}Przetwarzanie obrazu i jego rola w automatyce przemys\IeC {\l }owej}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Istotno\IeC {\'s}\IeC {\'c} szybko\IeC {\'s}ci oblicze\IeC {\'n} w problemach wizji maszynowej}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}Cel, zakres i zastosowania pracy}{5}{section.2.3}
+\contentsline {chapter}{\numberline {3}Metody r\IeC {\'o}wnoleg\IeC {\l }ego przetwarzania danych}{6}{chapter.3}
+\contentsline {section}{\numberline {3.1}Wielow\IeC {\k a}tkowo\IeC {\'s}\IeC {\'c} CPU dla aplikacji C/C++}{6}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Biblioteka POSIX dla system\IeC {\'o}w Unix}{6}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}OpenMP - wieloplatformowe API}{6}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Wielow\IeC {\k a}tkowo\IeC {\'s}\IeC {\'c} w standardzie C++11}{6}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Programowanie r\IeC {\'o}wnoleg\IeC {\l }e z wykorzystaniem GPU}{6}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Architektura GPU i por\IeC {\'o}wnanie wzgl\IeC {\k e}dem CPU}{6}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Biblioteka OpenCL}{6}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Algorytm Viterbiego}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}Opis dzia\IeC {\l }ania i zastosowania}{7}{section.4.1}
+\contentsline {section}{\numberline {4.2}Implementacja w j\IeC {\k e}zyku C++}{7}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Wersja szeregowa}{7}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Wersja r\IeC {\'o}wnoleg\IeC {\l }a - C++11}{7}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Wersja r\IeC {\'o}wnoleg\IeC {\l }a - OpenCL}{7}{subsection.4.2.3}
+\contentsline {chapter}{\numberline {5}Wyniki bada\IeC {\'n} do\IeC {\'s}wiadczalnych implementacji algorytmu Viterbiego}{8}{chapter.5}
+\contentsline {section}{\numberline {5.1}Por\IeC {\'o}wnanie czasu dzia\IeC {\l }ania dla implementacji szeregowej, wielow\IeC {\k a}tkowej oraz z wykorzystaniem biblioteki OpenCL}{8}{section.5.1}
+\contentsline {section}{\numberline {5.2}Por\IeC {\'o}wnanie szybko\IeC {\'s}ci algorytm\IeC {\'o}w dla r\IeC {\'o}\IeC {\.z}nych konfiguracji sprz\IeC {\k e}towych}{8}{section.5.2}
+\contentsline {chapter}{\numberline {6}Wnioski ko\IeC {\'n}cowe}{9}{chapter.6}
+\contentsline {chapter}{\numberline {7}Za\IeC {\l }\IeC {\k a}cznik B}{10}{chapter.7}
+\contentsline {chapter}{\numberline {8}Za\IeC {\l }\IeC {\k a}cznik A}{11}{chapter.8}
+\contentsline {chapter}{\numberline {9}Bibliografia}{12}{chapter.9}
+\contentsline {chapter}{Spis rysunk\'ow}{13}{chapter*.2}
+>>>>>>> Spis_tresci
