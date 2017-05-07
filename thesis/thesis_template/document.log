@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  2 NOV 2016 14:34
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  30 APR 2017 22:30
->>>>>>> Spis_tresci
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  7 MAY 2017 21:30
 entering extended mode
 **./document.tex
 (document.tex
@@ -555,8 +551,6 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip43
 )
-<<<<<<< HEAD
-=======
 (F:\MiKTex29\tex\latex\tocbibind\tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has chapter divisions on input line 50.
@@ -567,7 +561,6 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 ) (F:\MiKTex29\tex\latex\tools\indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
->>>>>>> Spis_tresci
 (F:\MiKTex29\tex\latex\geometry\geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@cnth=\count99
@@ -586,22 +579,22 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 (F:\MiKTex29\tex\latex\geometry\geometry.cfg))) (document.aux)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
 
 (F:\MiKTex29\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -628,7 +621,7 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \AtBeginShipoutBox=\box27
-Package hyperref Info: Link coloring OFF on input line 11.
+Package hyperref Info: Link coloring OFF on input line 12.
 
 (F:\MiKTex29\tex\latex\hyperref\nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -638,9 +631,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count108
 )
-LaTeX Info: Redefining \ref on input line 11.
-LaTeX Info: Redefining \pageref on input line 11.
-LaTeX Info: Redefining \nameref on input line 11.
+LaTeX Info: Redefining \ref on input line 12.
+LaTeX Info: Redefining \pageref on input line 12.
+LaTeX Info: Redefining \nameref on input line 12.
  (document.out)
 (document.out)
 \@outlinefile=\write3
@@ -668,11 +661,7 @@ LaTeX Info: Redefining \nameref on input line 11.
 * \headsep=25.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
-<<<<<<< HEAD
-* \marginparwidth=65.0pt
-=======
 * \marginparwidth=57.0pt
->>>>>>> Spis_tresci
 * \marginparsep=11.0pt
 * \columnsep=10.0pt
 * \skip\footins=9.0pt plus 4.0pt minus 2.0pt
@@ -685,11 +674,7 @@ LaTeX Info: Redefining \nameref on input line 11.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<<<<<<< HEAD
-(docs/Title_Page.tex <imgs/logoNew.png, id=95, 543.02875pt x 378.41376pt>
-=======
 (docs/Title_Page.tex <imgs/logoNew.png, id=111, 543.02875pt x 378.41376pt>
->>>>>>> Spis_tresci
 File: imgs/logoNew.png Graphic file (type png)
 
 <use imgs/logoNew.png>
@@ -740,149 +725,170 @@ Rozdzia\PlPrIeC {\l } 1.
 
 ]
 Rozdzia\PlPrIeC {\l } 2.
-<<<<<<< HEAD
-) (docs/Chapter_1.tex [4
-
-]
-Rozdzia\PlPrIeC {\l } 3.
-) (docs/Chapter_2.tex [5
-
-]
-Rozdzia\PlPrIeC {\l } 4.
-) (docs/Chapter_3.tex [6
-
-]
-Rozdzia\PlPrIeC {\l } 5.
-) (docs/Chapter_4.tex [7
-
-]
-Rozdzia\PlPrIeC {\l } 6.
-) (docs/Summary.tex [8
-
-]
-Rozdzia\PlPrIeC {\l } 7.
-) (docs/Appendix_1.tex [9
-
-]
-Rozdzia\PlPrIeC {\l } 8.
-) (docs/Appendix_2.tex [10
-
-]
-Rozdzia\PlPrIeC {\l } 9.
-) (document.bbl [11
-
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 36.
- [12
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 36.
- (document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 36.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 36.
-Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: FB077000E8F8F389F701C1F53CAA5D5C;1505.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 36.
- ) 
-Here is how much of TeX's memory you used:
- 6261 strings out of 493335
- 88722 string characters out of 3147024
- 178483 words of memory out of 3000000
- 9624 multiletter control sequences out of 15000+200000
- 14598 words of font info for 42 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 36i,5n,29p,248b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
-{F:/MiKTex29/fonts/enc/dvips/pl/plit.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm
-.enc}<F:/MiKTex29/fonts/type1/public/pl/plbx10.pfb><F:/MiKTex29/fonts/type1/pub
-lic/pl/plbx12.pfb><F:/MiKTex29/fonts/type1/public/pl/plr10.pfb><F:/MiKTex29/fon
-ts/type1/public/pl/plr12.pfb><F:/MiKTex29/fonts/type1/public/pl/plti10.pfb>
-Output written on document.pdf (12 pages, 86519 bytes).
-PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 190 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 9.
 (F:\MiKTex29\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
- [4
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 9.
 
-]) (docs/Chapter_1.tex [5]
-Rozdzia\PlPrIeC {\l } 3.
-) (docs/Chapter_2.tex [6
+<imgs/vision_inspection_line.jpg, id=163, 401.5pt x 243.91125pt>
+File: imgs/vision_inspection_line.jpg Graphic file (type jpg)
+
+<use imgs/vision_inspection_line.jpg>
+Package pdftex.def Info: imgs/vision_inspection_line.jpg used on input line 23.
+
+(pdftex.def)             Requested size: 220.50887pt x 133.96178pt.
+
+<imgs/position_orientation_test_images.jpg, id=166, 510.40688pt x 139.27031pt>
+File: imgs/position_orientation_test_images.jpg Graphic file (type jpg)
+
+<use imgs/position_orientation_test_images.jpg>
+Package pdftex.def Info: imgs/position_orientation_test_images.jpg used on inpu
+t line 34.
+(pdftex.def)             Requested size: 220.50887pt x 60.16982pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4
+
+ <./imgs/vision_inspection_line.jpg>]
+<imgs/vision_identyfication.jpg, id=178, 379.4175pt x 155.83218pt>
+File: imgs/vision_identyfication.jpg Graphic file (type jpg)
+
+<use imgs/vision_identyfication.jpg>
+Package pdftex.def Info: imgs/vision_identyfication.jpg used on input line 45.
+(pdftex.def)             Requested size: 220.50887pt x 90.56819pt.
+
+<imgs/mobile_robot.jpg, id=185, 222.8325pt x 319.1925pt>
+File: imgs/mobile_robot.jpg Graphic file (type jpg)
+
+<use imgs/mobile_robot.jpg>
+Package pdftex.def Info: imgs/mobile_robot.jpg used on input line 77.
+(pdftex.def)             Requested size: 220.50887pt x 315.86517pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5 <./imgs/position_orientation_test_images.jpg> <./imgs/vision_identyfication.
+jpg>] <imgs/LS1028_arm_design.jpg, id=200, 535.2497pt x 325.96782pt>
+File: imgs/LS1028_arm_design.jpg Graphic file (type jpg)
+
+<use imgs/LS1028_arm_design.jpg>
+Package pdftex.def Info: imgs/LS1028_arm_design.jpg used on input line 96.
+(pdftex.def)             Requested size: 220.50887pt x 134.28929pt.
+ [6 <./imgs/mobile_robot.jpg> <./imgs/LS1028_arm_design.jpg>] <imgs/fpga_arch.j
+pg, id=214, 364.36125pt x 239.39438pt>
+File: imgs/fpga_arch.jpg Graphic file (type jpg)
+
+<use imgs/fpga_arch.jpg>
+Package pdftex.def Info: imgs/fpga_arch.jpg used on input line 109.
+(pdftex.def)             Requested size: 220.50887pt x 144.8797pt.
+
+<imgs/stm32_design.jpg, id=218, 406.51875pt x 283.81032pt>
+File: imgs/stm32_design.jpg Graphic file (type jpg)
+
+<use imgs/stm32_design.jpg>
+Package pdftex.def Info: imgs/stm32_design.jpg used on input line 118.
+(pdftex.def)             Requested size: 220.50887pt x 153.94818pt.
+ [7 <./imgs/fpga_arch.jpg> <./imgs/stm32_design.jpg>]) (docs/Chapter_1.tex [8
 
 ]
+Rozdzia\PlPrIeC {\l } 3.
+[9
+
+]) (docs/Chapter_2.tex [10]
 Rozdzia\PlPrIeC {\l } 4.
-) (docs/Chapter_3.tex [7
+) (docs/Chapter_3.tex [11
 
 ]
 Rozdzia\PlPrIeC {\l } 5.
-) (docs/Summary.tex [8
+) (docs/Summary.tex [12
 
 ]
 Rozdzia\PlPrIeC {\l } 6.
-) (docs/Appendix_1.tex [9
+) (docs/Appendix_1.tex [13
 
 ]
 Rozdzia\PlPrIeC {\l } 7.
-) (docs/Appendix_2.tex [10
+) (docs/Appendix_2.tex [14
 
 ]
 Rozdzia\PlPrIeC {\l } 8.
-) (document.bbl [11
+) (document.bbl [15
 
 ]
 Rozdzia\PlPrIeC {\l } 9.
-LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 7.
+LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 13.
+
 (F:\MiKTex29\tex\latex\polski\ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
-)) [12
+)
+Underfull \hbox (badness 10000) in paragraph at lines 78--82
+[]\OT4/cmr/m/n/10 Intel.  In-tel pro-ces-sors and chip-sets for em-bed-ded ap-p
+li-ca-
+ []
 
-] (document.lof)
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--82
+\OT4/cmr/m/n/10 tions.  []$\OT4/cmtt/m/n/10 http : / / www . intel . pl / conte
+nt / www / pl / pl / intelligent-[]systems /
+ []
+
+[16
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 101--104
+[]\OT4/cmr/m/n/10 Nvidia.  What is gpu-accelerated com-pu-ting.  []$\OT4/cmtt/m
+/n/10 http : / / www . nvidia . com / object /
+ []
+
+
+Underfull \hbox (badness 4859) in paragraph at lines 112--116
+[]\OT4/cmr/m/n/10 ST.  Stm32 32-bit arm cor-tex mcus.  []$\OT4/cmtt/m/n/10 http
+ : / / www . st . com / en / microcontrollers /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--122
+[]\OT4/cmr/m/n/10 Bjarne Stro-ustrup.  \OT4/cmr/m/it/10 The C++ Pro-gram-ming L
+an-gu-age\OT4/cmr/m/n/10 .  Addison-Wesley, 2013.
+ []
+
+) [17] (document.lof)
 \tf@lof=\write5
 \openout5 = `document.lof'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 36.
- [13
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 37.
+ [18
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 36.
-
-(document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 36.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 36.
-
-
-Package rerunfilecheck Warning: File `document.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `document.out':
-(rerunfilecheck)             Before: A0F04B4EA2CF27BF9656579DC5BA8AFE;2185
-(rerunfilecheck)             After:  1721D28C1F3096526410D91B980446F3;2182.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 36.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
+ (document.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 37.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 37.
+Package rerunfilecheck Info: File `document.out' has not changed.
+(rerunfilecheck)             Checksum: 448C79FFD3E112303A971FAC6804A540;2185.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
  ) 
 Here is how much of TeX's memory you used:
- 6402 strings out of 493335
- 90934 string characters out of 3147024
- 181483 words of memory out of 3000000
- 9744 multiletter control sequences out of 15000+200000
+ 6490 strings out of 493335
+ 92972 string characters out of 3147024
+ 183908 words of memory out of 3000000
+ 9796 multiletter control sequences out of 15000+200000
  14894 words of font info for 43 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,5n,29p,262b,391s stack positions out of 5000i,500n,10000p,200000b,50000s
-{F:/MiKTex29/fonts/enc/dvips/pl/plit.enc}{F:/MiKTex29/fonts/enc/dvips/pl/pltt
+ 36i,5n,32p,1152b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
+{F:/MiKTex29/fonts/enc/dvips/pl/pltt.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plit
 .enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm.enc}<F:/MiKTex29/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx10.pfb><F:/MiKTex2
 9/fonts/type1/public/pl/plbx12.pfb><F:/MiKTex29/fonts/type1/public/pl/plr10.pfb
 ><F:/MiKTex29/fonts/type1/public/pl/plr12.pfb><F:/MiKTex29/fonts/type1/public/p
 l/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
-Output written on document.pdf (13 pages, 121402 bytes).
+Output written on document.pdf (18 pages, 481414 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 48 named destinations out of 1000 (max. 500000)
- 222 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> Spis_tresci
+ 375 PDF objects out of 1000 (max. 8388607)
+ 76 named destinations out of 1000 (max. 500000)
+ 257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

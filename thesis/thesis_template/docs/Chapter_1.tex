@@ -2,8 +2,17 @@
 \begin{document}
 
 \chapter{Metody równoległego przetwarzania danych}
+
 \section{Wielowątkowość aplikacji dla języka C/C++}
-To jest rozdział 1
+\indent Tradycyjnie większość aplikacji została napisana 
+tak aby instrukcje programu był wykonywane sekwencyjnie przez
+procesor - tylko jedna z nich może być wykonywana w tym samym czasie.
+Jednak dużą ilość problemów można rozbić na niezależne fragmenty,
+ które mogą być rozwiązywane równolegle. Obecnie powszechne stosowane procesory
+ wielordzeniowe dają możliwość podzielenia obciążenia obliczeniowego na poszczególne rdzenie oraz dla każdego rdzenia na osobne wątki.\cite{Computer_Architecture_Patterson_Hennesy}\cite{Parallel_computing_article} \\
+ \indent Wątek jest to podproces, który posiada własny stos, zestaw rejestrów, ID, priorytet i wykonuje określony fragment kodu programu. W przeciwieństwie do prawdziwego procesu posiada wspólną pamięć globalną i sterty dzieloną z innymi wątkami, istniejącymi w ramach tego samego procesu. Wątki procesu wykonują się równolegle, dopóki nie potrzebują dostępu do zasobów we wspólnej pamięci.\cite{POSIX_article}\cite{POSIX_tutorial} Wtedy ze względu na problem błędnego odczytu bądź zapisu wartości w pamięci, kiedy inny wątek ją już nadpisał może spowodować niewłaściwe działanie programu. Fragmenty kodu gdzie może dojść do tego problemu nazwane są sekcjami krytycznymi. Do zabezpieczania sekcji krytycznych programu stosowane są blokady - muteksy(Mutual exclusions) oraz zmienne kontrolne. Zastosowanie muteks'a powoduje, że w danym momencie tylko jeden wątek może wykonywać kod chroniony przez tą blokadę i dopóki nie opuści chronionej sekcji krytycznej inny wątek nie może zacząć jej wykonywać. Zmienne kontrolne stosowane są do
+ sygnalizowania postępu danego wątku tak aby inny mógł kontynuować wykonywanie operacji sekcji krytycznej. Stosowane razem z blokadami umożliwiają właściwą synchronizację pracy wątków tego samego procesu.
+ \cite{POSIX_Butenhof}\cite{C++_Stroustrup}
 	\subsection{Biblioteka POSIX dla systemów Unix}
 	To jest podrozdział 1 rozdziału 1
 	\subsection{OpenMP - wieloplatformowe API}

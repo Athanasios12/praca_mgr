@@ -19,33 +19,33 @@
 	
 	% obrazek : może scieżkę dodac wczesniej w mystyle albo w dokument.tex, wtedy odwoływac się tylko do nazwy
 
-%	\begin{figure}[h]
-%	\includegraphics[width=0.5\textwidth, inner]{imgs/inspection_img}
-%	\caption{Przykład zautomatyzowanej linii technologicznej wykorzystującej system wizyjny\protect\cite{vision_systems_article}}
-%	\label{fig:inspekcja}
-%	\end{figure}
+	\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{vision_inspection_line}
+	\caption{Przykład zautomatyzowanej linii technologicznej wykorzystującej system wizyjny\protect\cite{Vision_systems_article}}
+	\label{fig:inspekcja}
+	\end{figure}
 
 	\indent Sprawdzanie orientacji i położenia elementów w przemyśle jest wykorzystywane
 	między innymi w technologii montażu, gdzie informacje z urządzeń wizyjnych są wykorzystywane
 	przez manipulatory przemysłowe do zautomatyzowanego montażu, sortowania oraz paletyzacji wyrobów.\cite{Machine_Vision_Intro}
 
 	%obrazek - sprawdzanie orientacji
-%	\begin{figure}[h]
-%	\includegraphics[width=0.5\textwidth, inner]{imgs/pos_oritent_img}
-%	\caption{Przykład obrazów używanych w testowaniu pozycji i orientacji elementów\protect\cite{Machine_Vision_Intro}}
-%	\label{fig:pozycja_orientacja}
-%	\end{figure}	
+	\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{position_orientation_test_images}
+	\caption{Przykład obrazów używanych w testowaniu pozycji i orientacji elementów\protect\cite{Machine_Vision_Intro}}
+	\label{fig:pozycja_orientacja}
+	\end{figure}	
 
 	\indent Identyfikowanie produktów na bazie obrazu cyfrowego jest wykorzystywane przy sortowaniu
 	oraz monitorowaniu przepływu elementów i lokalizacji wąskich gardeł.
 	Przykładowe metody indentyfikacji to stosowanie kodów kreskowych i kodów DataMatrix.\cite{Machine_Vision_Intro}
 
 	%identyfikacja
-%	\begin{figure}[h]
-%	\includegraphics[width=0.5\textwidth, inner]{imgs/identyfication_img}
-%	\caption{Przykład wizyjnej identyfikacji\protect\cite{Machine_Vision_Intro}}
-%	\label{fig:identyfikacja}
-%	\end{figure}
+	\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{vision_identyfication}
+	\caption{Przykład wizyjnej identyfikacji\protect\cite{Machine_Vision_Intro}}
+	\label{fig:identyfikacja}
+	\end{figure}
 
 \section{Istotność szybkości obliczeń w problemach wizji maszynowej}
 %wstęp
@@ -56,11 +56,11 @@ analizy obrazu cyfrowego, wraz z resztą niezbędnego kodu, musi posiadać czas 
 spełniający narzucone przez sterowany system.
 
 %automatyka przemysłowa
-\\ \indent Dla zastosowań przemysłowych. gdzie monitorowane obiekty poruszają się z dużą prędkością, szybkość podjęcia decyzji przez system wizyjny
+\indent Dla zastosowań przemysłowych. gdzie monitorowane obiekty poruszają się z dużą prędkością, szybkość podjęcia decyzji przez system wizyjny
 może być wąskim gardłem dla danej gałęzi linii produkcyjnej. Czas na wykonanie decyzji
 (np. o usunięciu wadliwego produktu z przenośnika taśmowego), składa się na czas akwizycji obrazu,
 obliczenia sterowania. Standardowe kamery przemysłowe potrafią zrobić nawet powyżej 100 zdjęć na sekundę, a nawet więcej stosując mniejsze rozdzielczości obrazu. Czas przesyłu danych dla
-standardu popularnego standardu GigE wynosi maksymalnie 125 MB/s \cite{NI_camera_buses}. Na podstawie tego można stwierdzić, że główny problem będzie stanowił czas obliczenia sterowania i od niego będzie zależeć szybkość działania systemu wizyjnego \cite{Cognex_catalog\cite{Basler_Catalog}.
+standardu popularnego standardu GigE wynosi maksymalnie 125 MB/s \cite{NI_camera_buses}. Na podstawie tego można stwierdzić, że główny problem będzie stanowił czas obliczenia sterowania i od niego będzie zależeć szybkość działania systemu wizyjnego\cite{Cognex_industrial_cameras}\cite{Basler_industrial_cameras}.
 
 %robotyka mobilna
 \indent Inną dziedziną gdzie stosowane jest przetwarzanie obrazu w czasie rzeczywistym
@@ -71,12 +71,13 @@ jest robotyka mobilna, gdzie system wizyjny może odpowiadać za:
 	\item Analizę oraz monitorowanie otoczenia.
 \end{itemize}
 \cite{Mazurek_Robot_Viterbi}\cite{Mobile_Robot_Dumbare}
+
 	%przykładowe zdjęcie robota mobilnego
-%	\begin{figure}[h]
-%	\includegraphics[width=0.5\textwidth, inner]{imgs/mobile_robot}
-%	\caption{Przykład wizyjnej identyfikacji\protect\cite{Machine_Vision_Intro}}
-%	\label{fig:identyfikacja}
-%	\end{figure}
+	\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{mobile_robot}
+	\caption{Robot mobilny do śledzenia linii\protect\cite{Mazurek_Robot_Viterbi}}
+	\label{fig:mobile_robot}
+	\end{figure}
 
 \indent Podobnie jak dla aplikacji przemysłowych odpowiedzialność za wykorzystanie
 pełnych możliwości układów wykonawczych robota jest szybkość obliczania nowych
@@ -87,48 +88,50 @@ z kontrolerem robota jest odpowiedzialna za przeprowadzanie czasochłonnych obli
 \indent Pierwsze rozwiązanie jest korzystne kiedy nie są wymagane duże rozdzielczości obrazu,
 skomplikowane i czasochłonne algorytmy przetwarzania obrazu o dużej złożoności obliczeniowej
 oraz wysokie prędkości ruchu robota, narzucające krótki czas na obliczenia. 
-Stosowane są wtedy najczęściej układy wyposażone mikroprocesory, np. rodzina procesorów ARM oraz x86 firm Intel i AMD. Obecne modele są najczęściej wielordzeniowe o taktowaniu nawet powyżej 1GHz
-\cite{ARM_catalog_NXP_Broadcom_Qualcomm} \cite{Intel_microprocessors}, \cite{AMD microprocessors}.
+Stosowane są wtedy najczęściej układy wyposażone mikroprocesory, np. rodzina procesorów ARM oraz x86-64 firmy Intel. Obecne modele są najczęściej wielordzeniowe o taktowaniu nawet powyżej 1GHz
+\cite{NXP_ARM} \cite{Intel_Embedded_Processors}.
+
+	%procesor arm	
+	\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{LS1028_arm_design}
+	\caption{Procesor \textit{QorlQ Layerscape LS1028} do aplikacji przemysłowych firmy NXP, 
+	wyposażony w dwa rdzenie ARMv8\protect\cite{NXP_ARM}}
+	\label{fig:arm_processor}
+	\end{figure}
+	
 Dla rozwiązań bardziej wymagających pod względem szybkości obliczeń stosowane są układy
 FPGA, w których logika przetwarzania informacji obrazu jest zaprojektowania w języku
 HDL(VHDL, Verilog). Zapewniają one najszybsze prędkości obliczeń ze względu na 
-sprzętową implementację algorytmów. \cite{FPGA_book}. 
+sprzętową implementację algorytmów. \cite{FPGA_Design}\cite{VHDL_FPGA}. 
 	
 	%układ fpga
-%	\begin{figure}[h]
-%	\includegraphics[width=0.5\textwidth, inner]{imgs/fpga}
-%	\caption{Przykład wizyjnej identyfikacji\protect\cite{FPGA_book}}
-%	\label{fig:identyfikacja}
-%	\end{figure}
+	\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{fpga_arch}
+	\caption{Architektura układu FPGA\protect\cite{FPGA_Design}}
+	\label{fig:fpga}
+	\end{figure}	
 
-	%procesor arm/intel amd
-%	\begin{figure}[h]
-%	\includegraphics[width=0.5\textwidth, inner]{imgs/microprocessor}
-%	\caption{Przykład wizyjnej identyfikacji\protect\cite{Machine_Vision_Intro}}
-%	\label{fig:identyfikacja}
-%	\end{figure}
+\indent Drugie rozwiązanie gdzie osobne urządzenie jest używane do przetwarzania obrazu, umożliwia użycie mniej kosztownego procesora po stronie robota. Wystarczające do sterowania silnikami jest zastosowanie układu wykorzystującego mikrokontroler(np. z rodziny STM32 bądź Atmel AVR)\cite{STM32_microcontrollers} \cite{Atmel_microcontrollers}. 
 
-\indent Drugie rozwiązanie gdzie osobne urządzenie jest używane do przetwarzania obrazu, umożliwia użycie
-mniej kosztownego procesora po stronie robota. Wystarczające do sterowania silnikami jest zastosowanie układu wykorzystującego mikrokontroler(np. z rodziny STM32 bądź Atmel AVR)\cite{STM32_microcotrollers} \cite{Atmel AVR}. 
-%avr microcontroller
-%	\begin{figure}[h]
-%	\includegraphics[width=0.5\textwidth, inner]{imgs/microcontroller}
-%	\caption{Przykład wizyjnej identyfikacji\protect\cite{Machine_Vision_Intro}}
-%	\label{fig:identyfikacja}
-%	\end{figure}
+%stm32 microcontroller
+	\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{stm32_design}
+	\caption{Structura mikrokontrolera \textit{STM32F401CC}\protect\cite{STM32_microcontrollers}}
+	\label{fig:stm32}
+	\end{figure}
+
 Zewnętrzna jednostka obliczeniowa pozwala na wykorzystanie możliwości konwencjonalnych wielordzeniowych procesorów dla komputerów PC oraz procesora karty graficznej, który jest wyspecjalizowany w obliczeniach równoległych\cite{GPU_vs_CPU_nvidia} \cite{Computer_Architecture_Patterson_Hennesy}\cite{GPUs_Closer_Look}. 
 Dzięki kombinacji CPU i GPU możliwe jest przyspieszenie operacji,
 które mogą być wykonywane równolegle oraz rozdzielenie obciążenia obliczeniowego pomiędzy
-procesor i kartę graficzną. 
+procesor i kartę graficzną. \\
 %podsumowanie
 \indent Podsumowując, szybkość obliczeń systemu wizyjnego w robotyce mobilnej decyduje o tym jakie
 mogą być maksymalne parametry ruchu robota - prędkość, przyspieszenie, ilości robotów współpracujących w zagadnieniach robotyki roju(Swarm Robotics) oraz poziomie skomplikowania
 analizy obrazu. W przypadku problemów wizji maszynowej dla zastosowań przemysłowych czas poświęcony na analizę każdego zdjęcia ma wpływ na szybkość działania całej linii produkcyjnej, co ma bezpośredni wpływ na wydajność i koszty produkcji.  
-%pododawać zdjęcia dla tego rozdziału
-podrozdział 2 
+\clearpage
 \section{Cel, zakres i zastosowania pracy}
 \indent Celem pracy jest implementacja algorytmu Viterbiego w celu wykrywania linii na zaszumionym obrazie cyfrowym oraz analiza porównawcza dla rożnych wersji napisanego algorytmu.
-\indent Rozpatrywana będzie implementacja szeregowa i równoległa dla CPU w języku C++ oraz 
+Rozpatrywana będzie implementacja szeregowa i równoległa dla CPU w języku C++ oraz 
 napisana pod procesor karty graficznej z wykorzystaniem biblioteki OpenCL. Implementacja
 z wykorzystaniem biblioteki OpenCL będzie składała się z dwóch wariantów:
 \begin{itemize}
@@ -136,7 +139,7 @@ z wykorzystaniem biblioteki OpenCL będzie składała się z dwóch wariantów:
 	\item hybrydowy - podział obciążenia obliczeniowego pomiędzy procesor i kartę graficzną.
 \end{itemize} 
 Następnie dla różnych konfiguracji sprzętowych zostanie zrobione porównanie ich szybkości.
-\indent Na podstawie powyższej analizy zostanie wybrany najlepszy wariant realizacji 
+Na podstawie powyższej analizy zostanie wybrany najlepszy wariant realizacji 
 algorytmu Viterbiego, co będzie mogło być później zastosowane w sterowaniu ruchem robota
 mobilnego.  
 

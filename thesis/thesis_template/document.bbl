@@ -1,19 +1,49 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-<<<<<<< HEAD
-\bibitem{goossens93}
-Michel Goossens, Frank Mittelbach, and Alexander Samarin.
-\newblock {\em The LaTeX Companion}.
-\newblock Number~3. Addison-Wesley, Reading, Massachusetts, 1993.
+\bibitem{Mobile_Robot_Dumbare}
+Sachin B.~Bhosale Amol N.~Dumbare, Kiran~P.Somase.
+\newblock Mobile robot for object detection using image processing.
+\newblock {\em International Journal of Advane Research in Computer Science and
+  Managment Studies}, 1(6):81--84, 2013.
 
-\bibitem{wikipedia2}
-Wikipedia.
-\newblock Acripting language, 2014.
+\bibitem{Atmel_microcontrollers}
+Atmel.
+\newblock Atmel avr 8-bit and 32-bit microcontrollers.
+\newblock
+  \url{http://www.atmel.com/products/microcontrollers/avr/default.aspx}.
 
-\bibitem{wikipedia1}
-Wikipedia.
-\newblock Scripting language, 2014.
-=======
+\bibitem{Parallel_computing_article}
+Blaise Barney.
+\newblock Introduction to parallel computing.
+\newblock \url{https://computing.llnl.gov/tutorials/parallel_comp/}.
+
+\bibitem{POSIX_article}
+Blaise Barney.
+\newblock Posix threads programming.
+\newblock \url{https://computing.llnl.gov/tutorials/pthreads/}.
+
+\bibitem{Basler_industrial_cameras}
+Basler.
+\newblock Basler camera portfolio.
+\newblock \url{https://www.baslerweb.com/en/products/cameras/}.
+
+\bibitem{POSIX_Butenhof}
+David~R. Butenhof.
+\newblock {\em Programming with POSIX Threads}.
+\newblock Addison-Wesley, 1997.
+\newblock ISBN:0201633922.
+
+\bibitem{VHDL_FPGA}
+Pong~P. Chu.
+\newblock {\em FPGA Prototyping by VHDL examples}.
+\newblock John Wiley and Sons, Inc., 2008.
+\newblock ISBN:9780470185315.
+
+\bibitem{Cognex_industrial_cameras}
+Cognex.
+\newblock Insight 5000 industrial vision systems.
+\newblock \url{http://www.cognex.com/productstemplate.aspx?id=13915}.
+
 \bibitem{Machine_Vision_Intro}
 Cognex.
 \newblock Introduction to machine vision.
@@ -26,26 +56,74 @@ E.R. Davies.
 \newblock {\em Computer and Machine Vision: Theory, Algorithms,
   Practicalities}.
 \newblock Elsevier, 225 WYman Street, Waltham, 02451, USA, 2012.
+\newblock ISBN:9780123869081.
 
-\bibitem{goossens93}
-Michel Goossens, Frank Mittelbach, and Alexander Samarin.
-\newblock {\em The LaTeX Companion}.
-\newblock Addison-Wesley, Reading, Massachusetts, 1993.
+\bibitem{FPGA_Design}
+Ian Grout.
+\newblock {\em Digital Systems Design with FPGAs and CPLDs}.
+\newblock Elsevier, 2008.
+\newblock ISBN:9780750683975.
 
 \bibitem{Mazurek_Robot_Viterbi}
 Przemysław~Mazurek Grzegorz~Matczak.
 \newblock Line following with real-time viterbi trac-before-detect algorithm.
 \newblock {\em Przegląd Elektrotechniczny}, 1/2017:69--72, 2017.
 
-\bibitem{wikipedia2}
-Wikipedia.
-\newblock Acripting language.
-\newblock \url{http://en.wikipedia.org/wiki/Scripting_language}, 2014.
+\bibitem{NI_camera_buses}
+National Instruments.
+\newblock Choosing the right camera bus.
+\newblock {\em NI white papers}, 2016.
 
-\bibitem{wikipedia1}
-Wikipedia.
-\newblock Scripting language.
-\newblock \url{http://en.wikipedia.org/wiki/Scripting_language}, 2014.
->>>>>>> Spis_tresci
+\bibitem{Intel_Embedded_Processors}
+Intel.
+\newblock Intel processors and chipsets for embedded applications.
+\newblock
+  \url{http://www.intel.pl/content/www/pl/pl/intelligent-systems/embedded-processors-which-intel-processor-fits-your-project.html}.
+
+\bibitem{Computer_Architecture_Patterson_Hennesy}
+David~Patterson John~Hennesy.
+\newblock {\em Computer Architecture: A Quantitative Approach}.
+\newblock Elsevier, 2011.
+\newblock ISBN:9780123838728.
+
+\bibitem{GPUs_Closer_Look}
+Mike~Houston Katvon~Fatahalian.
+\newblock A closer look at gpus.
+\newblock {\em Communications of the ACM}, 51(10):50--57, 2008.
+
+\bibitem{POSIX_tutorial}
+Guy Kerens.
+\newblock Multi-threaded programming with posix threads.
+\newblock
+  \url{http://www.cs.kent.edu/~ruttan/sysprog/lectures/multi-thread/multi-thread.html}.
+
+\bibitem{GPU_vs_CPU_nvidia}
+Nvidia.
+\newblock What is gpu-accelerated computing.
+\newblock \url{http://www.nvidia.com/object/what-is-gpu-computing.html}.
+
+\bibitem{NXP_ARM}
+NXP.
+\newblock Arm technology-based solutions - nxp microcontrollers and processors.
+\newblock
+  \url{http://www.nxp.com/products/microcontrollers-and-processors/arm-processors:ARM-ARCHITECTURE}.
+
+\bibitem{STM32_microcontrollers}
+ST.
+\newblock Stm32 32-bit arm cortex mcus.
+\newblock
+  \url{http://www.st.com/en/microcontrollers/stm32-32-bit-arm-cortex-mcus.html?querycriteria=productId=SC1169}.
+
+\bibitem{C++_Stroustrup}
+Bjarne Stroustrup.
+\newblock {\em The C++ Programming Language}.
+\newblock Addison-Wesley, 2013.
+\newblock ISBN:9788324685301.
+
+\bibitem{Vision_systems_article}
+Andy Wilson.
+\newblock Industrial inspection : Line-scan-based vision system tackles color
+  print inspection.
+\newblock {\em Vision Systems Design}, 2014.
 
 \end{thebibliography}
