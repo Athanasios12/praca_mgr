@@ -97,6 +97,12 @@ Guy Kerens.
 \newblock
   \url{http://www.cs.kent.edu/~ruttan/sysprog/lectures/multi-thread/multi-thread.html}.
 
+\bibitem{C_King}
+K.N. King.
+\newblock {\em Jęzk C. Nowoczesne programowanie}.
+\newblock Helion, 2008.
+\newblock ISBN:9788324628056.
+
 \bibitem{GPU_vs_CPU_nvidia}
 Nvidia.
 \newblock What is gpu-accelerated computing.

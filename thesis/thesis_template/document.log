@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  7 MAY 2017 21:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  9 MAY 2017 22:35
 entering extended mode
 **./document.tex
 (document.tex
@@ -839,19 +839,19 @@ nt / www / pl / pl / intelligent-[]systems /
 [16
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 101--104
+Underfull \hbox (badness 10000) in paragraph at lines 107--110
 []\OT4/cmr/m/n/10 Nvidia.  What is gpu-accelerated com-pu-ting.  []$\OT4/cmtt/m
 /n/10 http : / / www . nvidia . com / object /
  []
 
 
-Underfull \hbox (badness 4859) in paragraph at lines 112--116
+Underfull \hbox (badness 4859) in paragraph at lines 118--122
 []\OT4/cmr/m/n/10 ST.  Stm32 32-bit arm cor-tex mcus.  []$\OT4/cmtt/m/n/10 http
  : / / www . st . com / en / microcontrollers /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--122
+Underfull \hbox (badness 10000) in paragraph at lines 124--128
 []\OT4/cmr/m/n/10 Bjarne Stro-ustrup.  \OT4/cmr/m/it/10 The C++ Pro-gram-ming L
 an-gu-age\OT4/cmr/m/n/10 .  Addison-Wesley, 2013.
  []
@@ -873,22 +873,22 @@ Package rerunfilecheck Info: File `document.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
  ) 
 Here is how much of TeX's memory you used:
- 6490 strings out of 493335
- 92972 string characters out of 3147024
- 183908 words of memory out of 3000000
- 9796 multiletter control sequences out of 15000+200000
+ 6492 strings out of 493335
+ 92991 string characters out of 3147024
+ 183937 words of memory out of 3000000
+ 9797 multiletter control sequences out of 15000+200000
  14894 words of font info for 43 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,5n,32p,1152b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,5n,32p,1371b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
 {F:/MiKTex29/fonts/enc/dvips/pl/pltt.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plit
 .enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm.enc}<F:/MiKTex29/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx10.pfb><F:/MiKTex2
 9/fonts/type1/public/pl/plbx12.pfb><F:/MiKTex29/fonts/type1/public/pl/plr10.pfb
 ><F:/MiKTex29/fonts/type1/public/pl/plr12.pfb><F:/MiKTex29/fonts/type1/public/p
 l/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
-Output written on document.pdf (18 pages, 481414 bytes).
+Output written on document.pdf (18 pages, 483276 bytes).
 PDF statistics:
- 375 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
+ 380 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 
