@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  9 MAY 2017 22:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  13 MAY 2017 15:25
 entering extended mode
 **./document.tex
 (document.tex
@@ -561,20 +561,56 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 ) (F:\MiKTex29\tex\latex\tools\indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
+(F:\MiKTex29\tex\latex\listings\listings.sty
+\lst@mode=\count99
+\lst@gtempboxa=\box26
+\lst@token=\toks20
+\lst@length=\count100
+\lst@currlwidth=\dimen109
+\lst@column=\count101
+\lst@pos=\count102
+\lst@lostspace=\dimen110
+\lst@width=\dimen111
+\lst@newlines=\count103
+\lst@lineno=\count104
+\lst@maxwidth=\dimen112
+
+(F:\MiKTex29\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count105
+\lst@skipnumbers=\count106
+\lst@framebox=\box27
+)
+(F:\MiKTex29\tex\latex\listings\listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(F:\MiKTex29\tex\latex\graphics\color.sty
+Package: color 2016/05/09 v1.1c Standard LaTeX Color (DPC)
+
+(F:\MiKTex29\tex\latex\00miktex\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 144.
+)
+(F:\MiKTex29\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
 (F:\MiKTex29\tex\latex\geometry\geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-\Gm@cnth=\count99
-\Gm@cntv=\count100
-\c@Gm@tempcnt=\count101
-\Gm@bindingoffset=\dimen109
-\Gm@wd@mp=\dimen110
-\Gm@odd@mp=\dimen111
-\Gm@even@mp=\dimen112
-\Gm@layoutwidth=\dimen113
-\Gm@layoutheight=\dimen114
-\Gm@layouthoffset=\dimen115
-\Gm@layoutvoffset=\dimen116
-\Gm@dimlist=\toks20
+\Gm@cnth=\count107
+\Gm@cntv=\count108
+\c@Gm@tempcnt=\count109
+\Gm@bindingoffset=\dimen113
+\Gm@wd@mp=\dimen114
+\Gm@odd@mp=\dimen115
+\Gm@even@mp=\dimen116
+\Gm@layoutwidth=\dimen117
+\Gm@layoutheight=\dimen118
+\Gm@layouthoffset=\dimen119
+\Gm@layoutvoffset=\dimen120
+\Gm@dimlist=\toks21
 
 (F:\MiKTex29\tex\latex\geometry\geometry.cfg))) (document.aux)
 \openout1 = `document.aux'.
@@ -598,17 +634,17 @@ LaTeX Font Info:    ... okay on input line 12.
 
 (F:\MiKTex29\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count102
-\scratchdimen=\dimen117
-\scratchbox=\box26
-\nofMPsegments=\count103
-\nofMParguments=\count104
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count105
-\MPscratchDim=\dimen118
-\MPnumerator=\count106
-\makeMPintoPDFobject=\count107
-\everyMPtoPDFconversion=\toks22
+\scratchcounter=\count110
+\scratchdimen=\dimen121
+\scratchbox=\box28
+\nofMPsegments=\count111
+\nofMParguments=\count112
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count113
+\MPscratchDim=\dimen122
+\MPnumerator=\count114
+\makeMPintoPDFobject=\count115
+\everyMPtoPDFconversion=\toks23
 ) (F:\MiKTex29\tex\latex\oberdiek\epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -620,7 +656,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-\AtBeginShipoutBox=\box27
+\AtBeginShipoutBox=\box29
 Package hyperref Info: Link coloring OFF on input line 12.
 
 (F:\MiKTex29\tex\latex\hyperref\nameref.sty
@@ -629,7 +665,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (F:\MiKTex29\tex\generic\oberdiek\gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count108
+\c@section@level=\count116
 )
 LaTeX Info: Redefining \ref on input line 12.
 LaTeX Info: Redefining \pageref on input line 12.
@@ -639,6 +675,7 @@ LaTeX Info: Redefining \nameref on input line 12.
 \@outlinefile=\write3
 \openout3 = `document.out'.
 
+\c@lstlisting=\count117
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -796,35 +833,70 @@ Package pdftex.def Info: imgs/stm32_design.jpg used on input line 118.
 
 ]
 Rozdzia\PlPrIeC {\l } 3.
-[9
-
-]) (docs/Chapter_2.tex [10]
-Rozdzia\PlPrIeC {\l } 4.
-) (docs/Chapter_3.tex [11
-
-]
-Rozdzia\PlPrIeC {\l } 5.
-) (docs/Summary.tex [12
-
-]
-Rozdzia\PlPrIeC {\l } 6.
-) (docs/Appendix_1.tex [13
-
-]
-Rozdzia\PlPrIeC {\l } 7.
-) (docs/Appendix_2.tex [14
-
-]
-Rozdzia\PlPrIeC {\l } 8.
-) (document.bbl [15
-
-]
-Rozdzia\PlPrIeC {\l } 9.
-LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 13.
+LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 30.
 
 (F:\MiKTex29\tex\latex\polski\ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
+) [9
+
+]
+(F:\MiKTex29\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
+(F:\MiKTex29\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 42.
+ (code_snippets/posix_example_0.c
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 1.
+
+(F:\MiKTex29\tex\latex\base\omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <8> on input line 29.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <6> on input line 29.
+ [10])) (docs/Chapter_2.tex [11]
+Rozdzia\PlPrIeC {\l } 4.
+) (docs/Chapter_3.tex [12
+
+]
+Rozdzia\PlPrIeC {\l } 5.
+) (docs/Summary.tex [13
+
+]
+Rozdzia\PlPrIeC {\l } 6.
+) (docs/Appendix_1.tex [14
+
+]
+Rozdzia\PlPrIeC {\l } 7.
+) (docs/Appendix_2.tex [15
+
+]
+Rozdzia\PlPrIeC {\l } 8.
+) [16
+
+] (document.lof)
+\tf@lof=\write5
+\openout5 = `document.lof'.
+
+ [17
+
+] (document.lol)
+\tf@lol=\write6
+\openout6 = `document.lol'.
+
+ (document.bbl [18
+
+]
+Rozdzia\PlPrIeC {\l } 9.
+
 Underfull \hbox (badness 10000) in paragraph at lines 78--82
 []\OT4/cmr/m/n/10 Intel.  In-tel pro-ces-sors and chip-sets for em-bed-ded ap-p
 li-ca-
@@ -836,7 +908,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--82
 nt / www / pl / pl / intelligent-[]systems /
  []
 
-[16
+[19
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 107--110
@@ -856,39 +928,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 124--128
 an-gu-age\OT4/cmr/m/n/10 .  Addison-Wesley, 2013.
  []
 
-) [17] (document.lof)
-\tf@lof=\write5
-\openout5 = `document.lof'.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 37.
- [18
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
+ [20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
  (document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 37.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 37.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: 448C79FFD3E112303A971FAC6804A540;2185.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
+(rerunfilecheck)             Checksum: 1F9F19CB7D70F273466CBA495B1429A3;2185.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 6492 strings out of 493335
- 92991 string characters out of 3147024
- 183937 words of memory out of 3000000
- 9797 multiletter control sequences out of 15000+200000
- 14894 words of font info for 43 fonts, out of 3000000 for 9000
+ 8401 strings out of 493335
+ 118086 string characters out of 3147024
+ 418008 words of memory out of 3000000
+ 11612 multiletter control sequences out of 15000+200000
+ 18643 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,5n,32p,1371b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
-{F:/MiKTex29/fonts/enc/dvips/pl/pltt.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plit
-.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm.enc}<F:/MiKTex29/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx10.pfb><F:/MiKTex2
-9/fonts/type1/public/pl/plbx12.pfb><F:/MiKTex29/fonts/type1/public/pl/plr10.pfb
-><F:/MiKTex29/fonts/type1/public/pl/plr12.pfb><F:/MiKTex29/fonts/type1/public/p
-l/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
-Output written on document.pdf (18 pages, 483276 bytes).
+ 36i,6n,53p,1371b,2013s stack positions out of 5000i,500n,10000p,200000b,50000s
+{F:/MiKTex29/fonts/enc/dvips/pl/plms.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm
+.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plsc.enc}{F:/MiKTex29/fonts/enc/dvips/pl/p
+ltt.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plit.enc}<F:/MiKTex29/fonts/type1/publi
+c/amsfonts/cm/cmmi8.pfb><F:/MiKTex29/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+<F:/MiKTex29/fonts/type1/public/amsfonts/cm/cmsy8.pfb><F:/MiKTex29/fonts/type1/
+public/pl/plbx10.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx12.pfb><F:/MiKTex29
+/fonts/type1/public/pl/plr10.pfb><F:/MiKTex29/fonts/type1/public/pl/plr12.pfb><
+F:/MiKTex29/fonts/type1/public/pl/plr5.pfb><F:/MiKTex29/fonts/type1/public/pl/p
+lr8.pfb><F:/MiKTex29/fonts/type1/public/pl/plsy8.pfb><F:/MiKTex29/fonts/type1/p
+ublic/pl/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
+Output written on document.pdf (20 pages, 535864 bytes).
 PDF statistics:
- 380 PDF objects out of 1000 (max. 8388607)
- 77 named destinations out of 1000 (max. 500000)
+ 476 PDF objects out of 1000 (max. 8388607)
+ 128 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

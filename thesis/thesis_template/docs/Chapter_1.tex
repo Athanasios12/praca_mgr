@@ -12,28 +12,50 @@ Jednak dużą ilość problemów można rozbić na niezależne fragmenty,
  które mogą być rozwiązywane równolegle. Obecnie powszechnie stosowane procesory
  wielordzeniowe dają możliwość rozdzielenia obciążenia obliczeniowego na poszczególne rdzenie oraz dla każdego rdzenia na osobne wątki.\cite{Computer_Architecture_Patterson_Hennesy}\cite{Parallel_computing_article} \\
  %wątek def i opis
- \indent Wątek jest to podproces, który posiada własny stos, zestaw rejestrów, ID, priorytet i wykonuje określony fragment kodu programu. W przeciwieństwie do prawdziwego procesu posiada wspólną pamięć globalną i sterty, dzieloną z innymi wątkami istniejącymi w ramach tego samego procesu. Wątki procesu wykonują się równolegle, dopóki nie potrzebują dostępu do zasobów we wspólnej pamięci.\cite{POSIX_article}\cite{POSIX_tutorial} Wtedy ze względu na problem błędnego odczytu, bądź zapisu wartości w pamięci kiedy inny wątek ją już nadpisał, może spowodować niewłaściwe działanie programu. Fragmenty kodu gdzie może dojść do tego problemu nazywane są sekcjami krytycznymi. Do zabezpieczania sekcji krytycznych programu stosowane są blokady - muteksy(Mutual exclusions) oraz zmienne kontrolne. Zastosowanie muteksa powoduje, że w danym momencie tylko jeden wątek może wykonywać kod chroniony przez tą blokadę i dopóki nie opuści chronionej sekcji krytycznej inny wątek nie może zacząć jej wykonywać. Zmienne kontrolne stosowane są do sygnalizowania postępu danego wątku, tak aby inny mógł kontynuować wykonywanie operacji sekcji krytycznej. Stosowane razem z blokadami umożliwiają właściwą synchronizację pracy wątków tego samego procesu.
-\cite{POSIX_Butenhof}\cite{C++_Stroustrup}
- %watek - wady i zalety
+ \indent Wątek jest to podproces, który posiada własny stos, zestaw rejestrów, ID, priorytet i wykonuje określony fragment kodu programu. W przeciwieństwie do prawdziwego procesu posiada wspólną pamięć globalną i sterty, dzieloną z innymi wątkami istniejącymi w ramach tego samego procesu. Wątki procesu wykonują się równolegle, dopóki nie potrzebują dostępu do zasobów we wspólnej pamięci.\cite{POSIX_article}\cite{POSIX_tutorial} Wtedy ze względu na problem błędnego odczytu, bądź zapisu wartości w pamięci kiedy inny wątek ją już nadpisał, może spowodować niewłaściwe działanie programu. Fragmenty kodu gdzie może dojść do tego problemu nazywane są sekcjami krytycznymi. Do zabezpieczania sekcji krytycznych programu stosowane są blokady - muteksy(Mutual exclusions) oraz zmienne warunkowe. Zastosowanie muteksa powoduje, że w danym momencie tylko jeden wątek może wykonywać kod chroniony przez tą blokadę i dopóki nie opuści chronionej sekcji krytycznej inny wątek nie może zacząć jej wykonywać. Zmienne warunkowe stosowane są do sygnalizowania postępu danego wątku, tak aby inny mógł kontynuować wykonywanie operacji sekcji krytycznej. Stosowane razem z blokadami umożliwiają właściwą synchronizację pracy wątków tego samego procesu.
+\cite{POSIX_Butenhof}\cite{C++_Stroustrup} \\
+ %watek - wady i zalety 
 \indent Używanie wielowątkowości w aplikacjach pozwala na wykorzystanie możliwości sprzętowych procesorów wielordzeniowych do obliczeń równoległych.
 Ponadto wielowątkowy model programowania umożliwia wykonywanie przez proces dalszych działań w czasie czasochłonnych obliczeń, bądź czekania na zdarzenie blokujące - takie jak ,np.sygnał z urządzenia peryferyjnego.
 Wadą tworzenia dodatkowych wątków w programie jest narzut obliczeniowy
-związany z ich synchronizacją(omawiany wcześniej problem wyścigu oraz zjawisko zakleszczenia - wątki czekają na siebie nawzajem żeby móc kontynuować obliczenia) oraz dostępem do wspólnego obszaru pamięci.\cite{POSIX_Butenhof}\cite{C++_Stroustrup}
+związany z ich synchronizacją(omawiany wcześniej problem wyścigu oraz zjawisko zakleszczenia - wątki czekają na siebie nawzajem żeby móc kontynuować obliczenia) oraz dostępem do wspólnego obszaru pamięci.\cite{POSIX_Butenhof}\cite{C++_Stroustrup} \\
 %podsumowanie
 \indent W tym rozdziale zostaną omówione różne metody tworzenia aplikacji
 wielowątkowych w języku C/C++. Skupiono się na bibliotekach dla tych języków
 programowania ze względu na ich popularność w tworzeniu rozwiązań dla systemów wbudowanych, która wynika z wysokiej wydajności kodu i małego zużycia pamięci w porównaniu do języków interpretowanych, np. Java, Python.\cite{C++_Stroustrup}\cite{C_King}
+
 \subsection{Biblioteka POSIX dla systemów Unix}
-\indent Dla systemów z rodziny Unix
+\indent Dla systemów z rodziny Unix w 1995 ustalony został standard programowania 
+wielowątkowego nazywany POSIX threads, w skrócie Pthreads. API Pthreads zostało zdefiniowane jako zestaw typów i procedur w języku C, zawarte w pliku nagłówkowym
+\code{<pthread.h>} i bibliotece libpthread.\cite{POSIX_article}
+Korzystanie z biblioteki Pthreads do tworzenia wątków generuje mniejszy narzut
+niż tworzenie osobnych procesów do równoległego przetwarzania danych.\cite{POSIX_article} 
+\indent Wątek w programie jest reprezentowany poprzez zmienną typu \code{pthread\_t}, 
+najczęsciej zdefiniowaną jako zmienna statyczna lub jako struktura, która jest zaalokowana na stercie.\cite{POSIX_Butenhof}\cite{POSIX_article}\cite{POSIX_tutorial} 
+Do każdego stworzonego wątku przypisana jest funkcja, którą będzie wykonywał.
+Funkcja powinna przyjmować jako argument zmienną wskaźnikową \code{void*} i zwracać
+wartość tego samego typu. Za tworzenie nowego wątku odpowiedzialna jest funkcja \code{pthread\_create}. Przyjmuje ona adres funkcji oraz argument z jakim ma zostać wywołana.
+Wywołanie \code{pthread\_create} oprócz rozpoczęciu nowego wątku zwraca identyfikator
+\code{pthread\_t}, który będzie wykorzystywany do odnoszenia się do stworzonego wątku.
+Wątek zostaje zakończony jeśli wykona wszystkie instrukcje swojej funkcji lub jeśli wywoła procedurę \code{pthread\_exit}. Poniższy kod przedstawia przykład tworzenia nowego wątku.
+
+\lstinputlisting[language=C, caption=Przykład tworzenia i uruchamiania wątków]{code_snippets/posix_example_0.c} 
+
+
 	
-	\subsection{OpenMP - wieloplatformowe API}
-	To jest podrozdział 2 rozdziału 1
-	\subsection{Wielowątkowość w standardzie C++11}
-	To jest podrozdział 3 rozdziału 1
+\subsection{OpenMP - wieloplatformowe API}
+To jest podrozdział 2 rozdziału 1
+
+\subsection{Wielowątkowość w standardzie C++11}
+To jest podrozdział 3 rozdziału 1
+
 \section{Programowanie równoległe z wykorzystaniem GPU}
-	To jest rozdział 2
-	\subsection{Architektura GPU i porównanie względem CPU}
-	To jest podrozdział 1 rozdziału 2
-	\subsection{Biblioteka OpenCL}
-	To jest podrozdział 2 rozdziału 2
+To jest rozdział 2
+
+\subsection{Architektura GPU i porównanie względem CPU}
+To jest podrozdział 1 rozdziału 2
+
+\subsection{Biblioteka OpenCL}
+To jest podrozdział 2 rozdziału 2
+
 \end{document}
