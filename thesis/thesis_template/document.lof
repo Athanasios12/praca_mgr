@@ -3,11 +3,10 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Przyk\IeC {\l }ad zautomatyzowanej linii technologicznej wykorzystuj\IeC {\k a}cej system wizyjny\cite {Vision_systems_article}}}{4}{figure.2.1}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Przyk\IeC {\l }ad obraz\IeC {\'o}w u\IeC {\.z}ywanych w testowaniu pozycji i orientacji element\IeC {\'o}w\cite {Machine_Vision_Intro}}}{5}{figure.2.2}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Przyk\IeC {\l }ad wizyjnej identyfikacji\cite {Machine_Vision_Intro}}}{5}{figure.2.3}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Robot mobilny do \IeC {\'s}ledzenia linii\cite {Mazurek_Robot_Viterbi}}}{6}{figure.2.4}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Procesor \textit {QorlQ Layerscape LS1028} do aplikacji przemys\IeC {\l }owych firmy NXP, wyposa\IeC {\.z}ony w dwa rdzenie ARMv8\cite {NXP_ARM}}}{6}{figure.2.5}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Architektura uk\IeC {\l }adu FPGA\cite {FPGA_Design}}}{7}{figure.2.6}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Structura mikrokontrolera \textit {STM32F401CC}\cite {STM32_microcontrollers}}}{7}{figure.2.7}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Procesor \textit {QorlQ Layerscape LS1028} do aplikacji przemys\IeC {\l }owych firmy NXP, wyposa\IeC {\.z}ony w dwa rdzenie ARMv8\cite {NXP_ARM}}}{6}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Structura mikrokontrolera \textit {STM32F401CC}\cite {STM32_microcontrollers}}}{7}{figure.2.5}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Wykorzystanie \texttt {pthread\_join} do synchronizacji w\IeC {\k a}tk\IeC {\'o}w\cite {POSIX_article}}}{9}{figure.3.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

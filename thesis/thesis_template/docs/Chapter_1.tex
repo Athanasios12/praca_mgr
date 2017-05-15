@@ -44,6 +44,13 @@ wartość tego samego typu. Za tworzenie nowego wątku odpowiedzialna jest funkc
 Wywołanie \code{pthread\_create} oprócz rozpoczęcia nowego wątku zwraca identyfikator
 \code{pthread\_t}, który będzie wykorzystywany do odnoszenia się do stworzonego wątku.
 Wątek zostaje zakończony jeśli wykona wszystkie instrukcje swojej funkcji lub jeśli wywoła procedurę \code{pthread\_exit}. \cite{POSIX_Butenhof}
+
+\begin{figure}[h]
+\includegraphics[scale=0.7]{posix_thread_tree}
+\caption{Wykorzystanie \code{pthread\_join} do synchronizacji wątków\protect\cite{POSIX_article}}
+\label{fig:inspekcja}
+\end{figure}
+
 Jedną z podstawowych metod synchronizacji pomiędzy wątkami jest użycie funkcji \code{pthread\_join}, która powoduje zatrzymanie dalszego wykonywania instrukcji dopóki stworzony wątek nie zakończy pracy.
 Tylko wątki, które został stworzone z atrybutem \code{joinable}, 
 a nie \code{detached}(odłączony) mogą używać tego rodzaju synchronizacji.\cite{POSIX_article}(patrz \ref{lst:basic_thread}). % kontynuować o wątkach
@@ -58,21 +65,37 @@ wykluczenia - w skrócie muteks(mutual exclusion). Muteks jest szczególnym przy
 o zbiorze wartości {0, 1}.\cite{POSIX_Butenhof}\cite{POSIX_tutorial}\cite{POSIX_article} 
 W bibliotece POSIX threads muteks jest reprezentowany jako zmienna typu \code{pthread\_mutex\_t}. W celu posiadania globalnego
 zasięgu deklarowana jest jako zmienna \code{static} lub \code{extern}.
-\cite{POSIX_Butenhof}\cite{C_King}
-W celu deklaracji muteksa wykorzystywane jest makro \code{PTHREAD\_MUTEX\_INITIALIZER}. Jeśli muteks jest używany jako
+\cite{POSIX_Butenhof}\cite{C_King}(patrz\ref{lst:mutex_thread})
+W celu deklaracji muteksa wykorzystywane jest makro \code{PTHREAD\_MUTEX\_INITIALIZER}(patrz . Jeśli muteks jest używany jako
 element dynamicznie alokowanej struktury, musi zostać zainicjalizowany 
 wywołaniem funkcji \code{pthread\_mutex\_init}. Ponadto musi być w ten
 sposób inicjalizowany, jeśli nie ma posiadać domyślnych atrybutów.
-Niezbędne jest po zakończeniu używania muteksa, zwolnienie zaalokowanej pamięci, poprzez wykorzystanie funkcji \code{pthread\_mutex\_destroy}. %dokończyć i dopisać porównanie strumienia wyjścia
-%dla poprzedniego przykladu i tego z mutexem
+Niezbędne jest po zakończeniu używania muteksa, zwolnienie zaalokowanej pamięci, poprzez wykorzystanie funkcji \code{pthread\_mutex\_destroy}.\cite{POSIX_Butenhof} 
 \\
 \lstinputlisting[language=C, label={lst:mutex_thread}, caption=Przykład wykorzystanie muteksa do synchronizacji
-aplikacji wielowątkowej]{code_snippets/posix_example_1.c} 
+aplikacji wielowątkowej]{code_snippets/posix_example_1.c}
 
+\indent Pthreads do komunikacji pomiędzy wątkami wykorzystuje zmienne
+warunkowe(condition variables), które mają informować o stanie 
+współdzielonych zasobów. Używane razem z muteksami, w atomiczny 
+sposób zwalniają blokadę sekcji krytycznej, dopóki inny wątek nie
+zasygnalizuje kontynuacji używając funkcji \code{pthread\_cond\_signal}. Dzięki temu inny wątek może kontynuować pracę 
+zanim zostanie wykonana chroniona sekcja krytyczna.
 
-	
+\indent Dzięki przedstawionym metodom sygnalizacji stanu oraz 
+blokadom, możliwe jest zaprojektowanie pożądanego podziału obciążenia
+obliczeniowego. Biblioteka POSIX, choć wiekowa dalej jest stosowana
+dzięki małemu narzutowi(napisana w języku C), obszernej dokumentacji 
+oraz dużej ilości starego kodu, który dalej jest stosowany w nowych
+rozwiązaniach systemów wbudowanych i czasu rzeczywistego.\cite{POSIX_tutorial}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{OpenMP - wieloplatformowe API}
 To jest podrozdział 2 rozdziału 1
+\cite{openmp_pacheco}
+\cite{openmp_spec}
+\cite{openmp_guide}
+\cite{openmp_slides}
 
 \subsection{Wielowątkowość w standardzie C++11}
 To jest podrozdział 3 rozdziału 1

@@ -2,10 +2,10 @@
 \contentsline {chapter}{\numberline {2}Wst\IeC {\k e}p}{4}{chapter.2}
 \contentsline {section}{\numberline {2.1}Przetwarzanie obrazu i jego rola w automatyce przemys\IeC {\l }owej}{4}{section.2.1}
 \contentsline {section}{\numberline {2.2}Istotno\IeC {\'s}\IeC {\'c} szybko\IeC {\'s}ci oblicze\IeC {\'n} w problemach wizji maszynowej}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}Cel, zakres i zastosowania pracy}{8}{section.2.3}
-\contentsline {chapter}{\numberline {3}Metody r\IeC {\'o}wnoleg\IeC {\l }ego przetwarzania danych}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Wielow\IeC {\k a}tkowo\IeC {\'s}\IeC {\'c} aplikacji dla j\IeC {\k e}zyka C/C++}{9}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Biblioteka POSIX dla system\IeC {\'o}w Unix}{10}{subsection.3.1.1}
+\contentsline {section}{\numberline {2.3}Cel, zakres i zastosowania pracy}{7}{section.2.3}
+\contentsline {chapter}{\numberline {3}Metody r\IeC {\'o}wnoleg\IeC {\l }ego przetwarzania danych}{8}{chapter.3}
+\contentsline {section}{\numberline {3.1}Wielow\IeC {\k a}tkowo\IeC {\'s}\IeC {\'c} aplikacji dla j\IeC {\k e}zyka C/C++}{8}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Biblioteka POSIX dla system\IeC {\'o}w Unix}{9}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}OpenMP - wieloplatformowe API}{12}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {3.1.3}Wielow\IeC {\k a}tkowo\IeC {\'s}\IeC {\'c} w standardzie C++11}{12}{subsection.3.1.3}
 \contentsline {section}{\numberline {3.2}Programowanie r\IeC {\'o}wnoleg\IeC {\l }e z wykorzystaniem GPU}{12}{section.3.2}

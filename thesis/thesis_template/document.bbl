@@ -6,6 +6,12 @@ Sachin B.~Bhosale Amol N.~Dumbare, Kiran~P.Somase.
 \newblock {\em International Journal of Advane Research in Computer Science and
   Managment Studies}, 1(6):81--84, 2013.
 
+\bibitem{openmp_slides}
+Dieter an~Mey.
+\newblock Parallel programming in openmp introduction.
+\newblock
+  \url{http://scc.ustc.edu.cn/zlsc/cxyy/200910/W020100308601022991415.pdf}.
+
 \bibitem{Atmel_microcontrollers}
 Atmel.
 \newblock Atmel avr 8-bit and 32-bit microcontrollers.
@@ -26,6 +32,11 @@ Blaise Barney.
 Basler.
 \newblock Basler camera portfolio.
 \newblock \url{https://www.baslerweb.com/en/products/cameras/}.
+
+\bibitem{openmp_spec}
+OpenMP Architecture~Review Board.
+\newblock Openmp application program interface.
+\newblock \url{http://www.openmp.org/wp-content/uploads/spec25.pdf}, 2005.
 
 \bibitem{POSIX_Butenhof}
 David~R. Butenhof.
@@ -114,6 +125,12 @@ NXP.
 \newblock
   \url{http://www.nxp.com/products/microcontrollers-and-processors/arm-processors:ARM-ARCHITECTURE}.
 
+\bibitem{openmp_pacheco}
+Peter~S. Pacheco.
+\newblock {\em An Introduction to Parallel Programming}.
+\newblock Elsevier, 2011.
+\newblock ISBN:9780123742605.
+
 \bibitem{STM32_microcontrollers}
 ST.
 \newblock Stm32 32-bit arm cortex mcus.
@@ -131,5 +148,11 @@ Andy Wilson.
 \newblock Industrial inspection : Line-scan-based vision system tackles color
   print inspection.
 \newblock {\em Vision Systems Design}, 2014.
+
+\bibitem{openmp_guide}
+Joel Yliluoma.
+\newblock Guide into openmp: Easy multithreading programing for c++.
+\newblock
+  \url{http://www.cs.kent.edu/~ruttan/sysprog/lectures/multi-thread/multi-thread.html}.
 
 \end{thebibliography}
