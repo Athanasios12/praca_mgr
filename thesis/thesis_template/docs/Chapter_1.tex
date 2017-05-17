@@ -207,12 +207,38 @@ do funkcji krytycznej. Posiada pięć funkcji do manipulacji blokadą \cite{open
 	\end{itemize}
 \end{itemize}
 
-\indent
+\indent OpenMP umożliwia automatyczne podzielenie pomiędzy wątki iteracji pętli \code{for}. 
+Używana jest do tego dyrektywa \code{\#pragma omp for}, która rozdziela na sekcję rozpatrywaną pętlę, pomiędzy wszystkie stworzone wątki w ramach tego bloku strukturalnego.
+\cite{openmp_guide}\cite{openmp_pacheco}
+\begin{verbatim}
+#pragma omp parallel num_threads(n)
+{
+   #pragma omp for
+   {
+      for(int i = 0; i < 10; i++)
+      {
+         cout << i << endl;
+      }  
+   }
+}
+\end{verbatim}
 
-\cite{openmp_blaise}
-%tutaj o sekcjach krytycznych - dyrektywa critical - zapewnia
-%mutex dla danego bloku(218) definiowanie reduktów - automatyczna definicja
-%sekcji krytycznej i wzajemne wykluczenie - podglądnąć summary działu pacheco
+\indent Zasięg zmiennych jest zależny od tego czy są one zdefiniowane przed blokiem strukturalnym, czy wewnątrz niego. Zmienne zdefiniowane przed dyrektywą \code{parallel}
+albo \code{for}, są widoczne dla każdego wątku. Te których deklaracje są wewnątrz
+konstrukcji OpenMP, są prywatne dla każdego stworzonego wątku w tym bloku.
+Będą one zawierać indywidualne kopie tej zmiennej we własnej pamięci stosu.
+\cite{openmp_pacheco}\cite{openmp_spec}
+\\
+\indent Podsumowując, OpenMP jest biblioteką wyższego poziomu, na którą składa się
+zestaw dyrektyw preprocesora, makr i funkcji umożliwiających tworzenie aplikacji
+wielowątkowych. Jest dobrą alternatywą dla biblioteki Pthreads, ponieważ podobnie jak
+ona jest napisana dla języka C i dodatkowo umożliwia korzystanie z nowszych funkcjonalności
+języka C++. Upraszcza synchronizację i tworzenie nowych wątków oraz umożliwia bez zmiany
+kodu, wykonanie instrukcji programu sekwencyjnie dla kompilatorów niewspierających dyrektyw \code{\#pragma}. W przeciwieństwie do Pthreads nie wymaga określenia konkretnej funkcji,
+którą ma wykonywać dany wątek, tylko automatycznie rozdziela wykonywanie instrukcji bloku
+strukturalnego(fragment kodu objęty dyrektywą code{\#pragma}) przez ustawioną liczbę stworzonych wątków. Umożliwia inkrementalne zwiększanie
+równoległości programu poprzez dodawanie kolejnych dyrektyw i elementów biblioteki zdefiniowanych w nagłówku \code{<omp.h>}
+
 
 
 \subsection{Wielowątkowość w standardzie C++11}
