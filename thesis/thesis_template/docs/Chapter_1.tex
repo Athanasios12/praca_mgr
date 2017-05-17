@@ -91,11 +91,129 @@ rozwiązaniach systemów wbudowanych i czasu rzeczywistego.\cite{POSIX_tutorial}
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{OpenMP - wieloplatformowe API}
-To jest podrozdział 2 rozdziału 1
-\cite{openmp_pacheco}
-\cite{openmp_spec}
-\cite{openmp_guide}
-\cite{openmp_slides}
+%żródła do tego rozdziału
+%\cite{openmp_pacheco}
+%\cite{openmp_spec}
+%\cite{openmp_guide}
+%\cite{openmp_slides}
+%--------------------------
+\indent Podobnie jak Pthreads, OpenMP jest biblioteką wykorzystującą
+model współdzielenia pamięci do programowania równoległego. Zawiera wsparcie dla języków C, C++ oraz Fortran.
+OpenMP wymaga sprecyzowania przez użytkownika odpowiednich akcji, które ma wykonać kompilator, aby program wykonywał się równolegle.
+\cite{openmp_pacheco}\cite{openmp_spec}
+OpenMP został stworzony przez grupę naukowców i programistów, którzy
+uważali, że używanie API Pthreads jest skomplikowane dla dużych
+aplikacji. Zdecydowali się stworzyć standard wyższego poziomu, który
+w przeciwieństwie do biblioteki Pthreads wymagającej od programisty zdefiniowania funkcji wykonawczej dla każdego wątku, pozwala 
+na określenie dowolnego fragmentu programu, który ma być wykonany 
+równolegle. Wykorzystuje do tego dyrektywy preprocesora znane jako
+\code{\#pragma}.Używane są do zdefiniowania zachowań kompilatora,
+które nie są zawarte w podstawowej specyfikacji języka C.
+Jeśli użyty kompilator nie wspiera dyrektyw \code{\#pragma}, program
+i tak ma możliwość właściwego działania; wtedy jego fragmenty mające wykonać
+się równolegle zostaną obsłużone przez jeden wątek.
+\cite{openmp_pacheco}\cite{C_King}\cite{openmp_spec}\cite{openmp_guide}
+Oprócz zestawu dyrektyw preprocesora, OpenMP składa się z biblioteki
+funkcji i makr, które wymagają dodania pliku nagłówkowego \code{<omp.h>}
+z ich definicjami i prototypami.
+\\
+\indent Podstawową dyrektywą OpenMP jest dyrektywa \code{\#pragma omp parallel},
+za pomocą której określany jest blok kodu mający być wykonany wielowątkowo.
+Jeśli programista nie sprecyzuje przez ile wątków
+ma być przetworzony podany fragment programu, zostanie on określony przez system
+wykonawczy(zazwyczaj po jednym wątku na rdzeń).\cite{openmp_pacheco}\cite{openmp_guide}(patrz \ref{lst:openmp_0})
+\\
+\lstinputlisting[language=C, label={lst:openmp_0}, caption= Prosta aplikacja wykorzystująca dyrektywę \code{\#pragma omp parallel} 
+\protect\cite{openmp_pacheco}]{code_snippets/openmp_example_0.c}
+
+Powyższy prosty przykład ilustruje wykorzystanie OpenMP do równoległego
+uruchomienia \code{thread\_count} wątków, gdzie każdy z nich wykona
+funkcję \code{mp\_test}.Dodatkowo użyta klauzula \code{num\_threads}
+modyfikuję dyrektywę tak aby stworzyła tyle wątków ile zostało 
+podane w liście argumentów przy uruchomieniu programu(wskaźnik na tablicę \code{argv}). Jeśli jeden z wątków wcześniej skończy pracę od innych,
+czeka aż reszta zakończ wykonywanie funkcji \code{mp\_test}.
+Każdy ze stworzonych wątków otrzymuje swoje id, stopień oraz parametr
+określający liczbę innych wątków w ramach tego samego bloku.
+Korzystając z funkcji \code{omp\_get\_thread\_num} i \code{omp\_num\_threads}
+(nagłówek \code{<omp.h>}) otrzymywane jest id i liczba współpracujących wątków.
+Współdzielonym zasobem pomiędzy wątkami jest strumień wyjściowy \code{stdout}.
+\cite{openmp_pacheco}\cite{openmp_slides}
+\\
+\indent Kolekcja wątków wykonujących blok kodu nazywana jest zespołem. Wątek,
+który przetwarzał instrukcje przed dyrektywą \code{\#pragma omp parallel} 
+jest zarządcą(\textbf{master}), a dodatkowe wątki są jego podwładnymi(\textbf{slave}). Kiedy wszystkie zakończą swoją pracę łączą się z
+wątkiem twórcą, który wtedy kontynuuje wykonywanie dalszych instrukcji(patrz rys. \ref{fig:openmp_tree}).\cite{openmp_blaise}\cite{openmp_spec}
+
+\begin{figure}[h]
+\includegraphics[scale=0.7]{openmp_tree}
+\caption{Model tworzenia wątków w OpenMP\protect\cite{openmp_blaise}}
+\label{fig:openmp_tree}
+\end{figure}
+
+\indent Podobnie jak dla Pthreads OpenMP uwzględnia ochronę sekcji krytycznej 
+oraz metody synchronizacji wątków. Do przeciwdziałania wyścigom i zakleszczeniom(deadlocks) pomiędzy wątkami wykorzystywane są:\cite{openmp_spec}\cite{openmp_guide}
+\begin{itemize}
+\item Dyrektywa \code{critical} - tylko jeden wątek może w tym samym czasie wykonywać blok strukturalny. Możliwe jest istnienie wielu sekcji \code{critical}, gdzie ich nazwy 
+są używane jako globalne identyfikatory. Różne regiony \code{critical} o tej samej
+nazwie są traktowane jako jedna sekcja.\cite{openmp_pacheco}\cite{openmp_blaise} 
+\begin{verbatim}
+#pragma omp critical [ nazwa ]
+{
+   blok strukturalny
+}
+\end{verbatim}
+
+\item Dyrektywa \code{atomic} - wykorzystuje specjalne instrukcje sprzętowe, dzięki
+czemu możliwa jest dużo szybsza realizacja sekcji krytycznej. Atomowe operacje to
+takie które wykonywane są zawsze całkowicie, bez interwencji innego wątku.
+Najczęściej sekcje \code{atomic} używane są do prostych operacji na licznikach
+zmienianych przez kilka wątków równolegle.\cite{openmp_guide}\cite{openmp_spec}
+\\
+Operacje zmiany zmiennej:
+\begin{verbatim}
+#pragma omp atomic [ nazwa ]
+{
+   ++x; --x; x++; x--;
+   x += expr;  x -= expr;  x *= expr;   x /= expr;  x &= expr;
+   x = x+expr; x = x-expr; x = x*expr;  x = x/expr; x = x&expr;
+   x = expr+x; x = expr-x; x = expr*x;  x = expr/x; x = expr&x;
+   x |= expr;  x ^= expr;  x <<= expr;  x >>= expr;
+   x = x|expr; x = x^expr; x = x<<expr; x = x>>expr;
+   x = expr|x; x = expr^x; x = expr<<x; x = expr>>x;
+}
+\end{verbatim}
+
+Operacje czytania i nadpisania zmiennej:
+\begin{verbatim}
+#pragma omp atomic [ nazwa ]
+{
+   var = x++;
+   var = x; 
+   x++;
+   x = expr;
+}
+\end{verbatim}
+\item Blokada \code{omp\_lock\_t} z pliku nagłówkowego \code{<omp.h>} - ogranicza dostęp
+do funkcji krytycznej. Posiada pięć funkcji do manipulacji blokadą \cite{openmp_guide}\cite{openmp_blaise}:
+	\begin{itemize}
+	\item \code{omp\_init\_lock} - inicjalizuje blokadę. Po tym wywołaniu nie jest jeszcze ustawiona.
+	\item \code{omp\_destroy\_lock} - usuwa blokadę, nie może być wcześniej ustawiona.
+	\item \code{omp\_set\_lock} - próbuje ustawić blokadę. Jeśli inny wątek już wywołał tą
+	funkcję, czeka aż blokada będzie znowu dostępna, wtedy zostaje ona ustawiona.
+	\item \code{omp\_unset\_lock} - zwalnia blokadę, powinna być użyta tylko przez wątek,
+	który ją ustawił. W innym wypadku zachowanie programu będzie niezdefiniowane.
+	\item \code{omp\_test\_lock} - próbuje ustawić blokadę. Jeżeli jest już ustawiona 
+	przez inny wątek, zwraca 0. Jeśli nie, blokuje sekcję krytyczną i zwraca 1.
+	\end{itemize}
+\end{itemize}
+
+\indent
+
+\cite{openmp_blaise}
+%tutaj o sekcjach krytycznych - dyrektywa critical - zapewnia
+%mutex dla danego bloku(218) definiowanie reduktów - automatyczna definicja
+%sekcji krytycznej i wzajemne wykluczenie - podglądnąć summary działu pacheco
+
 
 \subsection{Wielowątkowość w standardzie C++11}
 To jest podrozdział 3 rozdziału 1

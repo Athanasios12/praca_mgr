@@ -7,6 +7,7 @@
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Structura mikrokontrolera \textit {STM32F401CC}\cite {STM32_microcontrollers}}}{7}{figure.2.5}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Wykorzystanie \texttt {pthread\_join} do synchronizacji w\IeC {\k a}tk\IeC {\'o}w\cite {POSIX_article}}}{9}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Model tworzenia w\IeC {\k a}tk\IeC {\'o}w w OpenMP\cite {openmp_blaise}}}{13}{figure.3.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -23,6 +23,11 @@ Blaise Barney.
 \newblock Introduction to parallel computing.
 \newblock \url{https://computing.llnl.gov/tutorials/parallel_comp/}.
 
+\bibitem{openmp_blaise}
+Blaise Barney.
+\newblock Openmp.
+\newblock \url{https://computing.llnl.gov/tutorials/openMP}.
+
 \bibitem{POSIX_article}
 Blaise Barney.
 \newblock Posix threads programming.
