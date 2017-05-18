@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  18 MAY 2017 00:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  18 MAY 2017 23:06
 entering extended mode
 **./document.tex
 (document.tex
@@ -917,37 +917,51 @@ Overfull \hbox (6.90433pt too wide) in paragraph at lines 148--149
 [][] 
  []
 
-[13 <./imgs/openmp_tree.jpg>] [14]) (docs/Chapter_2.tex [15]
+[13 <./imgs/openmp_tree.jpg>] [14] (F:\MiKTex29\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+Underfull \hbox (badness 10000) in paragraph at lines 262--280
+
+ []
+
+(code_snippets/cpp_example_0.cpp [15
+
+])
+Underfull \hbox (badness 10000) in paragraph at lines 282--290
+
+ []
+
+(code_snippets/cpp_example_1.cpp [16])) (docs/Chapter_2.tex [17]
 Rozdzia\PlPrIeC {\l } 4.
-) (docs/Chapter_3.tex [16
+) (docs/Chapter_3.tex [18
 
 ]
 Rozdzia\PlPrIeC {\l } 5.
-) (docs/Summary.tex [17
+) (docs/Summary.tex [19
 
 ]
 Rozdzia\PlPrIeC {\l } 6.
-) (docs/Appendix_1.tex [18
+) (docs/Appendix_1.tex [20
 
 ]
 Rozdzia\PlPrIeC {\l } 7.
-) (docs/Appendix_2.tex [19
+) (docs/Appendix_2.tex [21
 
 ]
 Rozdzia\PlPrIeC {\l } 8.
-) [20
+) [22
 
 ] (document.lof)
 \tf@lof=\write5
 \openout5 = `document.lof'.
 
- [21
+ [23
 
 ] (document.lol)
 \tf@lol=\write6
 \openout6 = `document.lol'.
 
- (document.bbl [22
+ (document.bbl [24
 
 ]
 Rozdzia\PlPrIeC {\l } 9.
@@ -957,35 +971,35 @@ Underfull \hbox (badness 1642) in paragraph at lines 16--20
 $\OT4/cmtt/m/n/10 http : / / www . atmel . com / products /
  []
 
+[25
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--98
+]
+Underfull \hbox (badness 10000) in paragraph at lines 110--114
 []\OT4/cmr/m/n/10 Intel.  In-tel pro-ces-sors and chip-sets for em-bed-ded ap-p
 li-ca-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--98
+Underfull \hbox (badness 10000) in paragraph at lines 110--114
 \OT4/cmr/m/n/10 tions.  []$\OT4/cmtt/m/n/10 http : / / www . intel . pl / conte
 nt / www / pl / pl / intelligent-[]systems /
  []
 
-[23
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 123--126
+Underfull \hbox (badness 10000) in paragraph at lines 145--148
 []\OT4/cmr/m/n/10 Nvidia.  What is gpu-accelerated com-pu-ting.  []$\OT4/cmtt/m
 /n/10 http : / / www . nvidia . com / object /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--144
+Underfull \hbox (badness 10000) in paragraph at lines 162--166
 []\OT4/cmr/m/n/10 ST.  Stm32 32-bit arm cor-tex mcus.  []$\OT4/cmtt/m/n/10 http
  : / / www . st . com / en / microcontrollers /
  []
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
- [24]
+ [26]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
  (document.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
@@ -999,10 +1013,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 8544 strings out of 493335
- 120387 string characters out of 3147024
- 420346 words of memory out of 3000000
- 11660 multiletter control sequences out of 15000+200000
+ 8794 strings out of 493335
+ 123717 string characters out of 3147024
+ 456672 words of memory out of 3000000
+ 11814 multiletter control sequences out of 15000+200000
  18643 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,7n,53p,419b,2019s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1016,9 +1030,9 @@ public/pl/plbx10.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx12.pfb><F:/MiKTex29
 F:/MiKTex29/fonts/type1/public/pl/plr5.pfb><F:/MiKTex29/fonts/type1/public/pl/p
 lr8.pfb><F:/MiKTex29/fonts/type1/public/pl/plsy8.pfb><F:/MiKTex29/fonts/type1/p
 ublic/pl/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
-Output written on document.pdf (24 pages, 545306 bytes).
+Output written on document.pdf (26 pages, 576994 bytes).
 PDF statistics:
- 644 PDF objects out of 1000 (max. 8388607)
- 217 named destinations out of 1000 (max. 500000)
+ 777 PDF objects out of 1000 (max. 8388607)
+ 304 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

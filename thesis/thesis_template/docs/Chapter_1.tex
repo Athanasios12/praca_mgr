@@ -240,9 +240,54 @@ strukturalnego(fragment kodu objęty dyrektywą code{\#pragma}) przez ustawioną
 równoległości programu poprzez dodawanie kolejnych dyrektyw i elementów biblioteki zdefiniowanych w nagłówku \code{<omp.h>}
 
 
-
+\clearpage
 \subsection{Wielowątkowość w standardzie C++11}
 To jest podrozdział 3 rozdziału 1
+%\cite{C++11_iso}
+%\cite{C++_Meyers}
+%\cite{C++11_tutorial}
+%\cite{C++_Stroustrup}
+\indent Nowy standard języka C++ - C++11, istotnie zmienił podejście do pisania programów w porównaniu do starszej wersji C++98. Zamiarem komisji standaryzacyjnej było stworzenie bardziej czytelnego, prostszego w pisaniu oraz bardziej zoptymalizowanego języka.
+Wśród wielu nowości, takich jak inteligentne wskaźniki, operator przenoszenia, konstruktor przenoszący, wyrażenia lambda, dedukcja typu auto; jednym z najistotniejszych było wprowadzenie współbieżności do biblioteki standardowej.
+Rezultatem tego jest umożliwienie tworzenie wieloplatformowych aplikacji 
+wielowątkowych bez potrzeby używania dodatkowych bibliotek, takich jak Pthreads,
+Windows threads, OpenMP.\cite{C++_Meyers}\cite{C++_Stroustrup}
+\\
+\indent Biblioteka standardowa C++11 umożliwia dwie metody wykonywania
+zadań asynchronicznie\cite{C++_Meyers}\cite{C++11_iso}:
+\begin{itemize}
+\item Z wykorzystaniem obiektów typu \code{std::thread}
+\item używając podejścia zadaniowego dla obiektów \code{std::future}
+\end{itemize}
+\indent Podobnie jak dla Pthreads, wielowątkowość implementowana z pomocą
+\code{std::thread}, zakłada tworzenie nowych wątków z unikalnymi id, 
+pamięcią stosu, funkcją wykonawczą oraz listą argumentów do tej funkcji.
+Każdy stworzony wątek może być typu \code{joinable}, albo \code{detached}.
+\code{Joinable} oznacza, że wątek powinien zakończyć działanie przed
+wywołaniem swojego destruktora. Niezbędne jest zastosowanie do tego 
+przez wątek twórcy metody \code{join()}, która zapewnia, że stworzony
+wątek wykona swoje zadanie zanim zostanie zniszczony. Jeśli pożądane
+jest pozwolenie wątkowi na pracę po wywołaniu jego destruktora, 
+używana jest metoda \code{detach()}.\cite{C++11_iso}\cite{C++_Stroustrup}
+\\
+\indent Analogicznie do POSIX threads, do synchronizacji wykorzystywane są blokady w postaci muteksów  \code{std::mutex} oraz zmienne warunkowe do generacji zdarzeń 
+\code{std::condition\_variable}. W celu usunięcia konieczności ręcznego
+ustawiania i odblokowywania mutexa(\code{mutex.lock()}, \code{mutex.unlock()}),
+wykorzystywany jest obiekt \code{std::lock\_guard}, który po inicjalizacji
+muteksem jako argument, ustawia blokadę i zapewnia jej usunięcie po wyjściu
+z zasięgu swojej deklaracji(patrz listing \ref{lst:cpp_thread}).\cite{C++11_iso}\cite{C++11_tutorial}
+\\
+\lstinputlisting[language=C++, label={lst:cpp_thread}, caption= Podstawowe funkcjonalności \code{std::thread} \protect\cite{C++_ref}]{code_snippets/cpp_example_0.cpp}
+
+\indent Innym podejściem do współbieżności, które zostało zawarte w nowym standardzie,
+jest współbieżność zadaniowa. Daje ona możliwość wykonania zadania - funkcji i zwraca
+jeden wynik. Funkcja \code{std::async()} odpowiada za asynchroniczne uruchomienie podanej w liście argumentów funkcji. Zwraca obiekt typu \code{std::future}, z którego
+możemy otrzymać wynik używając metody \code{get}. Zaletą tego podejścia jest jego prostota, kiedy nie potrzebujemy skomplikowanej synchronizacji pomiędzy wątkami,
+tylko wiemy, że każdy z nich ma wykonać równolegle niezależne zadanie(patrz listing \ref{lst:cpp_future}). 
+\cite{C++_Meyers}\cite{C++_Stroustrup}
+\\
+\lstinputlisting[language=C++, label={lst:cpp_future}, caption= Przykład zastosowania
+ \code{std::future} i \code{std::async()} \protect\cite{C++_ref}]{code_snippets/cpp_example_1.cpp}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%koniec rozdziału

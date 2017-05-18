@@ -67,12 +67,28 @@ Cognex.
   \url{http://www.assemblymag.com/ext/resources/White_Papers/Sep16/Introduction-to-Machine-Vision.pdf},
   2016.
 
+\bibitem{C++_ref}
+C++ Concurrency.
+\newblock C++ reference documentation.
+\newblock \url{http://en.cppreference.com/}.
+
 \bibitem{Davies_Machine_Vision}
 E.R. Davies.
 \newblock {\em Computer and Machine Vision: Theory, Algorithms,
   Practicalities}.
 \newblock Elsevier, 225 WYman Street, Waltham, 02451, USA, 2012.
 \newblock ISBN:9780123869081.
+
+\bibitem{C++11_iso}
+Standard~C++ Foundation.
+\newblock C++11 standard library extensions - concurrency.
+\newblock \url{https://isocpp.org/wiki/faq/cpp11-library-concurrency}.
+
+\bibitem{C++11_tutorial}
+Standard~C++ Foundation.
+\newblock Multi-threaded programming: C++11.
+\newblock
+  \url{http://www.bogotobogo.com/cplusplus/multithreaded4_cplusplus11.php}.
 
 \bibitem{FPGA_Design}
 Ian Grout.
@@ -119,6 +135,12 @@ K.N. King.
 \newblock Helion, 2008.
 \newblock ISBN:9788324628056.
 
+\bibitem{C++_Meyers}
+Scott Meyers.
+\newblock {\em Effective Modern C++}.
+\newblock O'Reilly, 2015.
+\newblock ISBN:9781491903995.
+
 \bibitem{GPU_vs_CPU_nvidia}
 Nvidia.
 \newblock What is gpu-accelerated computing.
@@ -144,8 +166,8 @@ ST.
 
 \bibitem{C++_Stroustrup}
 Bjarne Stroustrup.
-\newblock {\em The C++ Programming Language}.
-\newblock Addison-Wesley, 2013.
+\newblock {\em Język C++.Kompendium wiedzy}.
+\newblock Helion, 2013.
 \newblock ISBN:9788324685301.
 
 \bibitem{Vision_systems_article}
