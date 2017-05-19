@@ -84,12 +84,6 @@ Standard~C++ Foundation.
 \newblock C++11 standard library extensions - concurrency.
 \newblock \url{https://isocpp.org/wiki/faq/cpp11-library-concurrency}.
 
-\bibitem{C++11_tutorial}
-Standard~C++ Foundation.
-\newblock Multi-threaded programming: C++11.
-\newblock
-  \url{http://www.bogotobogo.com/cplusplus/multithreaded4_cplusplus11.php}.
-
 \bibitem{FPGA_Design}
 Ian Grout.
 \newblock {\em Digital Systems Design with FPGAs and CPLDs}.
@@ -100,6 +94,12 @@ Ian Grout.
 Przemysław~Mazurek Grzegorz~Matczak.
 \newblock Line following with real-time viterbi trac-before-detect algorithm.
 \newblock {\em Przegląd Elektrotechniczny}, 1/2017:69--72, 2017.
+
+\bibitem{C++11_tutorial}
+K~Hong.
+\newblock Multi-threaded programming: C++11.
+\newblock
+  \url{http://www.bogotobogo.com/cplusplus/multithreaded4_cplusplus11.php}.
 
 \bibitem{NI_camera_buses}
 National Instruments.

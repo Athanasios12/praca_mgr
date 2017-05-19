@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  18 MAY 2017 23:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  19 MAY 2017 15:01
 entering extended mode
 **./document.tex
 (document.tex
@@ -920,18 +920,14 @@ Overfull \hbox (6.90433pt too wide) in paragraph at lines 148--149
 [13 <./imgs/openmp_tree.jpg>] [14] (F:\MiKTex29\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-Underfull \hbox (badness 10000) in paragraph at lines 262--280
+Underfull \hbox (badness 10000) in paragraph at lines 257--275
 
  []
 
 (code_snippets/cpp_example_0.cpp [15
 
-])
-Underfull \hbox (badness 10000) in paragraph at lines 282--290
-
- []
-
-(code_snippets/cpp_example_1.cpp [16])) (docs/Chapter_2.tex [17]
+]) (code_snippets/cpp_example_1.cpp
+[16])) (docs/Chapter_2.tex [17]
 Rozdzia\PlPrIeC {\l } 4.
 ) (docs/Chapter_3.tex [18
 
@@ -1014,8 +1010,8 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
  8794 strings out of 493335
- 123717 string characters out of 3147024
- 456672 words of memory out of 3000000
+ 123687 string characters out of 3147024
+ 421796 words of memory out of 3000000
  11814 multiletter control sequences out of 15000+200000
  18643 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1030,9 +1026,9 @@ public/pl/plbx10.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx12.pfb><F:/MiKTex29
 F:/MiKTex29/fonts/type1/public/pl/plr5.pfb><F:/MiKTex29/fonts/type1/public/pl/p
 lr8.pfb><F:/MiKTex29/fonts/type1/public/pl/plsy8.pfb><F:/MiKTex29/fonts/type1/p
 ublic/pl/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
-Output written on document.pdf (26 pages, 576994 bytes).
+Output written on document.pdf (26 pages, 578561 bytes).
 PDF statistics:
- 777 PDF objects out of 1000 (max. 8388607)
+ 779 PDF objects out of 1000 (max. 8388607)
  304 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

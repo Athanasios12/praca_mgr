@@ -242,11 +242,6 @@ równoległości programu poprzez dodawanie kolejnych dyrektyw i elementów bibl
 
 \clearpage
 \subsection{Wielowątkowość w standardzie C++11}
-To jest podrozdział 3 rozdziału 1
-%\cite{C++11_iso}
-%\cite{C++_Meyers}
-%\cite{C++11_tutorial}
-%\cite{C++_Stroustrup}
 \indent Nowy standard języka C++ - C++11, istotnie zmienił podejście do pisania programów w porównaniu do starszej wersji C++98. Zamiarem komisji standaryzacyjnej było stworzenie bardziej czytelnego, prostszego w pisaniu oraz bardziej zoptymalizowanego języka.
 Wśród wielu nowości, takich jak inteligentne wskaźniki, operator przenoszenia, konstruktor przenoszący, wyrażenia lambda, dedukcja typu auto; jednym z najistotniejszych było wprowadzenie współbieżności do biblioteki standardowej.
 Rezultatem tego jest umożliwienie tworzenie wieloplatformowych aplikacji 
@@ -280,14 +275,33 @@ z zasięgu swojej deklaracji(patrz listing \ref{lst:cpp_thread}).\cite{C++11_iso
 \lstinputlisting[language=C++, label={lst:cpp_thread}, caption= Podstawowe funkcjonalności \code{std::thread} \protect\cite{C++_ref}]{code_snippets/cpp_example_0.cpp}
 
 \indent Innym podejściem do współbieżności, które zostało zawarte w nowym standardzie,
-jest współbieżność zadaniowa. Daje ona możliwość wykonania zadania - funkcji i zwraca
-jeden wynik. Funkcja \code{std::async()} odpowiada za asynchroniczne uruchomienie podanej w liście argumentów funkcji. Zwraca obiekt typu \code{std::future}, z którego
-możemy otrzymać wynik używając metody \code{get}. Zaletą tego podejścia jest jego prostota, kiedy nie potrzebujemy skomplikowanej synchronizacji pomiędzy wątkami,
-tylko wiemy, że każdy z nich ma wykonać równolegle niezależne zadanie(patrz listing \ref{lst:cpp_future}). 
-\cite{C++_Meyers}\cite{C++_Stroustrup}
-\\
+jest współbieżność zadaniowa. Daje ona możliwość wykonania zadania - funkcji i  następnie zwraca
+jeden wynik. Wsparcie do tego modelu jest zaimplementowane w postaci\cite{C++_ref}\cite{C++_Meyers}
+(patrz listing \ref{lst:cpp_future}) :
+\begin{itemize}
+\item Typów \code{std::future} i \code{std::promise}. Pierwszy z nich zawierać będzie wynik 
+zadania. Po zakończeniu zadania drugi jest używany do odczytywania tej wartości. 
+\item \code{std::packaged\_task<T>} - pakuje obiekt typu T do wykonania jako zadanie. Jego konstruktor
+przyjmuje przy inicjalizacji funkcję, która ma zostać wykonana asynchronicznie. Wynik otrzymywany ze
+stworzonego na bazie funkcji \code{get\_future()}, obiektu \code{std::future} używając metody \code{get()}.
+\item funkcji \code{std::async()} - odpowiada za asynchroniczne uruchomienie funkcji podanej w liście argumentów funkcji. 
+Zwraca obiekt typu \code{std::future}, z którego możemy otrzymać wynik używając metody \code{get}
+\end{itemize}
+
 \lstinputlisting[language=C++, label={lst:cpp_future}, caption= Przykład zastosowania
  \code{std::future} i \code{std::async()} \protect\cite{C++_ref}]{code_snippets/cpp_example_1.cpp}
+ 
+Zaletą tego podejścia jest jego prostota. Kiedy nie potrzebujemy skomplikowanej synchronizacji pomiędzy wątkami,
+tylko wiemy, że każdy z nich ma wykonać równolegle niezależne zadanie, jest to wygodniejsza
+ metoda pisania aplikacji wielowątkowych. 
+\cite{C++_Meyers}\cite{C++_Stroustrup}
+
+\indent Reasumując, standard C++11 umożliwił programistom tworzenie 
+aplikacji wielowątkowych z użyciem wyłącznie biblioteki standardowej.
+Wątki w C++11 wspierają nowe elementy standardu takie jak, 
+funkcje lambda ,referencje do \code{rvalue}, \code{std::bind} oraz wiele innych. Jest to dodatkowe ułatwienie pisania programów, gdzie nie musimy
+przejmować się kompatybilnością wykorzystywanej biblioteki. Wystarczające 
+jest używanie nowego kompilatora wspierającego C++11. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%koniec rozdziału
