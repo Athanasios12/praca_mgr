@@ -308,10 +308,52 @@ jest używanie nowego kompilatora wspierającego C++11.
 
 
 \section{Programowanie równoległe z wykorzystaniem GPU}
-To jest rozdział 2
-
 \subsection{Architektura GPU i porównanie względem CPU}
-To jest podrozdział 1 rozdziału 2
+%CPU
+%\cite{OS_Stallings}
+
+%\cite{Inside_Machine}
+
+%\cite{Computer_Architecture_Patterson_Hennesy}
+\indent Rozwój technologii wytwarzania układów elektronicznych, doprowadził do 
+rozpowszechnienia mikroprocesorów, które zawierają wszystkie komponenty w jednym
+układzie scalonym. Ponadto pojedynczy układ zawiera obecnie więcej niż jeden procesor - rdzeń, każdy z nich posiada 2
+wątki sprzętowe. Powoduje to coraz większą popularność wykorzystywania współbieżnego modelu programowania współczesnych wielordzeniowych procesorów.\cite{OS_Stallings}
+\cite{Computer_Architecture_Patterson_Hennesy}
+\\
+\indent Każdy procesor składa się z :
+\begin{itemize}
+\item jednostki artmetyczno logicznej - ALU(arithmetic logical unit).
+\item zestawu rejestrów
+\item jednostki kontrolnej - CU(control unit)
+\end{itemize}
+
+%wrucic tu rysunek - schemat blokowy procesora
+
+%opis cuklu ehzekucji programu
+Jednostka arytmetyczno logiczna(\textbf{ALU})
+jest odpowiedzialna za wykonywanie obliczeń. Składa się z jednostek całkowitoliczbowej\textbf{IU} i zmiennoprzecinkowej(\textbf{FPU}), które wykonują operacje arytmetyczne i logiczne  na bazie otrzymanych instrukcji z pamięci komputera. Adres do instrukcji jest przechowywany w specjalnym rejestrze - zwany licznikiem programu \textbf{PC}. Po pobraniu instrukcji z pamięci jest ona następnie przekazywana do rejestru instrukcji \textbf{IR}, po czym zwiększany jest licznik programu,tak aby wskazywał na następną instrukcję.
+Dane z rejestru instrukcji są później dekodowane, tak aby
+określić jaką operację przeprowadzić. Następnie jednostka kontrolna procesora(\textbf{CU)} przekazuje informacje \textbf{ALU} jeśli instrukcja dotyczyła operacji arytmetycznych.
+W innym wypadku jeśli procesor miał dokonać operacji na pamięci
+(np.załadować wartość do rejestru ogólnego przeznaczenia \textbf{GPR}) zostaje ona wtedy wykonana wykorzystując 
+jednostki zapisu/odczytu pamięci(\textbf{load/store unit}).
+\cite{OS_Stallings}\cite{Inside_Machine}
+
+%wrucic tu rysunek fetch execute cycle z Stalingsa
+
+
+%\indent %opis rejestrów, hierarchia pamięci - cache levels,
+%main memory, virtual memory.
+
+%\indent%opis pipelinenig - równoległość na poziomie instrukcji
+%architektura równoległego przetwarzania danych na CPU
+
+%%%%%%%CPU END%%%%%%%%%%%%%
+%GPU  i GPU vs CPU
+
+%%%%%%%rozdział end%%%%%%%%%%
+
 
 \subsection{Biblioteka OpenCL}
 To jest podrozdział 2 rozdziału 2
