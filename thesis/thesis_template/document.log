@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  19 MAY 2017 15:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  22 MAY 2017 19:23
 entering extended mode
 **./document.tex
 (document.tex
@@ -927,37 +927,67 @@ Underfull \hbox (badness 10000) in paragraph at lines 257--275
 (code_snippets/cpp_example_0.cpp [15
 
 ]) (code_snippets/cpp_example_1.cpp
-[16])) (docs/Chapter_2.tex [17]
+[16]) [17] <imgs/cpu_scheme.jpg, id=579, 648.17157pt x 415.5525pt>
+File: imgs/cpu_scheme.jpg Graphic file (type jpg)
+
+<use imgs/cpu_scheme.jpg>
+Package pdftex.def Info: imgs/cpu_scheme.jpg used on input line 333.
+(pdftex.def)             Requested size: 324.08499pt x 207.77574pt.
+
+<imgs/mem_pyramid.jpg, id=585, 441.90094pt x 422.32782pt>
+File: imgs/mem_pyramid.jpg Graphic file (type jpg)
+
+<use imgs/mem_pyramid.jpg>
+Package pdftex.def Info: imgs/mem_pyramid.jpg used on input line 357.
+(pdftex.def)             Requested size: 220.94992pt x 211.16339pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<imgs/cache.jpg, id=591, 435.87843pt x 156.585pt>
+File: imgs/cache.jpg Graphic file (type jpg)
+ <use imgs/cache.jpg>
+Package pdftex.def Info: imgs/cache.jpg used on input line 379.
+(pdftex.def)             Requested size: 305.11282pt x 109.60873pt.
+ [18
+
+ <./imgs/cpu_scheme.jpg>] [19 <./imgs/mem_pyramid.jpg> <./imgs/cache.jpg>]
+<imgs/pipeline.jpg, id=611, 491.58656pt x 350.05782pt>
+File: imgs/pipeline.jpg Graphic file (type jpg)
+ <use imgs/pipeline.jpg>
+Package pdftex.def Info: imgs/pipeline.jpg used on input line 401.
+(pdftex.def)             Requested size: 344.10825pt x 245.03879pt.
+) (docs/Chapter_2.tex [20 <./imgs/pipeline.jpg>] [21]
 Rozdzia\PlPrIeC {\l } 4.
-) (docs/Chapter_3.tex [18
+) (docs/Chapter_3.tex [22
 
 ]
 Rozdzia\PlPrIeC {\l } 5.
-) (docs/Summary.tex [19
+) (docs/Summary.tex [23
 
 ]
 Rozdzia\PlPrIeC {\l } 6.
-) (docs/Appendix_1.tex [20
+) (docs/Appendix_1.tex [24
 
 ]
 Rozdzia\PlPrIeC {\l } 7.
-) (docs/Appendix_2.tex [21
+) (docs/Appendix_2.tex [25
 
 ]
 Rozdzia\PlPrIeC {\l } 8.
-) [22
+) [26
 
 ] (document.lof)
 \tf@lof=\write5
 \openout5 = `document.lof'.
 
- [23
+ [27
 
 ] (document.lol)
 \tf@lol=\write6
 \openout6 = `document.lol'.
 
- (document.bbl [24
+ (document.bbl [28
 
 ]
 Rozdzia\PlPrIeC {\l } 9.
@@ -967,7 +997,7 @@ Underfull \hbox (badness 1642) in paragraph at lines 16--20
 $\OT4/cmtt/m/n/10 http : / / www . atmel . com / products /
  []
 
-[25
+[29
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 110--114
@@ -995,7 +1025,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 162--166
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
- [26]
+ [30]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
  (document.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
@@ -1009,13 +1039,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 8794 strings out of 493335
- 123687 string characters out of 3147024
- 421796 words of memory out of 3000000
- 11814 multiletter control sequences out of 15000+200000
+ 8834 strings out of 493335
+ 124313 string characters out of 3147024
+ 422209 words of memory out of 3000000
+ 11836 multiletter control sequences out of 15000+200000
  18643 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,7n,53p,419b,2019s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,8n,53p,630b,2019s stack positions out of 5000i,500n,10000p,200000b,50000s
 {F:/MiKTex29/fonts/enc/dvips/pl/plms.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm
 .enc}{F:/MiKTex29/fonts/enc/dvips/pl/plsc.enc}{F:/MiKTex29/fonts/enc/dvips/pl/p
 ltt.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plit.enc}<F:/MiKTex29/fonts/type1/publi
@@ -1026,9 +1056,9 @@ public/pl/plbx10.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx12.pfb><F:/MiKTex29
 F:/MiKTex29/fonts/type1/public/pl/plr5.pfb><F:/MiKTex29/fonts/type1/public/pl/p
 lr8.pfb><F:/MiKTex29/fonts/type1/public/pl/plsy8.pfb><F:/MiKTex29/fonts/type1/p
 ublic/pl/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
-Output written on document.pdf (26 pages, 578561 bytes).
+Output written on document.pdf (30 pages, 827307 bytes).
 PDF statistics:
- 779 PDF objects out of 1000 (max. 8388607)
- 304 named destinations out of 1000 (max. 500000)
- 257 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 839 PDF objects out of 1000 (max. 8388607)
+ 318 named destinations out of 1000 (max. 500000)
+ 277 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -8,6 +8,10 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Wykorzystanie \texttt {pthread\_join} do synchronizacji w\IeC {\k a}tk\IeC {\'o}w\cite {POSIX_article}}}{9}{figure.3.1}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Model tworzenia w\IeC {\k a}tk\IeC {\'o}w w OpenMP\cite {openmp_blaise}}}{13}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Schemat cyklu pobierania i wykonania instrukcji przez CPU \cite {OS_Stallings}}}{18}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Hierarchia pami\IeC {\k e}ci\cite {OS_Stallings}}}{19}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Tr\IeC {\'o}jpoziomowa organizacja pami\IeC {\k e}ci cache \cite {OS_Stallings}}}{19}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Przyk\IeC {\l }ad 4-fazowego potoku(pipeline) procesora \cite {Inside_Machine}}}{20}{figure.3.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

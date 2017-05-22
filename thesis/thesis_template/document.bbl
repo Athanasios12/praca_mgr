@@ -164,6 +164,18 @@ ST.
 \newblock
   \url{http://www.st.com/en/microcontrollers/stm32-32-bit-arm-cortex-mcus.html?querycriteria=productId=SC1169}.
 
+\bibitem{OS_Stallings}
+William Stallings.
+\newblock {\em Operating Systems Internals And Design Principes}.
+\newblock Prentice Hall, 2012.
+\newblock ISBN:9780132309981.
+
+\bibitem{Inside_Machine}
+Jon Stokes.
+\newblock {\em Inside the Machine}.
+\newblock No Starch Press, 2007.
+\newblock ISBN:9781593271046.
+
 \bibitem{C++_Stroustrup}
 Bjarne Stroustrup.
 \newblock {\em Język C++.Kompendium wiedzy}.
