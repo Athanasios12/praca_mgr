@@ -308,7 +308,7 @@ jest używanie nowego kompilatora wspierającego C++11.
 
 \clearpage
 \section{Programowanie równoległe z wykorzystaniem GPU}
-\subsection{Architektura GPU i porównanie względem CPU}
+\subsection{Architektura CPU}
 %CPU
 %\cite{OS_Stallings}
 
@@ -406,18 +406,56 @@ nie przetworzone instrukcje zostaną dokończone oraz kolejne 3 zostaną częśc
 Wadą zastosowanie potokowości jest zwiększenie złożoności logiki sterowania procesora, ze względu na synchronizację faz przetwarzania instrukcji. Dodatkowo często może dojść do zablokowania jednej z faz potoku, co powoduje opóźnienie w wykonywaniu kolejnych instrukcji. Ponadto szybkość potoku jest zależna od najwolniejszej z faz, która staje się wąskim gardłem całego procesu. Powoduje to sztuczne wydłużenie czasu wykonania pozostałych faz, co bezpośrednio oznacza marnowanie zasobów sprzętowych procesora. Właśnie dlatego, aby koszt zastosowania 
 potokowości odpowiadał wzrostowi wydajności procesora, wymagane jest od projektanta CPU zbalansowanie czasu poszczególnych faz potoku. Z tego powodu z czasem zaczęto odchodzić od zwiększania osiągów procesora z wykorzystaniem potokowości. Dalsza współbieżność wykonywania instrukcji programu została oparta na wykorzystaniu technologii wielordzeniowych.\cite{Inside_Machine}\cite{Computer_Architecture_Patterson_Hennesy} 
 %model współbieżny na wielu rdzeniach - henessy, net,mimd i te podobne \indent
-\indent Wielowątkowe podejście do równoległego przetwarzania instrukcji programu
-umożliwia wykorzystanie nowoczesnej architektury procesorów, które wyposażone są w kilka rdzeni, każdy wyposażony w własne rejestry, ALU, jednostkę kontrolną oraz dodatkowo w cache L1, czasami rownież L2. Współdzielą szynę pamięci, cache L3 oraz peryferia(patrz rys.\ref{fig:cpu_i7}).\cite{OS_Stallings}
+\clearpage
+\indent Innym podejściem do paralelizmu jest sprzętowa implementacja wielowątkowości - \textbf{TLP}(Thread-level parallelism).
 \begin{figure}[h]
-\includegraphics[scale=0.7]{cpu_i7}
-\caption{Schemat blokowy procesora Intel Core i7 \protect\cite{OS_Stallings}}
+\includegraphics[scale=1]{cpu_i7}
+\caption{Procesora Intel Core i7, wykorzystujący \textbf{SMT} \protect\cite{OS_Stallings}}
 \label{fig:cpu_i7}
 \end{figure}
+Występują trzy sprzętowe podejścia do realizacji wielowątkowości\cite{Computer_Architecture_Patterson_Hennesy}
+(patrz rys.\ref{fig:thread_types}):
+\begin{itemize}
+\item Fine-grained multithreading(FMT) - przełączanie pomiędzy wątkami występuje 
+co każdy cykl procesora. Powoduje to naprzemienne wykonywanie instrukcji, gdzie w przypadku wątków, które czekają na zdarzenie i nie wykonują instrukcji, są one w tym czasie pomijane. Zaletą tego podejścia jest zmniejszenie straty wydajności, spowodowanych przez czekające wątki. Wadą jest zwolnienie wykonywania instrukcji pojedynczego wątku.
+\item Coarse-grained mutlithreading(CMP) - alternatywa dla FMT, zmienia obecnie wykonywany wątek, tylko w momencie długotrwałego oczekiwania na kontynuowanie egzekucji(np. brak potrzebnego adresu w cache L2 lub L3). Zaletą tego podejścia jest
+zmniejszenie czasu wykonania pojedynczego wątku. 
+\item Simultaneus mutlithreading(SMT) - najpopularniejsza implementacja wielowątkowości dla CPU, ulepszona wersja FMT dla
+procesorów wielordzeniowych o dynamicznym przydzielaniu.
+Pozwala ono na wykonywanie w tym samym cyklu instrukcji z kilku
+wątków. Pozwala to na optymalne wykorzystanie możliwości procesora do współbieżnego przetwarzania instrukcji.
+\end{itemize}
+
+%rysunek TLP
+\begin{figure}[h]
+\includegraphics[scale=0.5]{thread_types}
+\caption{Rodzaje implementacji \textbf{TLP}}
+\label{fig:thread_types}
+\end{figure}
+
+\indent Oprócz omówionych wcześniej metod implementacji współbieżności: potokowość - równoległość na poziomie instrukcji
+(\textbf{ILP} - instruction-level parallelism), \textbf{TLP},
+występuje trzecia kategoria - współbieżność na poziomie danych
+(\textbf{DLP} - Data-level parallelism). Polega on na równoczesnym przetwarzaniu wielu strumieni danych.
+Wyróżniane są architektury:
+\begin{itemize}
+\item MIMD - \textit{multiple instruction, multiple data} 
+\item SIMD - \textit{single instruction multiple data}
+\end{itemize}
+\indent Systemy MIMD wspierają jednoczesne wykonywanie wielu instrukcji, operując na wielu strumieniach danych. Składają się z kolekcji niezależnych procesorów lub rdzeni, gdzie każdy posiada własny zestaw rejestrów, ALU i jednostkę kontrolną. Systemy te nie posiadają jednego zegara synchronizującego wszystkie procesory, każdy z nich może pracować asynchronicznie.\cite{openmp_pacheco}\cite{OS_Stallings}.
+Występują dwa rodzaje systemów MIMD: współdzielące pamięć(\textit{shared-memory systems} oraz
+z oddzielną pamięcią(\textit{distributed-memory systems})(patrz rys.\ref{fig:mimd}).
+Pierwsze z nich są kolekcją autonomicznych procesorów połączonych szyną pamięci głównej. Komunikują się ze sobą najczęściej używając współdzielonych obszarów pamięci.
+W systemach z oddzielną pamięcią, każdy procesor posiada własną
+pamięć prywatną, a komunikacja jest wykonywana poprzez wykorzystywanie specjalnych funkcji sygnalizujących.\cite{OS_Stallings}
+\\
+\indent Architektura SIMD pozwala wykorzystywać jedną instrukcję do przetwarzania wielu danych. Może być on rozpatrywany
+jako jedna jednostka sterująca wyposażona w wiele jednostek ALU.
+Posiada najczęstsze zastosowanie w dokonywaniu operacji na tablicach oraz współbieżnego przetwarzania pętli. 
+\cite{Computer_Architecture_Patterson_Hennesy}\cite{openmp_pacheco}
+
 %%%%%%%CPU END%%%%%%%%%%%%%
-%GPU  i GPU vs CPU
-
-%%%%%%%rozdział end%%%%%%%%%%
-
+\subsection{Architektura GPU}
 
 \subsection{Biblioteka OpenCL}
 To jest podrozdział 2 rozdziału 2

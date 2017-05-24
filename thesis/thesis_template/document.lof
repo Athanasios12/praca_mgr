@@ -12,6 +12,8 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Hierarchia pami\IeC {\k e}ci\cite {OS_Stallings}}}{19}{figure.3.4}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Tr\IeC {\'o}jpoziomowa organizacja pami\IeC {\k e}ci cache \cite {OS_Stallings}}}{19}{figure.3.5}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Przyk\IeC {\l }ad 4-fazowego potoku(pipeline) procesora \cite {Inside_Machine}}}{20}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Procesora Intel Core i7, wykorzystuj\IeC {\k a}cy \textbf {SMT} \cite {OS_Stallings}}}{21}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Rodzaje implementacji \textbf {TLP}}}{22}{figure.3.8}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
