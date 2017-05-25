@@ -3,6 +3,149 @@
 
 \chapter{Metody równoległego przetwarzania danych}
 
+\section{Współbieżność dla architektury CPU}
+\indent Rozwój technologii wytwarzania układów elektronicznych, doprowadził do 
+rozpowszechnienia mikroprocesorów, które zawierają wszystkie komponenty w jednym
+układzie scalonym. Ponadto pojedynczy układ zawiera obecnie więcej niż jeden procesor - rdzeń, każdy z nich posiada 2
+wątki sprzętowe. Powoduje to coraz większą popularność wykorzystywania współbieżnego modelu programowania współczesnych wielordzeniowych procesorów.\cite{OS_Stallings}
+\cite{Computer_Architecture_Patterson_Hennesy}
+\\
+\indent Każdy procesor składa się z :
+\begin{itemize}
+\item jednostki artmetyczno logicznej - ALU(arithmetic logical unit).
+\item zestawu rejestrów
+\item jednostki kontrolnej - CU(control unit)
+\end{itemize}
+
+%wrucic tu rysunek - schemat blokowy procesora
+\begin{figure}[h]
+\includegraphics[scale=0.5]{cpu_scheme}
+\caption{Schemat cyklu pobierania i wykonania instrukcji przez CPU \protect\cite{OS_Stallings}}
+\label{fig:cpu_scheme}
+\end{figure}
+
+%opis cuklu ehzekucji programu
+Jednostka arytmetyczno logiczna(\textbf{ALU})
+jest odpowiedzialna za wykonywanie obliczeń. Składa się z jednostek całkowitoliczbowej \textbf{IU} i zmiennoprzecinkowej(\textbf{FPU}), które wykonują operacje arytmetyczne i logiczne  na bazie otrzymanych instrukcji z pamięci komputera. Adres do instrukcji jest przechowywany w specjalnym rejestrze - zwany licznikiem programu \textbf{PC}. Po pobraniu instrukcji z pamięci jest ona następnie przekazywana do rejestru instrukcji \textbf{IR}, po czym zwiększany jest licznik programu,tak aby wskazywał na następną instrukcję.
+Dane z rejestru instrukcji są później dekodowane, tak aby
+określić jaką operację przeprowadzić. Następnie jednostka kontrolna procesora(\textbf{CU)} przekazuje informacje \textbf{ALU} jeśli instrukcja dotyczyła operacji arytmetycznych.
+W innym wypadku jeśli procesor miał dokonać operacji na pamięci
+(np.załadować wartość do rejestru ogólnego przeznaczenia \textbf{GPR}) zostaje ona wtedy wykonana wykorzystując 
+jednostki zapisu/odczytu pamięci(\textbf{load/store unit}).
+\cite{OS_Stallings}\cite{Inside_Machine}
+\\
+%\indent %opis rejestrów, hierarchia pamięci - cache levels,
+%main memory, virtual memory.
+\indent Szybkość wykonywania operacji jest w obecnych procesorach bezpośrednio powiązana z szybkością odczytu i zapisu danych pamięci komputera. Głównym problemem doboru
+rodzaju pamięci do zastosowania jest jej cena w zależności od
+pojemności i szybkości dostępu. Im większa pojemność tym wolniejsza i tańsza pamięć. Optymalizacja kosztów, szybkości oraz ilości pamięci została przeprowadzona poprzez zastosowanie
+hierarchicznego modelu pamięci. Niższy poziom oznacza mniejszy koszt, zwiększenie pojemności, zwiększenie czasu dostępu, zmniejszenie częstotliwości z jaką procesor będzie wykorzystywał tą pamięć.\cite{Computer_Architecture_Patterson_Hennesy}\cite{OS_Stallings}Dlatego mniejsza, droższa i szybsza pamięć jest uzupełniana przez większe i tańsze.
+
+%rysunek hierarchia pamięci
+\begin{figure}[h]
+\includegraphics[scale=0.5]{mem_pyramid}
+\caption{Hierarchia pamięci\protect\cite{OS_Stallings}}
+\label{fig:mem_pyramid}
+\end{figure}
+
+\indent Na samym szczycie hierarchii stoją rejestry procesora,
+w których zawierają się instrukcje, dane i adresy z pamięci pobierane z pamięci niższego poziomu, wykorzystywane przez \textbf{ALU} oraz jednostkę zapisu i odczytu. Jako bufor do wymiany danych z pamięcią główną, jest wykorzystywana pamięć podręczna procesora - CPU cache(patrz rys. \ref{fig:cache_mem}).
+Cache jest obecnie najczęściej podzielony na trzy poziomy - 
+L1, L2, L3. Każdy z nich posiada kopię fragmentu pamięci głównej, gdzie największy jest zawarty w L3 cache, a najmniejszy w L1.
+Jeśli procesor potrzebuje pobrać dane z adresu w pamięci głównej, którego kopia nie jest w L1, sprawdzany jest cache L2, 
+następnie L3. 
+\\
+\indent Poprzez zastosowanie hierarchicznego modelu pamięci,
+zwiększyła się istotność w programowaniu sekwencyjnym jak i współbieżnym, brania pod uwagę budowy pamięci podręcznej.
+Cache składa się z linii odpowiadających blokom z pamięci głównej. Jeśli potrzebny adres bloku pamięci głównej
+nie występuje w cache'u, musi być pobrany z pamięci głównej,
+zapisany w nim oraz przekazany do rejestrów procesora. Dlatego, że cache składa się z kopi kolejnych bloków 
+pamięci głównej, przy operacji na tablicach w językach programowania w celu wykorzystania szybkości pamięci podręcznej, należy je przetwarzać wierszami, a nie kolumnami;
+zgodnie z kolejności występowania w pamięci.
+\cite{Computer_Architecture_Patterson_Hennesy}\cite{OS_Stallings}\cite{Inside_Machine}
+%rysunek cache
+\begin{figure}[h]
+\includegraphics[scale=0.7]{cache}
+\caption{Trójpoziomowa organizacja pamięci cache \protect\cite{OS_Stallings}}
+\label{fig:cache_mem}
+\end{figure}
+
+%\indent%opis pipelinenig - równoległość na poziomie instrukcji
+%architektura równoległego przetwarzania danych na CPU
+\indent Podstawową metodą zwiększania szybkości wykonywania instrukcji przez procesor jest wykorzystywanie potokowości.
+Zgodnie z wcześniej przedstawionym modelem wykonywania instrukcji, każda jest pobierana z pamięci, dekodowana, wykonywana przez procesor, a wynik jest zapisywany do określonego rejestru. Procesory jedno-cyklowe, które wykonują wszystkie powyższe kroki w czasie jednego cyklu zegara są proste w budowie, ale zużywają dużo zasobów sprzętowych ponieważ procesor nie przetwarza więcej niż jednej instrukcji w tym samym czasie.\cite{Inside_Machine}. Stoując mechanizm potokowości(pipelining) cykl przetwarzania instrukcji jest podzielony na odrębne fazy:
+\begin{enumerate}
+\item Fetch - pobranie instrukcji z pamięci
+\item Decode - interpretacja instrukcji
+\item Execute - wykonanie instrukcji
+\item Write - zapisanie wyniku do rejestru
+\end{enumerate}
+
+Gdy pierwsza zostaje zakończona, zaczyna się druga, a pierwsza
+zaczyna pobierać następną instrukcję. Analogicznie po dekodowaniu pierwszej instrukcji jest ona wykonywana w 3-ciej fazie, a w tym samym czasie druga instrukcja zaczyna być dekodowana. Zgodnie z tym tokiem postępowania w czasie pierwszego cyklu zegara procesora pobrane zostaną 4 instrukcje, 3 z nich zostaną zinterpretowane, 2 wykonane i wynik jednej będzie zapisany w rejestrze. Dla następnego cyklu poprzednio 
+nie przetworzone instrukcje zostaną dokończone oraz kolejne 3 zostaną częściowo przetworzone, a pierwsza z nowych instrukcji przejdzie przez wszystkie 4 fazy(patrz rys.\ref{fig:pipeline}).
+\cite{Inside_Machine}\cite{Computer_Architecture_Patterson_Hennesy} 
+%rysunek pipeline
+\begin{figure}[h]
+\includegraphics[scale=0.7]{pipeline}
+\caption{Przykład 4-fazowego potoku(pipeline) procesora \protect\cite{Inside_Machine}}
+\label{fig:pipeline}
+\end{figure}
+
+Wadą zastosowanie potokowości jest zwiększenie złożoności logiki sterowania procesora, ze względu na synchronizację faz przetwarzania instrukcji. Dodatkowo często może dojść do zablokowania jednej z faz potoku, co powoduje opóźnienie w wykonywaniu kolejnych instrukcji. Ponadto szybkość potoku jest zależna od najwolniejszej z faz, która staje się wąskim gardłem całego procesu. Powoduje to sztuczne wydłużenie czasu wykonania pozostałych faz, co bezpośrednio oznacza marnowanie zasobów sprzętowych procesora. Właśnie dlatego, aby koszt zastosowania 
+potokowości odpowiadał wzrostowi wydajności procesora, wymagane jest od projektanta CPU zbalansowanie czasu poszczególnych faz potoku. Z tego powodu z czasem zaczęto odchodzić od zwiększania osiągów procesora z wykorzystaniem potokowości. Dalsza współbieżność wykonywania instrukcji programu została oparta na wykorzystaniu technologii wielordzeniowych.\cite{Inside_Machine}\cite{Computer_Architecture_Patterson_Hennesy} 
+%model współbieżny na wielu rdzeniach - henessy, net,mimd i te podobne \indent
+\clearpage
+\indent Innym podejściem do paralelizmu jest sprzętowa implementacja wielowątkowości - \textbf{TLP}(Thread-level parallelism).
+\begin{figure}[h]
+\includegraphics[scale=1]{cpu_i7}
+\caption{Procesora Intel Core i7, wykorzystujący \textbf{SMT} \protect\cite{OS_Stallings}}
+\label{fig:cpu_i7}
+\end{figure}
+Występują trzy sprzętowe podejścia do realizacji wielowątkowości\cite{Computer_Architecture_Patterson_Hennesy}
+(patrz rys.\ref{fig:thread_types}):
+\begin{itemize}
+\item Fine-grained multithreading(FMT) - przełączanie pomiędzy wątkami występuje 
+co każdy cykl procesora. Powoduje to naprzemienne wykonywanie instrukcji, gdzie w przypadku wątków, które czekają na zdarzenie i nie wykonują instrukcji, są one w tym czasie pomijane. Zaletą tego podejścia jest zmniejszenie straty wydajności, spowodowanych przez czekające wątki. Wadą jest zwolnienie wykonywania instrukcji pojedynczego wątku.
+\item Coarse-grained mutlithreading(CMP) - alternatywa dla FMT, zmienia obecnie wykonywany wątek, tylko w momencie długotrwałego oczekiwania na kontynuowanie egzekucji(np. brak potrzebnego adresu w cache L2 lub L3). Zaletą tego podejścia jest
+zmniejszenie czasu wykonania pojedynczego wątku. 
+\item Simultaneus mutlithreading(SMT) - najpopularniejsza implementacja wielowątkowości dla CPU, ulepszona wersja FMT dla
+procesorów wielordzeniowych o dynamicznym przydzielaniu.
+Pozwala ono na wykonywanie w tym samym cyklu instrukcji z kilku
+wątków. Pozwala to na optymalne wykorzystanie możliwości procesora do współbieżnego przetwarzania instrukcji.
+\end{itemize}
+
+%rysunek TLP
+\begin{figure}[h]
+\includegraphics[scale=0.5]{thread_types}
+\caption{Rodzaje implementacji \textbf{TLP}}
+\label{fig:thread_types}
+\end{figure}
+
+\indent Oprócz omówionych wcześniej metod implementacji współbieżności: potokowość - równoległość na poziomie instrukcji
+(\textbf{ILP} - instruction-level parallelism), \textbf{TLP},
+występuje trzecia kategoria - współbieżność na poziomie danych
+(\textbf{DLP} - Data-level parallelism). Polega on na równoczesnym przetwarzaniu wielu strumieni danych.
+Wyróżniane są architektury:
+\begin{itemize}
+\item MIMD - \textit{multiple instruction, multiple data} 
+\item SIMD - \textit{single instruction multiple data}
+\end{itemize}
+\indent Systemy MIMD wspierają jednoczesne wykonywanie wielu instrukcji, operując na wielu strumieniach danych. Składają się z kolekcji niezależnych procesorów lub rdzeni, gdzie każdy posiada własny zestaw rejestrów, ALU i jednostkę kontrolną. Systemy te nie posiadają jednego zegara synchronizującego wszystkie procesory, każdy z nich może pracować asynchronicznie.\cite{openmp_pacheco}\cite{OS_Stallings}.
+Występują dwa rodzaje systemów MIMD: współdzielące pamięć(\textit{shared-memory systems} oraz
+z oddzielną pamięcią(\textit{distributed-memory systems})(patrz rys.\ref{fig:mimd}).
+Pierwsze z nich są kolekcją autonomicznych procesorów połączonych szyną pamięci głównej. Komunikują się ze sobą najczęściej używając współdzielonych obszarów pamięci.
+W systemach z oddzielną pamięcią, każdy procesor posiada własną
+pamięć prywatną, a komunikacja jest wykonywana poprzez wykorzystywanie specjalnych funkcji sygnalizujących.\cite{OS_Stallings}
+\\
+\indent Architektura SIMD pozwala wykorzystywać jedną instrukcję do przetwarzania wielu danych. Może być on rozpatrywany
+jako jedna jednostka sterująca wyposażona w wiele jednostek ALU.
+Posiada najczęstsze zastosowanie w dokonywaniu operacji na tablicach oraz współbieżnego przetwarzania pętli. 
+\cite{Computer_Architecture_Patterson_Hennesy}\cite{openmp_pacheco}
+
+%%%%%%%CPU END%%%%%%%%%%%%%}
+
+
 \section{Wielowątkowość aplikacji dla języka C/C++}
 %wstęp równoległość
 \indent Najbardziej popularnym podejściem do pisania aplikacji jest sekwencyjne wykonywanie
@@ -307,155 +450,39 @@ jest używanie nowego kompilatora wspierającego C++11.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%koniec rozdziału
 
 \clearpage
+
+
 \section{Programowanie równoległe z wykorzystaniem GPU}
-\subsection{Architektura CPU}
-%CPU
-%\cite{OS_Stallings}
 
-%\cite{Inside_Machine}
-
-%\cite{Computer_Architecture_Patterson_Hennesy}
-\indent Rozwój technologii wytwarzania układów elektronicznych, doprowadził do 
-rozpowszechnienia mikroprocesorów, które zawierają wszystkie komponenty w jednym
-układzie scalonym. Ponadto pojedynczy układ zawiera obecnie więcej niż jeden procesor - rdzeń, każdy z nich posiada 2
-wątki sprzętowe. Powoduje to coraz większą popularność wykorzystywania współbieżnego modelu programowania współczesnych wielordzeniowych procesorów.\cite{OS_Stallings}
-\cite{Computer_Architecture_Patterson_Hennesy}
-\\
-\indent Każdy procesor składa się z :
-\begin{itemize}
-\item jednostki artmetyczno logicznej - ALU(arithmetic logical unit).
-\item zestawu rejestrów
-\item jednostki kontrolnej - CU(control unit)
-\end{itemize}
-
-%wrucic tu rysunek - schemat blokowy procesora
-\begin{figure}[h]
-\includegraphics[scale=0.5]{cpu_scheme}
-\caption{Schemat cyklu pobierania i wykonania instrukcji przez CPU \protect\cite{OS_Stallings}}
-\label{fig:cpu_scheme}
-\end{figure}
-
-%opis cuklu ehzekucji programu
-Jednostka arytmetyczno logiczna(\textbf{ALU})
-jest odpowiedzialna za wykonywanie obliczeń. Składa się z jednostek całkowitoliczbowej \textbf{IU} i zmiennoprzecinkowej(\textbf{FPU}), które wykonują operacje arytmetyczne i logiczne  na bazie otrzymanych instrukcji z pamięci komputera. Adres do instrukcji jest przechowywany w specjalnym rejestrze - zwany licznikiem programu \textbf{PC}. Po pobraniu instrukcji z pamięci jest ona następnie przekazywana do rejestru instrukcji \textbf{IR}, po czym zwiększany jest licznik programu,tak aby wskazywał na następną instrukcję.
-Dane z rejestru instrukcji są później dekodowane, tak aby
-określić jaką operację przeprowadzić. Następnie jednostka kontrolna procesora(\textbf{CU)} przekazuje informacje \textbf{ALU} jeśli instrukcja dotyczyła operacji arytmetycznych.
-W innym wypadku jeśli procesor miał dokonać operacji na pamięci
-(np.załadować wartość do rejestru ogólnego przeznaczenia \textbf{GPR}) zostaje ona wtedy wykonana wykorzystując 
-jednostki zapisu/odczytu pamięci(\textbf{load/store unit}).
-\cite{OS_Stallings}\cite{Inside_Machine}
-\\
-%\indent %opis rejestrów, hierarchia pamięci - cache levels,
-%main memory, virtual memory.
-\indent Szybkość wykonywania operacji jest w obecnych procesorach bezpośrednio powiązana z szybkością odczytu i zapisu danych pamięci komputera. Głównym problemem doboru
-rodzaju pamięci do zastosowania jest jej cena w zależności od
-pojemności i szybkości dostępu. Im większa pojemność tym wolniejsza i tańsza pamięć. Optymalizacja kosztów, szybkości oraz ilości pamięci została przeprowadzona poprzez zastosowanie
-hierarchicznego modelu pamięci. Niższy poziom oznacza mniejszy koszt, zwiększenie pojemności, zwiększenie czasu dostępu, zmniejszenie częstotliwości z jaką procesor będzie wykorzystywał tą pamięć.\cite{Computer_Architecture_Patterson_Hennesy}\cite{OS_Stallings}Dlatego mniejsza, droższa i szybsza pamięć jest uzupełniana przez większe i tańsze.
-
-%rysunek hierarchia pamięci
-\begin{figure}[h]
-\includegraphics[scale=0.5]{mem_pyramid}
-\caption{Hierarchia pamięci\protect\cite{OS_Stallings}}
-\label{fig:mem_pyramid}
-\end{figure}
-
-\indent Na samym szczycie hierarchii stoją rejestry procesora,
-w których zawierają się instrukcje, dane i adresy z pamięci pobierane z pamięci niższego poziomu, wykorzystywane przez \textbf{ALU} oraz jednostkę zapisu i odczytu. Jako bufor do wymiany danych z pamięcią główną, jest wykorzystywana pamięć podręczna procesora - CPU cache(patrz rys. \ref{fig:cache_mem}).
-Cache jest obecnie najczęściej podzielony na trzy poziomy - 
-L1, L2, L3. Każdy z nich posiada kopię fragmentu pamięci głównej, gdzie największy jest zawarty w L3 cache, a najmniejszy w L1.
-Jeśli procesor potrzebuje pobrać dane z adresu w pamięci głównej, którego kopia nie jest w L1, sprawdzany jest cache L2, 
-następnie L3. 
-\\
-\indent Poprzez zastosowanie hierarchicznego modelu pamięci,
-zwiększyła się istotność w programowaniu sekwencyjnym jak i współbieżnym, brania pod uwagę budowy pamięci podręcznej.
-Cache składa się z linii odpowiadających blokom z pamięci głównej. Jeśli potrzebny adres bloku pamięci głównej
-nie występuje w cache'u, musi być pobrany z pamięci głównej,
-zapisany w nim oraz przekazany do rejestrów procesora. Dlatego, że cache składa się z kopi kolejnych bloków 
-pamięci głównej, przy operacji na tablicach w językach programowania w celu wykorzystania szybkości pamięci podręcznej, należy je przetwarzać wierszami, a nie kolumnami;
-zgodnie z kolejności występowania w pamięci.
-\cite{Computer_Architecture_Patterson_Hennesy}\cite{OS_Stallings}\cite{Inside_Machine}
-%rysunek cache
-\begin{figure}[h]
-\includegraphics[scale=0.7]{cache}
-\caption{Trójpoziomowa organizacja pamięci cache \protect\cite{OS_Stallings}}
-\label{fig:cache_mem}
-\end{figure}
-
-%\indent%opis pipelinenig - równoległość na poziomie instrukcji
-%architektura równoległego przetwarzania danych na CPU
-\indent Podstawową metodą zwiększania szybkości wykonywania instrukcji przez procesor jest wykorzystywanie potokowości.
-Zgodnie z wcześniej przedstawionym modelem wykonywania instrukcji, każda jest pobierana z pamięci, dekodowana, wykonywana przez procesor, a wynik jest zapisywany do określonego rejestru. Procesory jedno-cyklowe, które wykonują wszystkie powyższe kroki w czasie jednego cyklu zegara są proste w budowie, ale zużywają dużo zasobów sprzętowych ponieważ procesor nie przetwarza więcej niż jednej instrukcji w tym samym czasie.\cite{Inside_Machine}. Stoując mechanizm potokowości(pipelining) cykl przetwarzania instrukcji jest podzielony na odrębne fazy:
-\begin{enumerate}
-\item Fetch - pobranie instrukcji z pamięci
-\item Decode - interpretacja instrukcji
-\item Execute - wykonanie instrukcji
-\item Write - zapisanie wyniku do rejestru
-\end{enumerate}
-
-Gdy pierwsza zostaje zakończona, zaczyna się druga, a pierwsza
-zaczyna pobierać następną instrukcję. Analogicznie po dekodowaniu pierwszej instrukcji jest ona wykonywana w 3-ciej fazie, a w tym samym czasie druga instrukcja zaczyna być dekodowana. Zgodnie z tym tokiem postępowania w czasie pierwszego cyklu zegara procesora pobrane zostaną 4 instrukcje, 3 z nich zostaną zinterpretowane, 2 wykonane i wynik jednej będzie zapisany w rejestrze. Dla następnego cyklu poprzednio 
-nie przetworzone instrukcje zostaną dokończone oraz kolejne 3 zostaną częściowo przetworzone, a pierwsza z nowych instrukcji przejdzie przez wszystkie 4 fazy(patrz rys.\ref{fig:pipeline}).
-\cite{Inside_Machine}\cite{Computer_Architecture_Patterson_Hennesy} 
-%rysunek pipeline
-\begin{figure}[h]
-\includegraphics[scale=0.7]{pipeline}
-\caption{Przykład 4-fazowego potoku(pipeline) procesora \protect\cite{Inside_Machine}}
-\label{fig:pipeline}
-\end{figure}
-
-Wadą zastosowanie potokowości jest zwiększenie złożoności logiki sterowania procesora, ze względu na synchronizację faz przetwarzania instrukcji. Dodatkowo często może dojść do zablokowania jednej z faz potoku, co powoduje opóźnienie w wykonywaniu kolejnych instrukcji. Ponadto szybkość potoku jest zależna od najwolniejszej z faz, która staje się wąskim gardłem całego procesu. Powoduje to sztuczne wydłużenie czasu wykonania pozostałych faz, co bezpośrednio oznacza marnowanie zasobów sprzętowych procesora. Właśnie dlatego, aby koszt zastosowania 
-potokowości odpowiadał wzrostowi wydajności procesora, wymagane jest od projektanta CPU zbalansowanie czasu poszczególnych faz potoku. Z tego powodu z czasem zaczęto odchodzić od zwiększania osiągów procesora z wykorzystaniem potokowości. Dalsza współbieżność wykonywania instrukcji programu została oparta na wykorzystaniu technologii wielordzeniowych.\cite{Inside_Machine}\cite{Computer_Architecture_Patterson_Hennesy} 
-%model współbieżny na wielu rdzeniach - henessy, net,mimd i te podobne \indent
-\clearpage
-\indent Innym podejściem do paralelizmu jest sprzętowa implementacja wielowątkowości - \textbf{TLP}(Thread-level parallelism).
-\begin{figure}[h]
-\includegraphics[scale=1]{cpu_i7}
-\caption{Procesora Intel Core i7, wykorzystujący \textbf{SMT} \protect\cite{OS_Stallings}}
-\label{fig:cpu_i7}
-\end{figure}
-Występują trzy sprzętowe podejścia do realizacji wielowątkowości\cite{Computer_Architecture_Patterson_Hennesy}
-(patrz rys.\ref{fig:thread_types}):
-\begin{itemize}
-\item Fine-grained multithreading(FMT) - przełączanie pomiędzy wątkami występuje 
-co każdy cykl procesora. Powoduje to naprzemienne wykonywanie instrukcji, gdzie w przypadku wątków, które czekają na zdarzenie i nie wykonują instrukcji, są one w tym czasie pomijane. Zaletą tego podejścia jest zmniejszenie straty wydajności, spowodowanych przez czekające wątki. Wadą jest zwolnienie wykonywania instrukcji pojedynczego wątku.
-\item Coarse-grained mutlithreading(CMP) - alternatywa dla FMT, zmienia obecnie wykonywany wątek, tylko w momencie długotrwałego oczekiwania na kontynuowanie egzekucji(np. brak potrzebnego adresu w cache L2 lub L3). Zaletą tego podejścia jest
-zmniejszenie czasu wykonania pojedynczego wątku. 
-\item Simultaneus mutlithreading(SMT) - najpopularniejsza implementacja wielowątkowości dla CPU, ulepszona wersja FMT dla
-procesorów wielordzeniowych o dynamicznym przydzielaniu.
-Pozwala ono na wykonywanie w tym samym cyklu instrukcji z kilku
-wątków. Pozwala to na optymalne wykorzystanie możliwości procesora do współbieżnego przetwarzania instrukcji.
-\end{itemize}
-
-%rysunek TLP
-\begin{figure}[h]
-\includegraphics[scale=0.5]{thread_types}
-\caption{Rodzaje implementacji \textbf{TLP}}
-\label{fig:thread_types}
-\end{figure}
-
-\indent Oprócz omówionych wcześniej metod implementacji współbieżności: potokowość - równoległość na poziomie instrukcji
-(\textbf{ILP} - instruction-level parallelism), \textbf{TLP},
-występuje trzecia kategoria - współbieżność na poziomie danych
-(\textbf{DLP} - Data-level parallelism). Polega on na równoczesnym przetwarzaniu wielu strumieni danych.
-Wyróżniane są architektury:
-\begin{itemize}
-\item MIMD - \textit{multiple instruction, multiple data} 
-\item SIMD - \textit{single instruction multiple data}
-\end{itemize}
-\indent Systemy MIMD wspierają jednoczesne wykonywanie wielu instrukcji, operując na wielu strumieniach danych. Składają się z kolekcji niezależnych procesorów lub rdzeni, gdzie każdy posiada własny zestaw rejestrów, ALU i jednostkę kontrolną. Systemy te nie posiadają jednego zegara synchronizującego wszystkie procesory, każdy z nich może pracować asynchronicznie.\cite{openmp_pacheco}\cite{OS_Stallings}.
-Występują dwa rodzaje systemów MIMD: współdzielące pamięć(\textit{shared-memory systems} oraz
-z oddzielną pamięcią(\textit{distributed-memory systems})(patrz rys.\ref{fig:mimd}).
-Pierwsze z nich są kolekcją autonomicznych procesorów połączonych szyną pamięci głównej. Komunikują się ze sobą najczęściej używając współdzielonych obszarów pamięci.
-W systemach z oddzielną pamięcią, każdy procesor posiada własną
-pamięć prywatną, a komunikacja jest wykonywana poprzez wykorzystywanie specjalnych funkcji sygnalizujących.\cite{OS_Stallings}
-\\
-\indent Architektura SIMD pozwala wykorzystywać jedną instrukcję do przetwarzania wielu danych. Może być on rozpatrywany
-jako jedna jednostka sterująca wyposażona w wiele jednostek ALU.
-Posiada najczęstsze zastosowanie w dokonywaniu operacji na tablicach oraz współbieżnego przetwarzania pętli. 
-\cite{Computer_Architecture_Patterson_Hennesy}\cite{openmp_pacheco}
-
-%%%%%%%CPU END%%%%%%%%%%%%%
 \subsection{Architektura GPU}
+OpenCL_Gaster
+
+Intro_GPU,
+
+{GPU_Owens
+\indent GPU(\textit{graphics processing unit) jest to  
+procesor wyspecjalizowany pod kątem wykonywania elementów potoku
+graficznego oraz operacji zmiennoprzecinkowych. Obecne procesor graficzne
+są procesorami wielordzeniowymi zaprojektowanymi specjalnie do wykonywania 
+równoległych obliczeń. Jedną z metod osiągania współbieżności jest stosowanie architektury \textbf{SIMD} do wykonywania jednej instrukcji dla wielu elementów danych. Dzięki temu możliwe jest dzielenie wykonywania pojedynczej instrukcji programu przez wiele procesorów.\cite{OpenCL_Gaster}\cite{Computer_Architecture_Patterson_Hennesy}
+
+%core simd
+\begin{figure}[h]
+\includegraphics[scale=1]{simd_core}
+\caption{Schemat rdzenia procesora wykorzystującego architekturę SIMD \protect\cite{Intro_GPU}}
+\label{fig:simd_core}
+\end{figure}
+
+\indent Stosowanie GPU daje najlepsze rezultaty dla problemów umożliwiającym równoległe przetwarzanie, z dużą ilości operacji arytmetycznych w porównaniu do operacji wymagających dostępu do pamięci.
+Dlatego procesory graficzne są najczęściej używane do przetwarzania obrazów ,grafiki komputerowej oraz 
+czasochłonnych i skomplikowanych arytmetycznie algorytmów.\cite{GPU_Owens}\cite{OpenCL_Gaster}
+
+%cpu vs gpu
+\begin{figure}[h]
+\includegraphics[scale=1]{gpu_cpu}
+\caption{Schemat rdzenia procesora wykorzystującego architekturę SIMD \textbf{SMT} \protect\cite{OS_Stallings}}
+\label{fig:gpu_cpu}
+\end{figure}
 
 \subsection{Biblioteka OpenCL}
 To jest podrozdział 2 rozdziału 2
