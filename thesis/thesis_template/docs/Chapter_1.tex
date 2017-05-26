@@ -3,7 +3,7 @@
 
 \chapter{Metody równoległego przetwarzania danych}
 
-\section{Współbieżność dla architektury CPU}
+\section{Współbieżność w ramach architektury CPU}
 \indent Rozwój technologii wytwarzania układów elektronicznych, doprowadził do 
 rozpowszechnienia mikroprocesorów, które zawierają wszystkie komponenty w jednym
 układzie scalonym. Ponadto pojedynczy układ zawiera obecnie więcej niż jeden procesor - rdzeń, każdy z nich posiada 2
@@ -99,7 +99,7 @@ potokowości odpowiadał wzrostowi wydajności procesora, wymagane jest od proje
 \indent Innym podejściem do paralelizmu jest sprzętowa implementacja wielowątkowości - \textbf{TLP}(Thread-level parallelism).
 \begin{figure}[h]
 \includegraphics[scale=1]{cpu_i7}
-\caption{Procesora Intel Core i7, wykorzystujący \textbf{SMT} \protect\cite{OS_Stallings}}
+\caption{Intel Core i7, przykład wielordzeniowego procesora wykorzystującego model \textbf{SMT} \protect\cite{OS_Stallings}}
 \label{fig:cpu_i7}
 \end{figure}
 Występują trzy sprzętowe podejścia do realizacji wielowątkowości\cite{Computer_Architecture_Patterson_Hennesy}
@@ -455,16 +455,15 @@ jest używanie nowego kompilatora wspierającego C++11.
 \section{Programowanie równoległe z wykorzystaniem GPU}
 
 \subsection{Architektura GPU}
-OpenCL_Gaster
 
-Intro_GPU,
-
-{GPU_Owens
 \indent GPU(\textit{graphics processing unit) jest to  
 procesor wyspecjalizowany pod kątem wykonywania elementów potoku
 graficznego oraz operacji zmiennoprzecinkowych. Obecne procesor graficzne
 są procesorami wielordzeniowymi zaprojektowanymi specjalnie do wykonywania 
-równoległych obliczeń. Jedną z metod osiągania współbieżności jest stosowanie architektury \textbf{SIMD} do wykonywania jednej instrukcji dla wielu elementów danych. Dzięki temu możliwe jest dzielenie wykonywania pojedynczej instrukcji programu przez wiele procesorów.\cite{OpenCL_Gaster}\cite{Computer_Architecture_Patterson_Hennesy}
+równoległych obliczeń. Charakteryzującą metodą osiągania współbieżności jest stosowanie architektury \textbf{SIMD} do wykonywania jednej instrukcji dla wielu elementów danych. Dzięki temu możliwe jest dzielenie wykonywania obliczeń poprzez liczne jednostki arytmetyczno-logiczne dla każdego z rdzenii GPU.(patrz rys.\ref{fig:simd_core})\cite{OpenCL_Gaster}\cite{Computer_Architecture_Patterson_Hennesy}
+Oprócz wielu ALU pojedynczy rdzeń posiada pamięć lokalną
+oraz pamięć dla stałych. Nie wykorzystywana jest hierarchia pamięci jak dla CPU, gdzie aby przyspieszyć 
+czytanie danych z pamięci głównej stosowane są 3 poziomy pamięci podręcznej cache. GPU posiada dużo szybszą pamięć globalną, wspólną dla wszystkich rdzeni.
 
 %core simd
 \begin{figure}[h]
@@ -474,18 +473,40 @@ równoległych obliczeń. Jedną z metod osiągania współbieżności jest stos
 \end{figure}
 
 \indent Stosowanie GPU daje najlepsze rezultaty dla problemów umożliwiającym równoległe przetwarzanie, z dużą ilości operacji arytmetycznych w porównaniu do operacji wymagających dostępu do pamięci.
-Dlatego procesory graficzne są najczęściej używane do przetwarzania obrazów ,grafiki komputerowej oraz 
+Dlatego procesory graficzne są najczęściej używane do przetwarzania obrazów, grafiki komputerowej oraz 
 czasochłonnych i skomplikowanych arytmetycznie algorytmów.\cite{GPU_Owens}\cite{OpenCL_Gaster}
-
 %cpu vs gpu
 \begin{figure}[h]
 \includegraphics[scale=1]{gpu_cpu}
-\caption{Schemat rdzenia procesora wykorzystującego architekturę SIMD \textbf{SMT} \protect\cite{OS_Stallings}}
+\caption{Porównanie budowy CPU względem GPU\protect\cite{OS_Stallings}}
 \label{fig:gpu_cpu}
 \end{figure}
 
 \subsection{Biblioteka OpenCL}
-To jest podrozdział 2 rozdziału 2
+\cite{OpenCL_Gaster}
 
-%ewentualnie można coś dodać o CUDA jeśli objętościowo będzie za cienkie
+\cite{OpenCL_spec}
+
+\cite{OpenCL_Banger}
+
+\indent Bibilioteka OpenCL została stworzona do ułatwienia tworzenia programów dla systemów heterogenicznych. Wykorzystuje trend stosowania rozwiązań wielordzeniowych  w architekturze nowoczesnych procesorów. OpenCL wspiera tworzenie aplikacji dla wielordzeniowych mikroprocesorów , kart graficznych, układów FPGA i DSP.\cite{OpenCL_Gaster}
+OpenCL jest to API w języku C z dodatkowymi powiązaniami w językach C++, .NET, Java i Python. Kod przeznaczony dla docelowego urządzenia(CPU lub GPU) jest napisany w języku OpenCL C. Jest to ograniczona wersja języka C w standardzie C99.
+
+\indent Specyfikacja OpenCL jest podzielona na cztery modele\cite{OpenCL_Gaster}\cite{OpenCL_spec}\cite{OpenCL_Banger}:
+\begin{enumerate}
+\item Model platformy(\textit{Platform model}):
+jeden procesor(\textit{Host}) zarządza pracą pozostałych urządzeń(\textit{Device}) wykonujących współbieżne funkcje napisane w OpenCL C, zwane kernelami(\textit{kernels}).
+Urządzenie jest podzielone na wiele jednostek wykonawczych(\textit{compute units}), gdzie każde z nich składa się z wielu elementów przetwarzania(\textit{processing elements}). Są one odpowiedzialne za przeprowadzanie wszystkich obliczeń.
+\item Model wykonawczy(\textit{Execution model}): określa konfigurację środowiska hosta oraz ustawień kerneli.
+\item Model pamięci(\textit{Memory model}): definiuje hierarchię pamięci używaną przez kernele
+\end{enumerate}
+
+\indent%opis co to kernel, work group work item
+
+\indent%opis jak wygląda hierarhia pamięci
+
+\indent%opis jak wygląda typowy flow programu
+% + przykładowy skomentowany kod z podziałem na określone wcześniej fazy
+
+\indent%moze podsumowanie i tyle 
 \end{document}
