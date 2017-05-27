@@ -48,6 +48,4 @@ int main()
     t3.join();
 	t4.join();
 	t5.join();
-
-    std::cout << "Final global : " << protected_global << '\n';
 }

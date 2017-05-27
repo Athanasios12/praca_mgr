@@ -82,20 +82,22 @@ Zgodnie z wcześniej przedstawionym modelem wykonywania instrukcji, każda jest 
 \end{enumerate}
 
 Gdy pierwsza zostaje zakończona, zaczyna się druga, a pierwsza
-zaczyna pobierać następną instrukcję. Analogicznie po dekodowaniu pierwszej instrukcji jest ona wykonywana w 3-ciej fazie, a w tym samym czasie druga instrukcja zaczyna być dekodowana. Zgodnie z tym tokiem postępowania w czasie pierwszego cyklu zegara procesora pobrane zostaną 4 instrukcje, 3 z nich zostaną zinterpretowane, 2 wykonane i wynik jednej będzie zapisany w rejestrze. Dla następnego cyklu poprzednio 
-nie przetworzone instrukcje zostaną dokończone oraz kolejne 3 zostaną częściowo przetworzone, a pierwsza z nowych instrukcji przejdzie przez wszystkie 4 fazy(patrz rys.\ref{fig:pipeline}).
-\cite{Inside_Machine}\cite{Computer_Architecture_Patterson_Hennesy} 
-%rysunek pipeline
+zaczyna pobierać następną instrukcję. Analogicznie po dekodowaniu pierwszej instrukcji jest ona wykonywana w 3-ciej fazie, a w tym samym czasie druga instrukcja zaczyna być dekodowana. Zgodnie z tym tokiem postępowania w czasie pierwszego cyklu zegara procesora pobrane zostaną 4 instrukcje, 3 z nich zostaną zinterpretowane, 2 wykonane i wynik jednej będzie zapisany w rejestrze.
 \begin{figure}[h]
 \includegraphics[scale=0.7]{pipeline}
 \caption{Przykład 4-fazowego potoku(pipeline) procesora \protect\cite{Inside_Machine}}
 \label{fig:pipeline}
 \end{figure}
+Dla następnego cyklu poprzednio 
+nie przetworzone instrukcje zostaną dokończone oraz kolejne 3 zostaną częściowo przetworzone, a pierwsza z nowych instrukcji przejdzie przez wszystkie 4 fazy(patrz rys.\ref{fig:pipeline}).
+\cite{Inside_Machine}\cite{Computer_Architecture_Patterson_Hennesy} 
+%rysunek pipeline
+
 
 Wadą zastosowanie potokowości jest zwiększenie złożoności logiki sterowania procesora, ze względu na synchronizację faz przetwarzania instrukcji. Dodatkowo często może dojść do zablokowania jednej z faz potoku, co powoduje opóźnienie w wykonywaniu kolejnych instrukcji. Ponadto szybkość potoku jest zależna od najwolniejszej z faz, która staje się wąskim gardłem całego procesu. Powoduje to sztuczne wydłużenie czasu wykonania pozostałych faz, co bezpośrednio oznacza marnowanie zasobów sprzętowych procesora. Właśnie dlatego, aby koszt zastosowania 
 potokowości odpowiadał wzrostowi wydajności procesora, wymagane jest od projektanta CPU zbalansowanie czasu poszczególnych faz potoku. Z tego powodu z czasem zaczęto odchodzić od zwiększania osiągów procesora z wykorzystaniem potokowości. Dalsza współbieżność wykonywania instrukcji programu została oparta na wykorzystaniu technologii wielordzeniowych.\cite{Inside_Machine}\cite{Computer_Architecture_Patterson_Hennesy} 
 %model współbieżny na wielu rdzeniach - henessy, net,mimd i te podobne \indent
-\clearpage
+
 \indent Innym podejściem do paralelizmu jest sprzętowa implementacja wielowątkowości - \textbf{TLP}(Thread-level parallelism).
 \begin{figure}[h]
 \includegraphics[scale=1]{cpu_i7}
@@ -133,7 +135,7 @@ Wyróżniane są architektury:
 \end{itemize}
 \indent Systemy MIMD wspierają jednoczesne wykonywanie wielu instrukcji, operując na wielu strumieniach danych. Składają się z kolekcji niezależnych procesorów lub rdzeni, gdzie każdy posiada własny zestaw rejestrów, ALU i jednostkę kontrolną. Systemy te nie posiadają jednego zegara synchronizującego wszystkie procesory, każdy z nich może pracować asynchronicznie.\cite{openmp_pacheco}\cite{OS_Stallings}.
 Występują dwa rodzaje systemów MIMD: współdzielące pamięć(\textit{shared-memory systems} oraz
-z oddzielną pamięcią(\textit{distributed-memory systems})(patrz rys.\ref{fig:mimd}).
+z oddzielną pamięcią(\textit{distributed-memory systems}).
 Pierwsze z nich są kolekcją autonomicznych procesorów połączonych szyną pamięci głównej. Komunikują się ze sobą najczęściej używając współdzielonych obszarów pamięci.
 W systemach z oddzielną pamięcią, każdy procesor posiada własną
 pamięć prywatną, a komunikacja jest wykonywana poprzez wykorzystywanie specjalnych funkcji sygnalizujących.\cite{OS_Stallings}
@@ -144,7 +146,7 @@ Posiada najczęstsze zastosowanie w dokonywaniu operacji na tablicach oraz wspó
 \cite{Computer_Architecture_Patterson_Hennesy}\cite{openmp_pacheco}
 
 %%%%%%%CPU END%%%%%%%%%%%%%}
-
+\clearpage
 
 \section{Wielowątkowość aplikacji dla języka C/C++}
 %wstęp równoległość
@@ -231,7 +233,7 @@ obliczeniowego. Biblioteka POSIX, choć wiekowa dalej jest stosowana
 dzięki małemu narzutowi(napisana w języku C), obszernej dokumentacji 
 oraz dużej ilości starego kodu, który dalej jest stosowany w nowych
 rozwiązaniach systemów wbudowanych i czasu rzeczywistego.\cite{POSIX_tutorial}
-\clearpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{OpenMP - wieloplatformowe API}
 %żródła do tego rozdziału
@@ -382,8 +384,6 @@ którą ma wykonywać dany wątek, tylko automatycznie rozdziela wykonywanie ins
 strukturalnego(fragment kodu objęty dyrektywą code{\#pragma}) przez ustawioną liczbę stworzonych wątków. Umożliwia inkrementalne zwiększanie
 równoległości programu poprzez dodawanie kolejnych dyrektyw i elementów biblioteki zdefiniowanych w nagłówku \code{<omp.h>}
 
-
-\clearpage
 \subsection{Wielowątkowość w standardzie C++11}
 \indent Nowy standard języka C++ - C++11, istotnie zmienił podejście do pisania programów w porównaniu do starszej wersji C++98. Zamiarem komisji standaryzacyjnej było stworzenie bardziej czytelnego, prostszego w pisaniu oraz bardziej zoptymalizowanego języka.
 Wśród wielu nowości, takich jak inteligentne wskaźniki, operator przenoszenia, konstruktor przenoszący, wyrażenia lambda, dedukcja typu auto; jednym z najistotniejszych było wprowadzenie współbieżności do biblioteki standardowej.
@@ -416,7 +416,7 @@ muteksem jako argument, ustawia blokadę i zapewnia jej usunięcie po wyjściu
 z zasięgu swojej deklaracji(patrz listing \ref{lst:cpp_thread}).\cite{C++11_iso}\cite{C++11_tutorial}
 \\
 \lstinputlisting[language=C++, label={lst:cpp_thread}, caption= Podstawowe funkcjonalności \code{std::thread} \protect\cite{C++_ref}]{code_snippets/cpp_example_0.cpp}
-
+\clearpage
 \indent Innym podejściem do współbieżności, które zostało zawarte w nowym standardzie,
 jest współbieżność zadaniowa. Daje ona możliwość wykonania zadania - funkcji i  następnie zwraca
 jeden wynik. Wsparcie do tego modelu jest zaimplementowane w postaci\cite{C++_ref}\cite{C++_Meyers}
@@ -456,7 +456,7 @@ jest używanie nowego kompilatora wspierającego C++11.
 
 \subsection{Architektura GPU}
 
-\indent GPU(\textit{graphics processing unit) jest to  
+\indent GPU(\textit{graphics processing unit}) jest to  
 procesor wyspecjalizowany pod kątem wykonywania elementów potoku
 graficznego oraz operacji zmiennoprzecinkowych. Obecne procesor graficzne
 są procesorami wielordzeniowymi zaprojektowanymi specjalnie do wykonywania 
@@ -467,7 +467,7 @@ czytanie danych z pamięci głównej stosowane są 3 poziomy pamięci podręczne
 
 %core simd
 \begin{figure}[h]
-\includegraphics[scale=1]{simd_core}
+\includegraphics[scale=0.6]{simd_core}
 \caption{Schemat rdzenia procesora wykorzystującego architekturę SIMD \protect\cite{Intro_GPU}}
 \label{fig:simd_core}
 \end{figure}
@@ -477,17 +477,12 @@ Dlatego procesory graficzne są najczęściej używane do przetwarzania obrazów
 czasochłonnych i skomplikowanych arytmetycznie algorytmów.\cite{GPU_Owens}\cite{OpenCL_Gaster}
 %cpu vs gpu
 \begin{figure}[h]
-\includegraphics[scale=1]{gpu_cpu}
+\includegraphics[scale=0.6]{gpu_cpu}
 \caption{Porównanie budowy CPU względem GPU\protect\cite{OS_Stallings}}
 \label{fig:gpu_cpu}
 \end{figure}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Biblioteka OpenCL}
-\cite{OpenCL_Gaster}
-
-\cite{OpenCL_spec}
-
-\cite{OpenCL_Banger}
 
 \indent Bibilioteka OpenCL została stworzona do ułatwienia tworzenia programów dla systemów heterogenicznych. Wykorzystuje trend stosowania rozwiązań wielordzeniowych  w architekturze nowoczesnych procesorów. OpenCL wspiera tworzenie aplikacji dla wielordzeniowych mikroprocesorów , kart graficznych, układów FPGA i DSP.\cite{OpenCL_Gaster}
 OpenCL jest to API w języku C z dodatkowymi powiązaniami w językach C++, .NET, Java i Python. Kod przeznaczony dla docelowego urządzenia(CPU lub GPU) jest napisany w języku OpenCL C. Jest to ograniczona wersja języka C w standardzie C99.
@@ -495,18 +490,62 @@ OpenCL jest to API w języku C z dodatkowymi powiązaniami w językach C++, .NET
 \indent Specyfikacja OpenCL jest podzielona na cztery modele\cite{OpenCL_Gaster}\cite{OpenCL_spec}\cite{OpenCL_Banger}:
 \begin{enumerate}
 \item Model platformy(\textit{Platform model}):
-jeden procesor(\textit{Host}) zarządza pracą pozostałych urządzeń(\textit{Device}) wykonujących współbieżne funkcje napisane w OpenCL C, zwane kernelami(\textit{kernels}).
+jeden procesor(\textit{Host}) zarządza pracą pozostałych urządzeń(\textit{Device}) wykonujących programy napisane w OpenCL C, zwane kernelami(\textit{kernels}).
 Urządzenie jest podzielone na wiele jednostek wykonawczych(\textit{compute units}), gdzie każde z nich składa się z wielu elementów przetwarzania(\textit{processing elements}). Są one odpowiedzialne za przeprowadzanie wszystkich obliczeń.
 \item Model wykonawczy(\textit{Execution model}): określa konfigurację środowiska hosta oraz ustawień kerneli.
 \item Model pamięci(\textit{Memory model}): definiuje hierarchię pamięci używaną przez kernele
+\item Model programistczny(\textit{programming model}): 
+określa dwa rodzaje współbieżności - zadaniową(\textbf{TLP}) i danych(\textbf{DLP}), który jest uważany za preferowany dla aplikacji OpenCL.
+
 \end{enumerate}
 
-\indent%opis co to kernel, work group work item
+\begin{figure}[h]
+\includegraphics[scale=0.6]{work_group}
+\caption{Przestrzeń indeksowa OpenCL \protect\cite{OpenCL_spec}}
+\label{fig:work_group}
+\end{figure}
 
-\indent%opis jak wygląda hierarhia pamięci
+%opis co to kernel, work group work item
+\indent Wykonywanie programu opartego o OpenCL składa się z dwóch części - instrukcji hosta oraz kerneli przetwarzanych urządzenia OpenCL. Host definiuje abstrakcyjny kontener zwany kontekstem(\textit{context}),
+który służy do interakcji z urządzeniami OpenCL, zarządzania pamięcią i nadzorowaniem programów i kerneli
+wykonywanych przez każde urządzenie. 
+Po zdefiniowaniu i inicjalizacji kernela przez hosta
+tworzona jest N wymiarowa przestrzeń indeksowa. Instancja
+programu jest wykonywana dla każdego z elementów przestrzeni, które nazywane są elementami roboczymi(\textit{work-item}). Są one zorganizowane
+w grupy robocze(\textit{work-groups}), gdzie każda grupa posiada unikalne ID. Każdy element roboczy posiada ID globalne względem całej przestrzeni indeksowej(zwanej też \textit{NDRange}) oraz lokalne w ramach swojej grupy roboczej. Przestrzeń indeksowa może mieć maksymalnie trzy wymiary(patrz rys.\ref{fig:work_group}).\cite{OpenCL_Gaster}\cite{OpenCL_spec}\cite{OpenCL_Banger}
 
-\indent%opis jak wygląda typowy flow programu
-% + przykładowy skomentowany kod z podziałem na określone wcześniej fazy
+%opis jak wygląda hierarchia pamięci
+\indent W ramach kernela OpenCL, dla każdego elementu
+roboczego dostępne są(patrz rys.\ref{fig:opencl_memory})
+\begin{itemize}
+\item pamięć globalna(\textit{global memory}): wspólna dla wszystkich elementów przestrzeni indeksowej.
+\item pamięć stała(\textit{constant memory}): po inicjalizacji przez hosta nie zmienia się w czasie wykonywania programu. Możliwe jest tylko odczytywanie danych.
+\item pamięć lokalna(\textit{local memory}): indywidualna dla każdej grupy roboczej.
+\item pamięć prywatna(\textit{private memory}): osobna dla każdego elementu roboczego, nie jest widoczna dla pozostałych
+\end{itemize}
 
-\indent%moze podsumowanie i tyle 
+\begin{figure}[h]
+\includegraphics[scale=0.6]{opencl_memory}
+\caption{Model pamięci urządzenia OpenCL \protect\cite{OpenCL_spec}}
+\label{fig:opencl_memory}
+\end{figure}
+
+%flow
+\indent Typowa aplikacja wykorzystująca bibliotekę OpenCL
+składa się z(patrz listing \ref{lst:opencl_basic}):
+\begin{enumerate}
+\item Pobrania informacji na temat platformy(wersja API, profil)
+\item Określenia listy dostępnych urządzeń i wybrania pożądanych
+\item Stworzenia kontekstu dla urządzenia do zarządzania pamięcią, kolejkami rozkazów oraz kernelami
+\item Inicjalizacji kolejki rozkazów(\textit{commad queue})
+\item Stworzenia buforów pamięci wykorzystywanych do 
+wymiany danych pomiędzy hostem a urządzeniem OpenCL.
+\item Zbudowanie programu w OpenCL C i stworzenie kernela 
+\item Powiązanie buforów z argumentami kernela
+\item Wykonanie kernela na urządzeniu
+\item Odczytanie przez hosta wyników z buforów pamięci
+\item Zakończenie programu urządzenia i zwolnienie pamięci dla wszystkich  obiektów i buforów.
+\end{enumerate}
+
+\lstinputlisting[language=C, label={lst:opencl_basic}, caption=Przykład programu wykorzystującego OpenCL\protect\cite{OpenCL_Banger}]{code_snippets/opencl_example_0.c} 
 \end{document}

@@ -6,14 +6,18 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Procesor \textit {QorlQ Layerscape LS1028} do aplikacji przemys\IeC {\l }owych firmy NXP, wyposa\IeC {\.z}ony w dwa rdzenie ARMv8\cite {NXP_ARM}}}{6}{figure.2.4}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Structura mikrokontrolera \textit {STM32F401CC}\cite {STM32_microcontrollers}}}{7}{figure.2.5}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Wykorzystanie \texttt {pthread\_join} do synchronizacji w\IeC {\k a}tk\IeC {\'o}w\cite {POSIX_article}}}{9}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Model tworzenia w\IeC {\k a}tk\IeC {\'o}w w OpenMP\cite {openmp_blaise}}}{13}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Schemat cyklu pobierania i wykonania instrukcji przez CPU \cite {OS_Stallings}}}{18}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Hierarchia pami\IeC {\k e}ci\cite {OS_Stallings}}}{19}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Tr\IeC {\'o}jpoziomowa organizacja pami\IeC {\k e}ci cache \cite {OS_Stallings}}}{19}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Przyk\IeC {\l }ad 4-fazowego potoku(pipeline) procesora \cite {Inside_Machine}}}{20}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Procesora Intel Core i7, wykorzystuj\IeC {\k a}cy \textbf {SMT} \cite {OS_Stallings}}}{21}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Rodzaje implementacji \textbf {TLP}}}{22}{figure.3.8}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Schemat cyklu pobierania i wykonania instrukcji przez CPU \cite {OS_Stallings}}}{8}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Hierarchia pami\IeC {\k e}ci\cite {OS_Stallings}}}{9}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Tr\IeC {\'o}jpoziomowa organizacja pami\IeC {\k e}ci cache \cite {OS_Stallings}}}{10}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Przyk\IeC {\l }ad 4-fazowego potoku(pipeline) procesora \cite {Inside_Machine}}}{10}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Intel Core i7, przyk\IeC {\l }ad wielordzeniowego procesora wykorzystuj\IeC {\k a}cego model \textbf {SMT} \cite {OS_Stallings}}}{11}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Rodzaje implementacji \textbf {TLP}}}{12}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Wykorzystanie \texttt {pthread\_join} do synchronizacji w\IeC {\k a}tk\IeC {\'o}w\cite {POSIX_article}}}{14}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Model tworzenia w\IeC {\k a}tk\IeC {\'o}w w OpenMP\cite {openmp_blaise}}}{17}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Schemat rdzenia procesora wykorzystuj\IeC {\k a}cego architektur\IeC {\k e} SIMD \cite {Intro_GPU}}}{22}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Por\IeC {\'o}wnanie budowy CPU wzgl\IeC {\k e}dem GPU\cite {OS_Stallings}}}{22}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Przestrze\IeC {\'n} indeksowa OpenCL \cite {OpenCL_spec}}}{23}{figure.3.11}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Model pami\IeC {\k e}ci urz\IeC {\k a}dzenia OpenCL \cite {OpenCL_spec}}}{24}{figure.3.12}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

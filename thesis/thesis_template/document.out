@@ -4,14 +4,14 @@
 \BOOKMARK [1][-]{section.2.2}{Istotnosc szybkosci obliczen w problemach wizji maszynowej}{chapter.2}% 4
 \BOOKMARK [1][-]{section.2.3}{Cel, zakres i zastosowania pracy}{chapter.2}% 5
 \BOOKMARK [0][-]{chapter.3}{Metody r\363wnoleg\233ego przetwarzania danych}{}% 6
-\BOOKMARK [1][-]{section.3.1}{Wielowatkowosc aplikacji dla jezyka C/C++}{chapter.3}% 7
-\BOOKMARK [2][-]{subsection.3.1.1}{Biblioteka POSIX dla system\363w Unix}{section.3.1}% 8
-\BOOKMARK [2][-]{subsection.3.1.2}{OpenMP - wieloplatformowe API}{section.3.1}% 9
-\BOOKMARK [2][-]{subsection.3.1.3}{Wielowatkowosc w standardzie C++11}{section.3.1}% 10
-\BOOKMARK [1][-]{section.3.2}{Programowanie r\363wnoleg\233e z wykorzystaniem GPU}{chapter.3}% 11
-\BOOKMARK [2][-]{subsection.3.2.1}{Architektura CPU}{section.3.2}% 12
-\BOOKMARK [2][-]{subsection.3.2.2}{Architektura GPU}{section.3.2}% 13
-\BOOKMARK [2][-]{subsection.3.2.3}{Biblioteka OpenCL}{section.3.2}% 14
+\BOOKMARK [1][-]{section.3.1}{Wsp\363\233bieznosc w ramach architektury CPU}{chapter.3}% 7
+\BOOKMARK [1][-]{section.3.2}{Wielowatkowosc aplikacji dla jezyka C/C++}{chapter.3}% 8
+\BOOKMARK [2][-]{subsection.3.2.1}{Biblioteka POSIX dla system\363w Unix}{section.3.2}% 9
+\BOOKMARK [2][-]{subsection.3.2.2}{OpenMP - wieloplatformowe API}{section.3.2}% 10
+\BOOKMARK [2][-]{subsection.3.2.3}{Wielowatkowosc w standardzie C++11}{section.3.2}% 11
+\BOOKMARK [1][-]{section.3.3}{Programowanie r\363wnoleg\233e z wykorzystaniem GPU}{chapter.3}% 12
+\BOOKMARK [2][-]{subsection.3.3.1}{Architektura GPU}{section.3.3}% 13
+\BOOKMARK [2][-]{subsection.3.3.2}{Biblioteka OpenCL}{section.3.3}% 14
 \BOOKMARK [0][-]{chapter.4}{Algorytm Viterbiego}{}% 15
 \BOOKMARK [1][-]{section.4.1}{Opis dzia\233ania i zastosowania}{chapter.4}% 16
 \BOOKMARK [1][-]{section.4.2}{Implementacja w jezyku C++}{chapter.4}% 17

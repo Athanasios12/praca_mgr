@@ -38,6 +38,12 @@ Basler.
 \newblock Basler camera portfolio.
 \newblock \url{https://www.baslerweb.com/en/products/cameras/}.
 
+\bibitem{OpenCL_Gaster}
+Lee~Howes Benedict~Gaster.
+\newblock {\em Heterogeneous Computing with OpenCL}.
+\newblock Elsevier, 2012.
+\newblock ISBN:9780123877666.
+
 \bibitem{openmp_spec}
 OpenMP Architecture~Review Board.
 \newblock Openmp application program interface.
@@ -83,6 +89,12 @@ E.R. Davies.
 Standard~C++ Foundation.
 \newblock C++11 standard library extensions - concurrency.
 \newblock \url{https://isocpp.org/wiki/faq/cpp11-library-concurrency}.
+
+\bibitem{OpenCL_spec}
+Khronos OpenCL~Working Group.
+\newblock The opecl specification.
+\newblock \url{https://www.khronos.org/registry/OpenCL/specs/opencl-1.1.pdf},
+  2011.
 
 \bibitem{FPGA_Design}
 Ian Grout.
@@ -152,11 +164,28 @@ NXP.
 \newblock
   \url{http://www.nxp.com/products/microcontrollers-and-processors/arm-processors:ARM-ARCHITECTURE}.
 
+\bibitem{GPU_Owens}
+John Owens.
+\newblock Gpu architecture overview.
+\newblock
+  \url{http://gpgpu.org/static/s2007/slides/02-gpu-architecture-overview-s07.pdf}.
+
 \bibitem{openmp_pacheco}
 Peter~S. Pacheco.
 \newblock {\em An Introduction to Parallel Programming}.
 \newblock Elsevier, 2011.
 \newblock ISBN:9780123742605.
+
+\bibitem{OpenCL_Banger}
+Koushik~Bhattacharyya Ravishekhar~Banger.
+\newblock {\em OpenCL Programming by Example}.
+\newblock Pack Publishing, 2012.
+\newblock ISBN:9781849692342.
+
+\bibitem{Intro_GPU}
+Ofer Rosenberg.
+\newblock Introduction to gpu architecture.
+\newblock \url{http://haifux.org/lectures/267/Introduction-to-GPUs.pdf}.
 
 \bibitem{STM32_microcontrollers}
 ST.

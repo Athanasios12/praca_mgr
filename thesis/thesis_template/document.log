@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  24 MAY 2017 20:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  27 MAY 2017 19:31
 entering extended mode
 **./document.tex
 (document.tex
@@ -841,32 +841,87 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [6 <./imgs/LS1028_arm_design.jpg>]) (docs/Chapter_1.tex [7 <./imgs/stm32_design
 .jpg>]
 Rozdzia\PlPrIeC {\l } 3.
-LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 35.
+<imgs/cpu_scheme.jpg, id=238, 648.17157pt x 415.5525pt>
+File: imgs/cpu_scheme.jpg Graphic file (type jpg)
 
-(F:\MiKTex29\tex\latex\polski\ot4cmtt.fd
+<use imgs/cpu_scheme.jpg>
+Package pdftex.def Info: imgs/cpu_scheme.jpg used on input line 22.
+(pdftex.def)             Requested size: 324.08499pt x 207.77574pt.
+ [8
+
+ <./imgs/cpu_scheme.jpg>]
+<imgs/mem_pyramid.jpg, id=250, 441.90094pt x 422.32782pt>
+File: imgs/mem_pyramid.jpg Graphic file (type jpg)
+
+<use imgs/mem_pyramid.jpg>
+Package pdftex.def Info: imgs/mem_pyramid.jpg used on input line 46.
+(pdftex.def)             Requested size: 220.94992pt x 211.16339pt.
+ <imgs/cache.jpg, id=256, 435.87843pt x 156.585pt>
+File: imgs/cache.jpg Graphic file (type jpg)
+
+<use imgs/cache.jpg>
+Package pdftex.def Info: imgs/cache.jpg used on input line 68.
+(pdftex.def)             Requested size: 305.11282pt x 109.60873pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9 <./imgs/mem_pyramid.jpg>]
+<imgs/pipeline.jpg, id=266, 491.58656pt x 350.05782pt>
+File: imgs/pipeline.jpg Graphic file (type jpg)
+ <use imgs/pipeline.jpg>
+Package pdftex.def Info: imgs/pipeline.jpg used on input line 87.
+(pdftex.def)             Requested size: 344.10825pt x 245.03879pt.
+
+[10 <./imgs/cache.jpg> <./imgs/pipeline.jpg>]
+<imgs/cpu_i7.jpg, id=282, 291.33844pt x 249.18094pt>
+File: imgs/cpu_i7.jpg Graphic file (type jpg)
+ <use imgs/cpu_i7.jpg>
+Package pdftex.def Info: imgs/cpu_i7.jpg used on input line 103.
+(pdftex.def)             Requested size: 291.33772pt x 249.18031pt.
+
+<imgs/thread_types.jpg, id=286, 615.80063pt x 419.31656pt>
+File: imgs/thread_types.jpg Graphic file (type jpg)
+
+<use imgs/thread_types.jpg>
+Package pdftex.def Info: imgs/thread_types.jpg used on input line 122.
+(pdftex.def)             Requested size: 307.89955pt x 209.65776pt.
+ [11 <./imgs/cpu_i7.jpg>]
+
+LaTeX Warning: Reference `fig:mimd' on page 12 undefined on input line 138.
+
+[12 <./imgs/thread_types.jpg>]
+LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 180
+.
+ (F:\MiKTex29\tex\latex\polski\ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
-) [8
-
-]
-<imgs/posix_thread_tree.jpg, id=262, 580.41844pt x 201.75375pt>
+)
+<imgs/posix_thread_tree.jpg, id=319, 580.41844pt x 201.75375pt>
 File: imgs/posix_thread_tree.jpg Graphic file (type jpg)
 
 <use imgs/posix_thread_tree.jpg>
-Package pdftex.def Info: imgs/posix_thread_tree.jpg used on input line 49.
+Package pdftex.def Info: imgs/posix_thread_tree.jpg used on input line 194.
 (pdftex.def)             Requested size: 406.29013pt x 141.22665pt.
- (F:\MiKTex29\tex\latex\listings\lstlang1.sty
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+(F:\MiKTex29\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (F:\MiKTex29\tex\latex\listings\lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
-Underfull \hbox (badness 10000) in paragraph at lines 54--58
+Underfull \hbox (badness 10000) in paragraph at lines 199--203
 
  []
 
+[13
+
+]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 58.
-(code_snippets/posix_example_0.c
+nput line 203.
+ (code_snippets/posix_example_0.c
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 1.
  (F:\MiKTex29\tex\latex\base\omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -875,139 +930,121 @@ LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
-
-[9 <./imgs/posix_thread_tree.jpg>]
 LaTeX Font Info:    External font `plex10' loaded for size
 (Font)              <8> on input line 29.
 LaTeX Font Info:    External font `plex10' loaded for size
 (Font)              <6> on input line 29.
-)
-Overfull \hbox (43.20293pt too wide) in paragraph at lines 60--76
+
+[14 <./imgs/posix_thread_tree.jpg>])
+Overfull \hbox (48.20294pt too wide) in paragraph at lines 205--221
 \OT4/cmtt/m/n/10 extern\OT4/cmr/m/n/10 . [[]][[]](patrz[]3.2[]) W ce-lu de-kla-
 ra-cji mu-tek-sa wy-ko-rzy-sty-wa-ne jest ma-kro \OT4/cmtt/m/n/10 PTHREAD[]MUTE
 X[]INITIALIZER\OT4/cmr/m/n/10 (patrz
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--76
+Underfull \hbox (badness 10000) in paragraph at lines 205--221
 
  []
 
-(code_snippets/posix_example_1.c [10]) [11]
-Underfull \hbox (badness 10000) in paragraph at lines 100--127
+(code_snippets/posix_example_1.c [15])
+Underfull \hbox (badness 10000) in paragraph at lines 245--272
 
  []
 
-(code_snippets/openmp_example_0.c)
-Overfull \hbox (11.72949pt too wide) in paragraph at lines 129--146
+(code_snippets/openmp_example_0.c [16])
+Overfull \hbox (11.72949pt too wide) in paragraph at lines 274--291
 []\OT4/cmr/m/n/10 Powy»szy pro-sty przy-kªad ilu-stru-je wy-ko-rzy-sta-nie Open
 MP do rów-no-le-gªe-go uru-cho-mie-nia \OT4/cmtt/m/n/10 thread[]count
  []
 
-[12
-
-] <imgs/openmp_tree.jpg, id=444, 660.21657pt x 178.41656pt>
+<imgs/openmp_tree.jpg, id=484, 660.21657pt x 178.41656pt>
 File: imgs/openmp_tree.jpg Graphic file (type jpg)
 
 <use imgs/openmp_tree.jpg>
-Package pdftex.def Info: imgs/openmp_tree.jpg used on input line 148.
+Package pdftex.def Info: imgs/openmp_tree.jpg used on input line 293.
 (pdftex.def)             Requested size: 462.14844pt x 124.89072pt.
 
-Overfull \hbox (6.90433pt too wide) in paragraph at lines 148--149
+Overfull \hbox (6.90433pt too wide) in paragraph at lines 293--294
 [][] 
  []
 
-[13 <./imgs/openmp_tree.jpg>] [14] (F:\MiKTex29\tex\latex\listings\lstlang1.sty
+[17 <./imgs/openmp_tree.jpg>] [18] (F:\MiKTex29\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-Underfull \hbox (badness 10000) in paragraph at lines 257--275
+Underfull \hbox (badness 10000) in paragraph at lines 400--418
 
  []
 
-(code_snippets/cpp_example_0.cpp [15
-
-]) (code_snippets/cpp_example_1.cpp
-[16]) [17] <imgs/cpu_scheme.jpg, id=584, 648.17157pt x 415.5525pt>
-File: imgs/cpu_scheme.jpg Graphic file (type jpg)
-
-<use imgs/cpu_scheme.jpg>
-Package pdftex.def Info: imgs/cpu_scheme.jpg used on input line 333.
-(pdftex.def)             Requested size: 324.08499pt x 207.77574pt.
-
-<imgs/mem_pyramid.jpg, id=590, 441.90094pt x 422.32782pt>
-File: imgs/mem_pyramid.jpg Graphic file (type jpg)
-
-<use imgs/mem_pyramid.jpg>
-Package pdftex.def Info: imgs/mem_pyramid.jpg used on input line 357.
-(pdftex.def)             Requested size: 220.94992pt x 211.16339pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<imgs/cache.jpg, id=596, 435.87843pt x 156.585pt>
-File: imgs/cache.jpg Graphic file (type jpg)
- <use imgs/cache.jpg>
-Package pdftex.def Info: imgs/cache.jpg used on input line 379.
-(pdftex.def)             Requested size: 305.11282pt x 109.60873pt.
- [18
-
- <./imgs/cpu_scheme.jpg>] [19 <./imgs/mem_pyramid.jpg> <./imgs/cache.jpg>]
-<imgs/pipeline.jpg, id=616, 491.58656pt x 350.05782pt>
-File: imgs/pipeline.jpg Graphic file (type jpg)
- <use imgs/pipeline.jpg>
-Package pdftex.def Info: imgs/pipeline.jpg used on input line 401.
-(pdftex.def)             Requested size: 344.10825pt x 245.03879pt.
-
-[20 <./imgs/pipeline.jpg>]
-<imgs/cpu_i7.jpg, id=629, 291.33844pt x 249.18094pt>
-File: imgs/cpu_i7.jpg Graphic file (type jpg)
- <use imgs/cpu_i7.jpg>
-Package pdftex.def Info: imgs/cpu_i7.jpg used on input line 412.
-(pdftex.def)             Requested size: 291.33772pt x 249.18031pt.
-
-<imgs/thread_types.jpg, id=633, 615.80063pt x 419.31656pt>
-File: imgs/thread_types.jpg Graphic file (type jpg)
-
-<use imgs/thread_types.jpg>
-Package pdftex.def Info: imgs/thread_types.jpg used on input line 431.
-(pdftex.def)             Requested size: 307.89955pt x 209.65776pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+[19] (code_snippets/cpp_example_0.cpp) [20] (code_snippets/cpp_example_1.cpp)
 [21
 
- <./imgs/cpu_i7.jpg>]) (docs/Chapter_2.tex [22 <./imgs/thread_types.jpg>]
+] <imgs/simd_core.jpg, id=646, 426.09187pt x 319.94531pt>
+File: imgs/simd_core.jpg Graphic file (type jpg)
+
+<use imgs/simd_core.jpg>
+Package pdftex.def Info: imgs/simd_core.jpg used on input line 470.
+(pdftex.def)             Requested size: 255.65709pt x 191.96866pt.
+ <imgs/gpu_cpu.jpg, id=650, 658.71094pt x 271.0125pt>
+File: imgs/gpu_cpu.jpg Graphic file (type jpg)
+
+<use imgs/gpu_cpu.jpg>
+Package pdftex.def Info: imgs/gpu_cpu.jpg used on input line 480.
+(pdftex.def)             Requested size: 395.2296pt x 162.60875pt.
+ [22
+
+ <./imgs/simd_core.jpg> <./imgs/gpu_cpu.jpg>]
+Overfull \hbox (9.97801pt too wide) in paragraph at lines 492--495
+[]\OT4/cmr/m/n/10 Model plat-for-my(\OT4/cmr/m/it/10 Platform mo-del\OT4/cmr/m/
+n/10 ): je-den pro-ce-sor(\OT4/cmr/m/it/10 Host\OT4/cmr/m/n/10 ) za-rz¡-dza pra
+-c¡ po-zo-sta-ªych urz¡-dze«(\OT4/cmr/m/it/10 Device\OT4/cmr/m/n/10 )
+ []
+
+<imgs/work_group.jpg, id=665, 700.40393pt x 472.83032pt>
+File: imgs/work_group.jpg Graphic file (type jpg)
+
+<use imgs/work_group.jpg>
+Package pdftex.def Info: imgs/work_group.jpg used on input line 503.
+(pdftex.def)             Requested size: 420.2456pt x 283.70038pt.
+ [23 <./imgs/work_group.jpg>]
+<imgs/opencl_memory.png, id=683, 480.29437pt x 206.27063pt>
+File: imgs/opencl_memory.png Graphic file (type png)
+
+<use imgs/opencl_memory.png>
+Package pdftex.def Info: imgs/opencl_memory.png used on input line 528.
+(pdftex.def)             Requested size: 288.17883pt x 123.76332pt.
+ (code_snippets/opencl_example_0.c [24 <./imgs/opencl_memory.png (PNG copy)>] [
+25] [26])) (docs/Chapter_2.tex [27]
 Rozdzia\PlPrIeC {\l } 4.
-) (docs/Chapter_3.tex [23
+) (docs/Chapter_3.tex [28
 
 ]
 Rozdzia\PlPrIeC {\l } 5.
-) (docs/Summary.tex [24
+) (docs/Summary.tex [29
 
 ]
 Rozdzia\PlPrIeC {\l } 6.
-) (docs/Appendix_1.tex [25
+) (docs/Appendix_1.tex [30
 
 ]
 Rozdzia\PlPrIeC {\l } 7.
-) (docs/Appendix_2.tex [26
+) (docs/Appendix_2.tex [31
 
 ]
 Rozdzia\PlPrIeC {\l } 8.
-) [27
+) [32
 
 ] (document.lof)
 \tf@lof=\write5
 \openout5 = `document.lof'.
 
- [28
+ [33
 
 ] (document.lol)
 \tf@lol=\write6
 \openout6 = `document.lol'.
 
- (document.bbl [29
+ (document.bbl [34
 
 ]
 Rozdzia\PlPrIeC {\l } 9.
@@ -1017,41 +1054,62 @@ Underfull \hbox (badness 1642) in paragraph at lines 16--20
 $\OT4/cmtt/m/n/10 http : / / www . atmel . com / products /
  []
 
-[30
+
+Underfull \hbox (badness 2617) in paragraph at lines 42--46
+[]\OT4/cmr/m/n/10 Lee Ho-wes Be-ne-dict Ga-ster.  \OT4/cmr/m/it/10 He-te-ro-ge-
+ne-ous Com-pu-ting with OpenCL\OT4/cmr/m/n/10 .  El-se-vier, 2012.
+ []
+
+[35
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 110--114
+Underfull \hbox (badness 10000) in paragraph at lines 122--126
 []\OT4/cmr/m/n/10 Intel.  In-tel pro-ces-sors and chip-sets for em-bed-ded ap-p
 li-ca-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--114
+Underfull \hbox (badness 10000) in paragraph at lines 122--126
 \OT4/cmr/m/n/10 tions.  []$\OT4/cmtt/m/n/10 http : / / www . intel . pl / conte
 nt / www / pl / pl / intelligent-[]systems /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--148
+Underfull \hbox (badness 10000) in paragraph at lines 157--160
 []\OT4/cmr/m/n/10 Nvidia.  What is gpu-accelerated com-pu-ting.  []$\OT4/cmtt/m
 /n/10 http : / / www . nvidia . com / object /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--166
+Underfull \hbox (badness 5652) in paragraph at lines 168--172
+[]\OT4/cmr/m/n/10 John Owens.  Gpu ar-chi-tec-tu-re ove-rview.  []$\OT4/cmtt/m/
+n/10 http : / / gpgpu . org / static / s2007 / slides /
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 186--189
+[]\OT4/cmr/m/n/10 Ofer Ro-sen-berg.  In-tro-duc-tion to gpu ar-chi-tec-tu-re.  
+[]$\OT4/cmtt/m/n/10 http : / / haifux . org / lectures / 267 /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--195
 []\OT4/cmr/m/n/10 ST.  Stm32 32-bit arm cor-tex mcus.  []$\OT4/cmtt/m/n/10 http
  : / / www . st . com / en / microcontrollers /
  []
 
-)
+[36])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
- [31]
+ [37]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
  (document.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: D5481473B3FDD1C570EACA2D4CE85707;2227.
+(rerunfilecheck)             Checksum: 6454E69B7994039D926B06EAE3CC564A;2249.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1059,29 +1117,26 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 8853 strings out of 493335
- 124632 string characters out of 3147024
- 422468 words of memory out of 3000000
- 11848 multiletter control sequences out of 15000+200000
+ 9168 strings out of 493335
+ 129591 string characters out of 3147024
+ 503872 words of memory out of 3000000
+ 11995 multiletter control sequences out of 15000+200000
  18643 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,8n,53p,630b,2019s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{figure.3.9} has been referenced but does not exis
-t, replaced by a fixed one
-
-{F:/MiKTex29/fonts/enc/dvips/pl/plms.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm.e
-nc}{F:/MiKTex29/fonts/enc/dvips/pl/plsc.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plt
-t.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plit.enc}<F:/MiKTex29/fonts/type1/public/
-amsfonts/cm/cmmi8.pfb><F:/MiKTex29/fonts/type1/public/amsfonts/cm/cmsy10.pfb><F
-:/MiKTex29/fonts/type1/public/amsfonts/cm/cmsy8.pfb><F:/MiKTex29/fonts/type1/pu
-blic/pl/plbx10.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx12.pfb><F:/MiKTex29/f
-onts/type1/public/pl/plr10.pfb><F:/MiKTex29/fonts/type1/public/pl/plr12.pfb><F:
-/MiKTex29/fonts/type1/public/pl/plr5.pfb><F:/MiKTex29/fonts/type1/public/pl/plr
-8.pfb><F:/MiKTex29/fonts/type1/public/pl/plsy8.pfb><F:/MiKTex29/fonts/type1/pub
-lic/pl/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
-Output written on document.pdf (31 pages, 965069 bytes).
+ 36i,8n,53p,630b,2028s stack positions out of 5000i,500n,10000p,200000b,50000s
+{F:/MiKTex29/fonts/enc/dvips/pl/plms.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm
+.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plsc.enc}{F:/MiKTex29/fonts/enc/dvips/pl/p
+ltt.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plit.enc}<F:/MiKTex29/fonts/type1/publi
+c/amsfonts/cm/cmmi8.pfb><F:/MiKTex29/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+<F:/MiKTex29/fonts/type1/public/amsfonts/cm/cmsy8.pfb><F:/MiKTex29/fonts/type1/
+public/pl/plbx10.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx12.pfb><F:/MiKTex29
+/fonts/type1/public/pl/plr10.pfb><F:/MiKTex29/fonts/type1/public/pl/plr12.pfb><
+F:/MiKTex29/fonts/type1/public/pl/plr5.pfb><F:/MiKTex29/fonts/type1/public/pl/p
+lr8.pfb><F:/MiKTex29/fonts/type1/public/pl/plsy8.pfb><F:/MiKTex29/fonts/type1/p
+ublic/pl/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
+Output written on document.pdf (37 pages, 1287514 bytes).
 PDF statistics:
- 869 PDF objects out of 1000 (max. 8388607)
- 323 named destinations out of 1000 (max. 500000)
- 295 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1121 PDF objects out of 1200 (max. 8388607)
+ 484 named destinations out of 1000 (max. 500000)
+ 315 words of extra memory for PDF output out of 10000 (max. 10000000)
 
