@@ -7,8 +7,8 @@
 \documentclass[a4paper]{report}
 %packages in separate style file
 \usepackage{mystyle}
+\def\code#1{\texttt{#1}}%code define
 %list of included files in compilation
-
 \begin{document}
 
 \subfile{docs/Title_Page}
@@ -30,8 +30,16 @@
 
 \subfile{docs/Appendix_2}
 
+\listoffigures
+
+\lstlistoflistings
+
 \bibliographystyle{plain}
 \bibliography{bibliogr} 
+<<<<<<< HEAD
 \listoffigures
+=======
+
+>>>>>>> Chapter_1
 
 \end{document}  
