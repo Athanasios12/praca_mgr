@@ -5,11 +5,25 @@
 \section{Opis działania i zastosowania}
 To jest rozdział 1
 \section{Implementacja w języku C++}
-To jest rozdział 2
-	\subsection{Wersja szeregowa}
-	To jest podrozdział 1 rozdziału 2
-	\subsection{Wersja równoległa - C++11}
-	To jest podrozdział 2 rozdziału 2
-	\subsection{Wersja równoległa - OpenCL}
-	To jest podrozdział 3 rozdziału 2
+\indent Tworząc aplikację wykorzystującą algorytm Viterbiego do lokalizacji linii
+na obrazie cyfrowym skorzystano z nowych funkcjonalności standardu C++11. 
+Zdjęcia na, których szukano linii były wczytywane używając funkcji biblioteki
+CImg. Reprezentowane przez obiekty \code{Cimg<T>}, dane pikseli zdjęcia były kopiowane do
+dynamicznie zaalokowanych tablic jednowymiarowych obiektu \code{unique\_ptr}. Skorzystano z obiektu \code{unique\_ptr} w celu przechowywania wskaźnika do dynamicznie zaalokowanej pamięci, ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu destruktora \code{unique\_ptr}.  
+
+%opis listinigu opencl_viterbi.cpp
+\subsection{Wersja szeregowa}
+
+%listing z viterbiLineDetect - nie pokazywac całego
+\lstinputlisting[language={C++}, label={lst:viterbi_serial}, caption=Szeregowa implementacja algorytmu Viterbiego do wykrywania linii, linerange=224-297, firstnumber=224]{viterbi_source/Viterbi.cpp} 
+
+%fragment inicjalizacja
+\lstinputlisting[language={C++}, label={lst:viterbi_serial}, caption=Szeregowa implementacja algorytmu Viterbiego do wykrywania linii, linerange=224-240, firstnumber=224]{viterbi_source/Viterbi.cpp} 
+
+
+%opisać wszystkie fragmenty z odniesieniem do schematu ogólnego algorytmu - shcemat z atykułów i wzory
+\subsection{Wersja równoległa - C++11}
+To jest podrozdział 2 rozdziału 2
+\subsection{Wersja równoległa - OpenCL}
+To jest podrozdział 3 rozdziału 2
 \end{document}
