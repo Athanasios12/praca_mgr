@@ -3,7 +3,23 @@
 
 \chapter{Algorytm Viterbiego}
 \section{Opis działania i zastosowania}
-To jest rozdział 1
+\indent Alogorytm Viterbiego został stworzony i przeanalizowany przez A.J. Viterbiego w 1967r. Jego zadaniem było dekodowanie kodów splotowych. Później odkryto że posiada cechy programowanie dynamicznego i wykorzystuje maksymalne prawdopodobieństwo do określenia optymalnego zestawu tranzycji pomiędzy stanami. Algorytm został oryginalnie opracowany z myślą o zastosowaniach w telekomunikacji, ale znalazł zastosowanie w innych dziedzinach, m.in. w przetwarzanie obrazów, lokalizacji i rozpoznawaniu obiektów.
+\\
+\indent Główne zastosowanie algorytmu Viterbiego polega na
+dekodowaniu informacji zakodowanych przy pomocy kodów splotowych. Sekwencja kodowana $m = m_1, m_2,...,m_n$, gdzie 
+$m_i$ reprezentuje pojedynczy bit informacji, a indeks oznacza kolejność przesyłania. Enkoder splotowy przekształca informację wejściową w zakodowaną sekwencję $U = G(m)$.
+Wykorzystuje do tego rejestr przesuwający, sumatory modulo oraz wielomiany generatora(\textit{generator polynomials}) określające związek sumatorów z rejestrem. 
+\\
+\indent Enkoder splotowy należy do klasy urządzeń zwanych automatami skończonymi(\textit{finite-state machines}), które zachowują informację o poprzednich sygnałach.
+Stan enkodera w chwili %...
+%dokonczyc o enkoderze
+
+%indent dekodowanie - o drzewach trellis i omówic przykład + rysunek
+
+%opisać rozpatrywany przypadek wykorzystania viterbiego
+%do wyznaczania linii - arytkuły mazurek
+
+%i chyba styka
 \section{Implementacja w języku C++}
 \indent Tworząc aplikację wykorzystującą algorytm Viterbiego do lokalizacji linii
 na obrazie cyfrowym skorzystano z nowych funkcjonalności standardu C++11. 
