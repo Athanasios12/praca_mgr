@@ -532,20 +532,34 @@ roboczego dostępne są(patrz rys.\ref{fig:opencl_memory})
 
 %flow
 \indent Typowa aplikacja wykorzystująca bibliotekę OpenCL
-składa się z(patrz listing \ref{lst:opencl_basic}):
+składa się z(patrz rys.\ref{lst:opencl_basic_1} - \ref{lst:opencl_basic_6}):
 \begin{enumerate}
 \item Pobrania informacji na temat platformy(wersja API, profil)
+
+\lstinputlisting[language=C, label={lst:opencl_basic_1}, caption=OpenCL Platform\protect\cite{OpenCL_Banger}, linerange=1-41, firstnumber=1]{code_snippets/opencl_example_0.c} 
+
 \item Określenia listy dostępnych urządzeń i wybrania pożądanych
+
+\lstinputlisting[language=C, label={lst:opencl_basic_2}, caption=OpenCL Device \protect\cite{OpenCL_Banger}, linerange=42-52, firstnumber=42]{code_snippets/opencl_example_0.c} 
+
 \item Stworzenia kontekstu dla urządzenia do zarządzania pamięcią, kolejkami rozkazów oraz kernelami
 \item Inicjalizacji kolejki rozkazów(\textit{commad queue})
+
+\lstinputlisting[language=C, label={lst:opencl_basic_3}, caption=OpenCL Context i OpenCL CommandQueue \protect\cite{OpenCL_Banger}, linerange=54-61, firstnumber=54]{code_snippets/opencl_example_0.c} 
+
 \item Stworzenia buforów pamięci wykorzystywanych do 
 wymiany danych pomiędzy hostem a urządzeniem OpenCL.
+
+\lstinputlisting[language=C, label={lst:opencl_basic_4}, caption=OpenCL Buffer \protect\cite{OpenCL_Banger}, linerange=63-77, firstnumber=63]{code_snippets/opencl_example_0.c} 
+
 \item Zbudowanie programu w OpenCL C i stworzenie kernela 
 \item Powiązanie buforów z argumentami kernela
 \item Wykonanie kernela na urządzeniu
+
+\lstinputlisting[language=C, label={lst:opencl_basic_5}, caption=OpenCL Context \protect\cite{OpenCL_Banger}, linerange=79-105, firstnumber=79]{code_snippets/opencl_example_0.c} 
+
 \item Odczytanie przez hosta wyników z buforów pamięci
 \item Zakończenie programu urządzenia i zwolnienie pamięci dla wszystkich  obiektów i buforów.
+\lstinputlisting[language=C, label={lst:opencl_basic_6}, caption=OpenCL Context \protect\cite{OpenCL_Banger}, linerange=107-134, firstnumber=107]{code_snippets/opencl_example_0.c} 
 \end{enumerate}
-
-\lstinputlisting[language=C, label={lst:opencl_basic}, caption=Przykład programu wykorzystującego OpenCL\protect\cite{OpenCL_Banger}]{code_snippets/opencl_example_0.c} 
 \end{document}

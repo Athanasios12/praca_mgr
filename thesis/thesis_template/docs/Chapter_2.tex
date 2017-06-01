@@ -61,21 +61,43 @@ Na podstawie równania \ref{eq:module_carrier} można stwierdzić że występuj�
 Dla sygnału modulowanego amplitudowo \textbf{AM} demodulacja może być przeprowadzona poprzez użycie detektora diodowego oraz filtracji niepożądanych wysokich częstotliwości.\cite{demodulation_am}
 W przypadku demodulacji częstotliwościowej \textbf{FM} i fazy \textbf{PM}, wykorzystywane są detektory \textbf{PLL}(\textit{Phase Locked Loop} - pętla synchronizacji fazy)\cite{demodulation_fmpm}.
 
+\begin{figure}[h]
+\includegraphics[scale=0.8]{viterbi_trellis}
+\caption{Dekodowanie z wykorzystaniem algorytmu Viterbiego dla sekwencji zakodowanej enkoderem z 3 bitowym rejestrem przesuwnym i dwoma sumatorami modulo-2 o wielomianach $g_1 = 111, g_2 = 101$ \protect\cite{Comm_Sklar}}
+\label{fig:viterbi_trellis}
+\end{figure}
+
 \indent W celu odczytania informacji zakodowanej enkoderem splotowym stosowany jest dekoder
 wykorzystujący algorytm Viterbiego. Wykorzystuje on strukturę diagramu kratowego do obliczenia optymalnej
-kombinacji przejścia pomiędzy jego stanami. Do określenia najlepszego wariantu przejścia ze stanu $i$ do stanu $i+1$ wybierana jest tranzycja o najmniejszej odległości Hamminga\cite{Comm_Sklar} względem fragmentu kodu po demodulacji. Jeśli występuje kilka możliwych przejść do danego stanu, wybierane jest te, które ma największe prawdopodobieństwo - najmniejszą odległość Hamminga, a reszta jest odrzucana.
+kombinacji przejścia pomiędzy jego stanami(patrz rys.\ref{fig:viterbi_trellis}). Do określenia najlepszego wariantu przejścia ze stanu w czasie $t_i$ do stanu $t_{i+1}$, wybierana jest tranzycja o najmniejszej odległości Hamminga\cite{Comm_Sklar} względem fragmentu kodu po demodulacji. Odległość Hamminga określana jest przez liczbę pozycji, na których różnią się dwa ciągi kodu.
+Jeśli występuje kilka możliwych przejść do danego stanu, wybierane jest te, które ma największe prawdopodobieństwo - najmniejszą odległość Hamminga, a reszta jest odrzucana. Wybór najlepszego zestawu tranzycji
+dla całego diagramu jest określony przez skumulowaną odległość Hamminga dla końcowego stanu. 
+Na podstawie otrzymanej optymalnej listy przejść odczytywana jest zakodowana informacja .\cite{Comm_Sklar}\cite{viterbi_tutorial}\cite{viterbi_mit}
+ 
+%tutaj może jakies podumowanie -patrz tutorial viterbi viterbi mit
+\section{Wykrywanie linii na obrazie cyfrowym z wykorzystaniem algorytmu Viterbiego}
+\indent Algorytm Viterbiego, którego celem jest znalezienie optymalnej ścieżki w diagramie kratowym, może zostać zastosowany w analogiczny sposób do wyznaczenia optymalnego zestawu współrzędnych pikseli na obrazie cyfrowym.
+W tym wypadku piksele odpowiadają stanom rejestru przesuwającego, a odległość Hamminga wykorzystana do obliczenia najlepszej tranzycji jest zastąpiona funkcją intensywności pikseli. Zgodnie z zaproponowanym rozwiązaniem w \cite{viterbi_ch_9} dla każdego piksela określane jest najlepsze przejście do następnej kolumny/wiersza.
+Zakładając szukanie linii pionowej, przetwarzanie obrazu zaczyna się od pierwszego wiersza $y = 0$. 
+Dla każdego z pikseli w pierwszym wierszu jest przypisana początkowa wartość akumulowana $V_{x, 0} = 0$
+Dla piksela o współrzędnej $x, y$ rozpatrywana jest jego intensywność oraz intensywność jego sąsiadów.
+Współrzędne sąsiednich pikseli są określane przedziałem $x + g$, gdzie $g\in \langle g_l;g_h\rangle$, np. $g_l = -2,\ g_h = 2$, czyli $g\in \{-2, -1, 0, 1, 2\}$. Wartość $V_{x,y+1}$ może być wyznaczana na podstawie równania \ref{eq:V_propagation}\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}:
 
-%wrzucic trellis z dystansami hamminga oraz z kodem enkodera, dekodera, oraz wejściem enkodera do porównania
+\begin{equation}
+    V_{x, y+1} = max(V_{x+g, y} + d_{x+g, y}^{x,y+1}),\ g\in\{-2,-1,0,1,2\},
+\end{equation}
+\label{eq:V_propagation}
+\myequations{Równanie wyboru współrzędnej dla wykrywania linii wykorzystując algorytm Viterbiego\cite{modulacja_agh_amp}}
 
-
-
+gdzie $V_{x+g, y}$ - skumulowana dotychczasowa intensywność dla współrzędnych piksela ($x+g, y$), 
+\\
+$d_{x+g, y}^{x,y+1}$ - intensywność piksela o współrzędnych ($x+g, y$),  $V_{x, y+1}$ - wynikowa skumulowana intensywność dla piksela o współrzędnych ${x, y+1}$.
 %indent
 %opisać rozpatrywany przypadek wykorzystania viterbiego
 %do wyznaczania linii - arytkuły mazurek
 
-%i chyba styka
-\clearpage
-\section{Implementacja w języku C++}
+
+\section{Implementacja detekcji linii języku C++}
 \indent Tworząc aplikację wykorzystującą algorytm Viterbiego do lokalizacji linii
 na obrazie cyfrowym skorzystano z nowych funkcjonalności standardu C++11. 
 Zdjęcia na, których szukano linii były wczytywane używając funkcji biblioteki
