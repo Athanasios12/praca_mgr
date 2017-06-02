@@ -40,8 +40,8 @@ Sygnałem nośnym najczęściej są sygnały sinusoidalne, np. w postaci\cite{mo
 
 \begin{equation}
     f_c(t) = A_c cos(\omega t + \theta)
+    \label{eq:module_carrier}
 \end{equation}
-\label{eq:module_carrier}
 \myequations{Funkcja sygnału nośnego modulatora\cite{modulacja_agh_amp}}
 
 Na podstawie równania \ref{eq:module_carrier} można stwierdzić że występują trzy parametry, na które można wpłynąć do modyfikacji modulowanego sygnału - amplituda $A_c$, częstotliwość $\omega$ oraz faza $\theta$. Dlatego wyróżniamy trzy rodzaje modulacji(patrz rys.\ref{fig:modulation}):
@@ -78,31 +78,62 @@ Na podstawie otrzymanej optymalnej listy przejść odczytywana jest zakodowana i
 \section{Wykrywanie linii na obrazie cyfrowym z wykorzystaniem algorytmu Viterbiego}
 \indent Algorytm Viterbiego, którego celem jest znalezienie optymalnej ścieżki w diagramie kratowym, może zostać zastosowany w analogiczny sposób do wyznaczenia optymalnego zestawu współrzędnych pikseli na obrazie cyfrowym.
 W tym wypadku piksele odpowiadają stanom rejestru przesuwającego, a odległość Hamminga wykorzystana do obliczenia najlepszej tranzycji jest zastąpiona funkcją intensywności pikseli. Zgodnie z zaproponowanym rozwiązaniem w \cite{viterbi_ch_9} dla każdego piksela określane jest najlepsze przejście do następnej kolumny/wiersza.
+
+\begin{figure}[h]
+\includegraphics[scale=0.8]{viterbi_line_trellis}
+\caption{Lokalne tranzycje diagramu kratowego dla obrazu cyfrowego\protect\cite{Mazurek_Robot_Viterbi}}
+\label{fig:viterbi_trellis}
+\end{figure}
+
 Zakładając szukanie linii pionowej, przetwarzanie obrazu zaczyna się od pierwszego wiersza $y = 0$. 
 Dla każdego z pikseli w pierwszym wierszu jest przypisana początkowa wartość akumulowana $V_{x, 0} = 0$
 Dla piksela o współrzędnej $x, y$ rozpatrywana jest jego intensywność oraz intensywność jego sąsiadów.
-Współrzędne sąsiednich pikseli są określane przedziałem $x + g$, gdzie $g\in \langle g_l;g_h\rangle$, np. $g_l = -2,\ g_h = 2$, czyli $g\in \{-2, -1, 0, 1, 2\}$. Wartość $V_{x,y+1}$ może być wyznaczana na podstawie równania \ref{eq:V_propagation}\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}:
+Współrzędne sąsiednich pikseli są określane przedziałem $x + g$, gdzie $g\in \langle g_l;g_h\rangle$, np. $g_l = -2,\ g_h = 2$, czyli $g\in \{-2, -1, 0, 1, 2\}$. Wartość $V_{x,y+1}$ może być wyznaczana na podstawie równania \ref{eq:V}\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}:
 
 \begin{equation}
-    V_{x, y+1} = max(V_{x+g, y} + d_{x+g, y}^{x,y+1}),\ g\in\{-2,-1,0,1,2\},
+    V_{x, y+1} = max(V_{x+g, y} + d_{x+g, y}^{x,y+1}),\ g\in\{-2,-1,0,1,2\}
+    \label{eq:V}
 \end{equation}
-\label{eq:V_propagation}
-\myequations{Równanie wyboru współrzędnej dla wykrywania linii wykorzystując algorytm Viterbiego\cite{modulacja_agh_amp}}
+\myequations{Równanie wyboru współrzędnej dla wykrywania linii wykorzystując algorytm
+Viterbiego\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
 
-gdzie $V_{x+g, y}$ - skumulowana dotychczasowa intensywność dla współrzędnych piksela ($x+g, y$), 
+
+,gdzie $V_{x+g, y}$ - skumulowana dotychczasowa intensywność dla współrzędnych piksela ($x+g, y$), 
 \\
-$d_{x+g, y}^{x,y+1}$ - intensywność piksela o współrzędnych ($x+g, y$),  $V_{x, y+1}$ - wynikowa skumulowana intensywność dla piksela o współrzędnych ${x, y+1}$.
-%indent
-%opisać rozpatrywany przypadek wykorzystania viterbiego
-%do wyznaczania linii - arytkuły mazurek
+$d_{x+g, y}^{x,y+1}$ - intensywność piksela o współrzędnych ($x+g, y$),  $V_{x, y+1}$ - wynikowa skumulowana intensywność dla piksela o współrzędnych (${x, y+1}$).
+\\
+Wartości $g$ określające najlepsze lokalną tranzycje są zapisywane w tablicy indeksów $L$ zgodnie z równaniem \ref{eq:L}\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}:
 
+\begin{equation}
+   L_{y}^{x, y+1} = \argmax_{g}\limits(V_{x+g, y} + d_{x+g, y}^{x,y+1}),\ g\in\{-2,-1,0,1,2\}
+    \label{eq:L}
+\end{equation}
+\myequations{Wyznaczanie tablicy indeksów dla algorytmu Viterbiego\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
 
+Indeksy są obliczane dla wszystkich rozpatrywanych wierszy. Po wyznaczeniu tablicy $L$ sprawdzany jest ostatni wiersz $y_max$ w celu określenia kolumny z największą skumulowaną intensywnością $x_max$ \ref{eq:xmax}:
+
+\begin{equation}
+   x_{y_{max}} = \max_{x}\limits(V_{x, y_max})
+    \label{eq:xmax}
+\end{equation}
+\myequations{Określenie piksela z największą skumulowaną intensywnością dla ostatniej rozpatrywanej kolumny obrazu\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
+
+Wsteczne przetwarzanie tablicy indeksów $L$ pozwala wyznaczyć pozycję fragmentu linii dla pierwszej kolumny $y = 1$ \ref{eq:L_back}:
+
+\begin{equation}
+   x_{y-1} = x_y + L_{y-1}^{x,y},\ y = y_max,...,y_{start + 1}
+    \label{eq:L_back}
+\end{equation}
+\myequations{Określenie piksela z największą skumulowaną intensywnością dla ostatniej rozpatrywanej kolumny obrazu\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
+
+Do obliczenia wyników dla następnych kolumn zwiększa się $y_{start}$ i od nowa oblicza się tablice $V$ i $L$.
+%chyba ok
 \section{Implementacja detekcji linii języku C++}
 \indent Tworząc aplikację wykorzystującą algorytm Viterbiego do lokalizacji linii
 na obrazie cyfrowym skorzystano z nowych funkcjonalności standardu C++11. 
 Zdjęcia na, których szukano linii były wczytywane używając funkcji biblioteki
 CImg. Reprezentowane przez obiekty \code{Cimg<T>}, dane pikseli zdjęcia były kopiowane do
-dynamicznie zaalokowanych tablic jednowymiarowych obiektu \code{unique\_ptr}. Skorzystano z obiektu \code{unique\_ptr} w celu przechowywania wskaźnika do dynamicznie zaalokowanej pamięci, ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu destruktora \code{unique\_ptr}.  
+dynamicznie zaalokowanych tablic jednowymiarowych przypisanych do obiektów \code{unique\_ptr}. Skorzystano z obiektu inteligentengo wskaźnika \code{unique\_ptr} , ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu jego destruktora\code{unique\_ptr}.  
 
 %opis listinigu opencl_viterbi.cpp
 \subsection{Wersja szeregowa}
