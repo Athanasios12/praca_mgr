@@ -155,7 +155,8 @@ Do obliczenia wyników dla następnych kolumn zwiększa się $y_{start}$ i od no
 na obrazie cyfrowym skorzystano z nowych funkcjonalności standardu C++11. 
 Zdjęcia na, których szukano linii były wczytywane używając funkcji biblioteki
 CImg. Reprezentowane przez obiekty \code{Cimg<T>}, dane pikseli zdjęcia były kopiowane do
-dynamicznie zaalokowanych tablic przypisanych do obiektów \code{unique\_ptr}. Skorzystano inteligentnego wskaźnika - \code{unique\_ptr} , ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu jego destruktora\code{unique\_ptr}.  
+dynamicznie zaalokowanych tablic przypisanych do obiektów \code{unique\_ptr}. Skorzystano inteligentnego wskaźnika - 
+\code{unique\_ptr} , ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu jego destruktora\code{unique\_ptr}.  
 Wszystkie warianty implementacji detekcji linii zostały zawarte w klasie \code{Viterbi}, 
 jako jej metody.
 dynamicznie zaalokowanych tablic jednowymiarowych przypisanych do obiektów \code{unique\_ptr}. 
