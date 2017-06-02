@@ -103,6 +103,31 @@ Viterbiego\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
 $d_{x+g, y}^{x,y+1}$ - intensywność piksela o współrzędnych ($x+g, y$),  $V_{x, y+1}$ - wynikowa skumulowana intensywność dla piksela o współrzędnych (${x, y+1}$).
 \\
 Wartości $g$ określające najlepsze lokalną tranzycje są zapisywane w tablicy indeksów $L$ zgodnie z równaniem \ref{eq:L}\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}:
+<<<<<<< HEAD
+
+\begin{equation}
+   L_{y}^{x, y+1} = \argmax_{g}\limits(V_{x+g, y} + d_{x+g, y}^{x,y+1}),\ g\in\{-2,-1,0,1,2\}
+    \label{eq:L}
+\end{equation}
+\myequations{Wyznaczanie tablicy indeksów dla algorytmu Viterbiego\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
+
+Indeksy są obliczane dla wszystkich rozpatrywanych wierszy. Po wyznaczeniu tablicy $L$ sprawdzany jest ostatni wiersz $y_max$ w celu określenia kolumny z największą skumulowaną intensywnością $x_max$ \ref{eq:xmax}:
+
+\begin{equation}
+   x_{y_{max}} = \max_{x}\limits(V_{x, y_max})
+    \label{eq:xmax}
+\end{equation}
+\myequations{Określenie piksela z największą skumulowaną intensywnością dla ostatniej rozpatrywanej kolumny obrazu\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
+
+Wsteczne przetwarzanie tablicy indeksów $L$ pozwala wyznaczyć pozycję fragmentu linii dla pierwszej kolumny $y = 1$ \ref{eq:L_back}:
+
+\begin{equation}
+   x_{y-1} = x_y + L_{y-1}^{x,y},\ y = y_max,...,y_{start + 1}
+    \label{eq:L_back}
+\end{equation}
+\myequations{Określenie piksela z największą skumulowaną intensywnością dla ostatniej rozpatrywanej kolumny obrazu\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
+
+=======
 
 \begin{equation}
    L_{y}^{x, y+1} = \argmax_{g}\limits(V_{x+g, y} + d_{x+g, y}^{x,y+1}),\ g\in\{-2,-1,0,1,2\}
@@ -136,6 +161,9 @@ CImg. Reprezentowane przez obiekty \code{Cimg<T>}, dane pikseli zdjęcia były k
 dynamicznie zaalokowanych tablic przypisanych do obiektów \code{unique\_ptr}. Skorzystano inteligentnego wskaźnika - \code{unique\_ptr} , ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu jego destruktora\code{unique\_ptr}.  
 Wszystkie warianty implementacji detekcji linii zostały zawarte w klasie \code{Viterbi}, 
 jako jej metody.
+dynamicznie zaalokowanych tablic jednowymiarowych przypisanych do obiektów \code{unique\_ptr}. 
+Skorzystano z obiektu inteligentengo wskaźnika \code{unique\_ptr} , 
+ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu jego destruktora\code{unique\_ptr}.  
 
 
 %opis listinigu opencl_viterbi.cpp
