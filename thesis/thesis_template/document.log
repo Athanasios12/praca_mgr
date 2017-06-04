@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  28 MAY 2017 18:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.26)  3 JUN 2017 19:07
 entering extended mode
 **./document.tex
 (document.tex
@@ -597,6 +597,12 @@ Package color Info: Driver file: pdftex.def on input line 144.
 (F:\MiKTex29\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
+(F:\MiKTex29\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(F:\MiKTex29\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+)
 (F:\MiKTex29\tex\latex\geometry\geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@cnth=\count107
@@ -612,29 +618,61 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@layoutvoffset=\dimen120
 \Gm@dimlist=\toks21
 
-(F:\MiKTex29\tex\latex\geometry\geometry.cfg)))
-(F:\MiKTex29\tex\latex\mathtools\mathtools.sty
-Package: mathtools 2015/11/12 v1.18 mathematical typesetting tools
+(F:\MiKTex29\tex\latex\geometry\geometry.cfg))
+(F:\MiKTex29\tex\latex\tocloft\tocloft.sty
+Package: tocloft 2013/05/02 v2.3f parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 44.
+\cftparskip=\skip44
+\cftbeforetoctitleskip=\skip45
+\cftaftertoctitleskip=\skip46
+\cftbeforepartskip=\skip47
+\cftpartnumwidth=\skip48
+\cftpartindent=\skip49
+\cftbeforechapskip=\skip50
+\cftchapindent=\skip51
+\cftchapnumwidth=\skip52
+\cftbeforesecskip=\skip53
+\cftsecindent=\skip54
+\cftsecnumwidth=\skip55
+\cftbeforesubsecskip=\skip56
+\cftsubsecindent=\skip57
+\cftsubsecnumwidth=\skip58
+\cftbeforesubsubsecskip=\skip59
+\cftsubsubsecindent=\skip60
+\cftsubsubsecnumwidth=\skip61
+\cftbeforeparaskip=\skip62
+\cftparaindent=\skip63
+\cftparanumwidth=\skip64
+\cftbeforesubparaskip=\skip65
+\cftsubparaindent=\skip66
+\cftsubparanumwidth=\skip67
+\cftbeforeloftitleskip=\skip68
+\cftafterloftitleskip=\skip69
+\cftbeforefigskip=\skip70
+\cftfigindent=\skip71
+\cftfignumwidth=\skip72
+\c@lofdepth=\count110
+\c@lotdepth=\count111
+\cftbeforelottitleskip=\skip73
+\cftafterlottitleskip=\skip74
+\cftbeforetabskip=\skip75
+\cfttabindent=\skip76
+\cfttabnumwidth=\skip77
+)
+(F:\MiKTex29\tex\latex\was\gensymb.sty
+Package: gensymb 2003/07/02 v1.0 (WaS)
+)
+\c@myequations=\count112
+\cftbeforemyequationsskip=\skip78
+\cftmyequationsindent=\skip79
+\cftmyequationsnumwidth=\skip80
+\c@equdepth=\count113
+\cftbeforeequtitleskip=\skip81
+\cftafterequtitleskip=\skip82
 
-(F:\MiKTex29\tex\latex\tools\calc.sty
-Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count110
-\calc@Bcount=\count111
-\calc@Adimen=\dimen121
-\calc@Bdimen=\dimen122
-\calc@Askip=\skip44
-\calc@Bskip=\skip45
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count112
-\calc@Cskip=\skip46
-)
-(F:\MiKTex29\tex\latex\mathtools\mhsetup.sty
-Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
-)
 (F:\MiKTex29\tex\latex\amsmath\amsmath.sty
 Package: amsmath 2016/03/10 v2.15b AMS math features
-\@mathmargin=\skip47
+\@mathmargin=\skip83
 
 For additional information on amsmath, use the `?' option.
 (F:\MiKTex29\tex\latex\amsmath\amstext.sty
@@ -643,69 +681,64 @@ Package: amstext 2000/06/29 v2.01 AMS text
 (F:\MiKTex29\tex\latex\amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks22
-\ex@=\dimen123
+\ex@=\dimen121
 ))
 (F:\MiKTex29\tex\latex\amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen124
+\pmbraise@=\dimen122
 )
 (F:\MiKTex29\tex\latex\amsmath\amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count113
+\inf@bad=\count114
 LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count114
-\leftroot@=\count115
+\uproot@=\count115
+\leftroot@=\count116
 LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count116
-\DOTSCASE@=\count117
+\classnum@=\count117
+\DOTSCASE@=\count118
 LaTeX Info: Redefining \ldots on input line 394.
 LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box28
 \strutbox@=\box29
-\big@size=\dimen125
+\big@size=\dimen123
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count118
-\c@MaxMatrixCols=\count119
+\macc@depth=\count119
+\c@MaxMatrixCols=\count120
 \dotsspace@=\muskip11
-\c@parentequation=\count120
-\dspbrk@lvl=\count121
+\c@parentequation=\count121
+\dspbrk@lvl=\count122
 \tag@help=\toks23
-\row@=\count122
-\column@=\count123
-\maxfields@=\count124
+\row@=\count123
+\column@=\count124
+\maxfields@=\count125
 \andhelp@=\toks24
-\eqnshift@=\dimen126
-\alignsep@=\dimen127
-\tagshift@=\dimen128
-\tagwidth@=\dimen129
-\totwidth@=\dimen130
-\lineht@=\dimen131
+\eqnshift@=\dimen124
+\alignsep@=\dimen125
+\tagshift@=\dimen126
+\tagwidth@=\dimen127
+\totwidth@=\dimen128
+\lineht@=\dimen129
 \@envbody=\toks25
-\multlinegap=\skip48
-\multlinetaggap=\skip49
+\multlinegap=\skip84
+\multlinetaggap=\skip85
 \mathdisplay@stack=\toks26
 LaTeX Info: Redefining \[ on input line 2739.
 LaTeX Info: Redefining \] on input line 2740.
-)
-LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
-LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
-LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
-LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count125
-\l_MT_multwidth_dim=\dimen132
-\origjot=\skip50
-\l_MT_shortvdotswithinadjustabove_dim=\dimen133
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen134
-\l_MT_above_intertext_sep=\dimen135
-\l_MT_below_intertext_sep=\dimen136
-\l_MT_above_shortintertext_sep=\dimen137
-\l_MT_below_shortintertext_sep=\dimen138
-) (document.aux
+)) (document.aux
 
 LaTeX Warning: Label `fig:inspekcja' multiply defined.
+
+
+LaTeX Warning: Label `fig:viterbi_trellis' multiply defined.
+
+
+LaTeX Warning: Label `lst:viterbi_serial' multiply defined.
+
+
+LaTeX Warning: Label `lst:viterbi_serial' multiply defined.
 
 )
 \openout1 = `document.aux'.
@@ -729,13 +762,13 @@ LaTeX Font Info:    ... okay on input line 12.
  (F:\MiKTex29\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count126
-\scratchdimen=\dimen139
+\scratchdimen=\dimen130
 \scratchbox=\box30
 \nofMPsegments=\count127
 \nofMParguments=\count128
 \everyMPshowfont=\toks27
 \MPscratchCnt=\count129
-\MPscratchDim=\dimen140
+\MPscratchDim=\dimen131
 \MPnumerator=\count130
 \makeMPintoPDFobject=\count131
 \everyMPtoPDFconversion=\toks28
@@ -805,52 +838,60 @@ LaTeX Info: Redefining \nameref on input line 12.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(docs/Title_Page.tex <imgs/logoNew.png, id=115, 543.02875pt x 378.41376pt>
+LaTeX Info: Redefining \celsius on input line 12.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 12.
+
+
+Package gensymb Warning: Not defining \perthousand.
+
+LaTeX Info: Redefining \ohm on input line 12.
+Package gensymb Info: Using \Omega for \ohm on input line 12.
+
+Package gensymb Warning: Not defining \micro.
+
+(docs/Title_Page.tex <imgs/logoNew.png, id=119, 543.02875pt x 378.41376pt>
 File: imgs/logoNew.png Graphic file (type png)
 
 <use imgs/logoNew.png>
 Package pdftex.def Info: imgs/logoNew.png used on input line 9.
 (pdftex.def)             Requested size: 108.60382pt x 75.6814pt.
-) [1
-
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./imgs/logoNew.png>] (doc
-ument.toc
-LaTeX Font Info:    Try loading font information for OML+plm on input line 3.
+) (document.toc
+LaTeX Font Info:    Try loading font information for OML+plm on input line 1.
  (F:\MiKTex29\tex\latex\polski\omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 3.
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 1.
 
 (F:\MiKTex29\tex\latex\polski\omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 3.
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 1.
 
 (F:\MiKTex29\tex\latex\polski\omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 3.
+(Font)              <10> on input line 1.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 3.
+(Font)              <7> on input line 1.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 3.
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+(Font)              <5> on input line 1.
+LaTeX Font Info:    Try loading font information for U+msa on input line 1.
 
 (F:\MiKTex29\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+LaTeX Font Info:    Try loading font information for U+msb on input line 1.
 
 (F:\MiKTex29\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+) [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./imgs/logoNew.png>])
 \tf@toc=\write4
 \openout4 = `document.toc'.
 
- (docs/Abstract.tex [2
-
-]
+ (docs/Abstract.tex [2]
 Rozdzia\PlPrIeC {\l } 1.
 ) (docs/Preamble.tex [3
 
@@ -867,7 +908,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--20
 
  []
 
-<imgs/vision_inspection_line.jpg, id=168, 401.5pt x 243.91125pt>
+<imgs/vision_inspection_line.jpg, id=172, 401.5pt x 243.91125pt>
 File: imgs/vision_inspection_line.jpg Graphic file (type jpg)
 
 <use imgs/vision_inspection_line.jpg>
@@ -882,7 +923,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--32
  []
 
 
-<imgs/position_orientation_test_images.jpg, id=180, 510.40688pt x 139.27031pt>
+<imgs/position_orientation_test_images.jpg, id=184, 510.40688pt x 139.27031pt>
 File: imgs/position_orientation_test_images.jpg Graphic file (type jpg)
 
 <use imgs/position_orientation_test_images.jpg>
@@ -894,7 +935,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--44
 
  []
 
-<imgs/vision_identyfication.jpg, id=183, 379.4175pt x 155.83218pt>
+<imgs/vision_identyfication.jpg, id=187, 379.4175pt x 155.83218pt>
 File: imgs/vision_identyfication.jpg Graphic file (type jpg)
 
 <use imgs/vision_identyfication.jpg>
@@ -908,7 +949,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--90
 
  []
 
-<imgs/LS1028_arm_design.jpg, id=201, 535.2497pt x 325.96782pt>
+<imgs/LS1028_arm_design.jpg, id=205, 535.2497pt x 325.96782pt>
 File: imgs/LS1028_arm_design.jpg Graphic file (type jpg)
 
 <use imgs/LS1028_arm_design.jpg>
@@ -919,7 +960,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 99--104
 
  []
 
-<imgs/stm32_design.jpg, id=208, 406.51875pt x 283.81032pt>
+<imgs/stm32_design.jpg, id=212, 406.51875pt x 283.81032pt>
 File: imgs/stm32_design.jpg Graphic file (type jpg)
 
 <use imgs/stm32_design.jpg>
@@ -932,7 +973,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [6 <./imgs/LS1028_arm_design.jpg>]) (docs/Chapter_1.tex [7 <./imgs/stm32_design
 .jpg>]
 Rozdzia\PlPrIeC {\l } 3.
-<imgs/cpu_scheme.jpg, id=238, 648.17157pt x 415.5525pt>
+<imgs/cpu_scheme.jpg, id=242, 648.17157pt x 415.5525pt>
 File: imgs/cpu_scheme.jpg Graphic file (type jpg)
 
 <use imgs/cpu_scheme.jpg>
@@ -941,13 +982,13 @@ Package pdftex.def Info: imgs/cpu_scheme.jpg used on input line 22.
  [8
 
  <./imgs/cpu_scheme.jpg>]
-<imgs/mem_pyramid.jpg, id=250, 441.90094pt x 422.32782pt>
+<imgs/mem_pyramid.jpg, id=254, 441.90094pt x 422.32782pt>
 File: imgs/mem_pyramid.jpg Graphic file (type jpg)
 
 <use imgs/mem_pyramid.jpg>
 Package pdftex.def Info: imgs/mem_pyramid.jpg used on input line 46.
 (pdftex.def)             Requested size: 220.94992pt x 211.16339pt.
- <imgs/cache.jpg, id=256, 435.87843pt x 156.585pt>
+ <imgs/cache.jpg, id=260, 435.87843pt x 156.585pt>
 File: imgs/cache.jpg Graphic file (type jpg)
 
 <use imgs/cache.jpg>
@@ -958,20 +999,20 @@ Package pdftex.def Info: imgs/cache.jpg used on input line 68.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [9 <./imgs/mem_pyramid.jpg>]
-<imgs/pipeline.jpg, id=266, 491.58656pt x 350.05782pt>
+<imgs/pipeline.jpg, id=270, 491.58656pt x 350.05782pt>
 File: imgs/pipeline.jpg Graphic file (type jpg)
  <use imgs/pipeline.jpg>
 Package pdftex.def Info: imgs/pipeline.jpg used on input line 87.
 (pdftex.def)             Requested size: 344.10825pt x 245.03879pt.
 
 [10 <./imgs/cache.jpg> <./imgs/pipeline.jpg>]
-<imgs/cpu_i7.jpg, id=282, 291.33844pt x 249.18094pt>
+<imgs/cpu_i7.jpg, id=286, 291.33844pt x 249.18094pt>
 File: imgs/cpu_i7.jpg Graphic file (type jpg)
  <use imgs/cpu_i7.jpg>
 Package pdftex.def Info: imgs/cpu_i7.jpg used on input line 103.
 (pdftex.def)             Requested size: 291.33772pt x 249.18031pt.
 
-<imgs/thread_types.jpg, id=286, 615.80063pt x 419.31656pt>
+<imgs/thread_types.jpg, id=290, 615.80063pt x 419.31656pt>
 File: imgs/thread_types.jpg Graphic file (type jpg)
 
 <use imgs/thread_types.jpg>
@@ -983,7 +1024,7 @@ LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 180
  (F:\MiKTex29\tex\latex\polski\ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-<imgs/posix_thread_tree.jpg, id=319, 580.41844pt x 201.75375pt>
+<imgs/posix_thread_tree.jpg, id=323, 580.41844pt x 201.75375pt>
 File: imgs/posix_thread_tree.jpg Graphic file (type jpg)
 
 <use imgs/posix_thread_tree.jpg>
@@ -993,12 +1034,7 @@ Package pdftex.def Info: imgs/posix_thread_tree.jpg used on input line 194.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-(F:\MiKTex29\tex\latex\listings\lstlang1.sty
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
-(F:\MiKTex29\tex\latex\listings\lstmisc.sty
-File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-)
+
 Underfull \hbox (badness 10000) in paragraph at lines 199--203
 
  []
@@ -1039,13 +1075,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 245--272
 
  []
 
-(code_snippets/openmp_example_0.c [16])
+[16] (code_snippets/openmp_example_0.c)
 Overfull \hbox (11.72949pt too wide) in paragraph at lines 274--291
 []\OT4/cmr/m/n/10 Powy»szy pro-sty przy-kªad ilu-stru-je wy-ko-rzy-sta-nie Open
 MP do rów-no-le-gªe-go uru-cho-mie-nia \OT4/cmtt/m/n/10 thread[]count
  []
 
-<imgs/openmp_tree.jpg, id=484, 660.21657pt x 178.41656pt>
+<imgs/openmp_tree.jpg, id=488, 660.21657pt x 178.41656pt>
 File: imgs/openmp_tree.jpg Graphic file (type jpg)
 
 <use imgs/openmp_tree.jpg>
@@ -1056,9 +1092,7 @@ Overfull \hbox (6.90433pt too wide) in paragraph at lines 293--294
 [][] 
  []
 
-[17 <./imgs/openmp_tree.jpg>] [18] (F:\MiKTex29\tex\latex\listings\lstlang1.sty
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
+[17 <./imgs/openmp_tree.jpg>] [18]
 Underfull \hbox (badness 10000) in paragraph at lines 400--418
 
  []
@@ -1066,13 +1100,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 400--418
 [19] (code_snippets/cpp_example_0.cpp) [20] (code_snippets/cpp_example_1.cpp)
 [21
 
-] <imgs/simd_core.jpg, id=646, 426.09187pt x 319.94531pt>
+] <imgs/simd_core.jpg, id=650, 426.09187pt x 319.94531pt>
 File: imgs/simd_core.jpg Graphic file (type jpg)
 
 <use imgs/simd_core.jpg>
 Package pdftex.def Info: imgs/simd_core.jpg used on input line 470.
 (pdftex.def)             Requested size: 255.65709pt x 191.96866pt.
- <imgs/gpu_cpu.jpg, id=650, 658.71094pt x 271.0125pt>
+ <imgs/gpu_cpu.jpg, id=654, 658.71094pt x 271.0125pt>
 File: imgs/gpu_cpu.jpg Graphic file (type jpg)
 
 <use imgs/gpu_cpu.jpg>
@@ -1087,53 +1121,98 @@ n/10 ): je-den pro-ce-sor(\OT4/cmr/m/it/10 Host\OT4/cmr/m/n/10 ) za-rz¡-dza pra
 -c¡ po-zo-sta-ªych urz¡-dze«(\OT4/cmr/m/it/10 Device\OT4/cmr/m/n/10 )
  []
 
-<imgs/work_group.jpg, id=665, 700.40393pt x 472.83032pt>
+<imgs/work_group.jpg, id=669, 700.40393pt x 472.83032pt>
 File: imgs/work_group.jpg Graphic file (type jpg)
 
 <use imgs/work_group.jpg>
 Package pdftex.def Info: imgs/work_group.jpg used on input line 503.
 (pdftex.def)             Requested size: 420.2456pt x 283.70038pt.
  [23 <./imgs/work_group.jpg>]
-<imgs/opencl_memory.png, id=683, 480.29437pt x 206.27063pt>
+<imgs/opencl_memory.png, id=687, 480.29437pt x 206.27063pt>
 File: imgs/opencl_memory.png Graphic file (type png)
 
 <use imgs/opencl_memory.png>
 Package pdftex.def Info: imgs/opencl_memory.png used on input line 528.
 (pdftex.def)             Requested size: 288.17883pt x 123.76332pt.
- (code_snippets/opencl_example_0.c [24 <./imgs/opencl_memory.png (PNG copy)>] [
-25] [26])) (docs/Chapter_2.tex [27]
+ (code_snippets/opencl_example_0.c [24 <./imgs/opencl_memory.png (PNG copy)>]) 
+(code_snippets/opencl_example_0.c)
+(code_snippets/opencl_example_0.c) (code_snippets/opencl_example_0.c [25])
+(code_snippets/opencl_example_0.c) (code_snippets/opencl_example_0.c [26]))
+(docs/Chapter_2.tex [27]
 Rozdzia\PlPrIeC {\l } 4.
-) (docs/Chapter_3.tex [28
+<imgs/conv_encoder.jpg, id=864, 738.76pt x 562.1pt>
+File: imgs/conv_encoder.jpg Graphic file (type jpg)
 
-]
+<use imgs/conv_encoder.jpg>
+Package pdftex.def Info: imgs/conv_encoder.jpg used on input line 14.
+(pdftex.def)             Requested size: 332.43892pt x 252.94266pt.
+ [28
+
+ <./imgs/conv_encoder.jpg>]
+<imgs/encoder_trellis.jpg, id=882, 404.26031pt x 191.21437pt>
+File: imgs/encoder_trellis.jpg Graphic file (type jpg)
+
+<use imgs/encoder_trellis.jpg>
+Package pdftex.def Info: imgs/encoder_trellis.jpg used on input line 30.
+(pdftex.def)             Requested size: 323.40869pt x 152.9717pt.
+ [29
+
+ <./imgs/encoder_trellis.jpg>]
+<imgs/modulation.jpg, id=903, 463.7325pt x 529.22719pt>
+File: imgs/modulation.jpg Graphic file (type jpg)
+
+<use imgs/modulation.jpg>
+Package pdftex.def Info: imgs/modulation.jpg used on input line 55.
+(pdftex.def)             Requested size: 255.05365pt x 291.07585pt.
+
+<imgs/viterbi_trellis.jpg, id=908, 426.84468pt x 179.16937pt>
+File: imgs/viterbi_trellis.jpg Graphic file (type jpg)
+
+<use imgs/viterbi_trellis.jpg>
+Package pdftex.def Info: imgs/viterbi_trellis.jpg used on input line 65.
+(pdftex.def)             Requested size: 341.47621pt x 143.33568pt.
+ [30
+
+ <./imgs/modulation.jpg> <./imgs/viterbi_trellis.jpg>] <imgs/viterbi_line_trell
+is.jpg, id=925, 456.95718pt x 302.63063pt>
+File: imgs/viterbi_line_trellis.jpg Graphic file (type jpg)
+
+<use imgs/viterbi_line_trellis.jpg>
+Package pdftex.def Info: imgs/viterbi_line_trellis.jpg used on input line 83.
+(pdftex.def)             Requested size: 365.56622pt x 242.10483pt.
+ [31 <./imgs/viterbi_line_trellis.jpg>]
+Overfull \hbox (4.47777pt too wide) in paragraph at lines 151--152
+\OT4/cmr/m/n/10 Informacje o in-ten-syw-no-±ci pik-se-li ob-ra-zu po-bie-ra-ne 
+s¡ u»y-wa-j¡c skªa-do-wej kla-sy \OT4/cmtt/m/n/10 Viterbi const unsigned
+ []
+
+(viterbi_source/Viterbi.cpp [32]) (viterbi_source/Viterbi.cpp)
+(viterbi_source/Viterbi.cpp) (viterbi_source/Viterbi.cpp [33] [34]))
+(docs/Chapter_3.tex [35]
 Rozdzia\PlPrIeC {\l } 5.
-) (docs/Summary.tex [29
+) (docs/Summary.tex [36
 
 ]
 Rozdzia\PlPrIeC {\l } 6.
-) (docs/Appendix_1.tex [30
+) (docs/Appendix_1.tex [37
 
 ]
 Rozdzia\PlPrIeC {\l } 7.
-) (docs/Appendix_2.tex [31
+) (docs/Appendix_2.tex [38
 
 ]
 Rozdzia\PlPrIeC {\l } 8.
-) [32
+) (document.lof [39
 
-] (document.lof)
+])
 \tf@lof=\write5
 \openout5 = `document.lof'.
 
- [33
-
-] (document.lol)
+ (document.lol)
 \tf@lol=\write6
 \openout6 = `document.lol'.
 
- (document.bbl [34
-
-]
+ (document.bbl [40]
 Rozdzia\PlPrIeC {\l } 9.
 
 Underfull \hbox (badness 1642) in paragraph at lines 16--20
@@ -1147,53 +1226,71 @@ Underfull \hbox (badness 2617) in paragraph at lines 42--46
 ne-ous Com-pu-ting with OpenCL\OT4/cmr/m/n/10 .  El-se-vier, 2012.
  []
 
-[35
+[41
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 122--126
+Underfull \hbox (badness 10000) in paragraph at lines 135--139
 []\OT4/cmr/m/n/10 Intel.  In-tel pro-ces-sors and chip-sets for em-bed-ded ap-p
 li-ca-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--126
+Underfull \hbox (badness 10000) in paragraph at lines 135--139
 \OT4/cmr/m/n/10 tions.  []$\OT4/cmtt/m/n/10 http : / / www . intel . pl / conte
 nt / www / pl / pl / intelligent-[]systems /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--160
+Underfull \hbox (badness 10000) in paragraph at lines 186--189
 []\OT4/cmr/m/n/10 Nvidia.  What is gpu-accelerated com-pu-ting.  []$\OT4/cmtt/m
 /n/10 http : / / www . nvidia . com / object /
  []
 
 
-Underfull \hbox (badness 5652) in paragraph at lines 168--172
+Underfull \hbox (badness 5652) in paragraph at lines 203--207
 []\OT4/cmr/m/n/10 John Owens.  Gpu ar-chi-tec-tu-re ove-rview.  []$\OT4/cmtt/m/
 n/10 http : / / gpgpu . org / static / s2007 / slides /
  []
 
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 221--225
+[]\OT4/cmr/m/n/10 Radio-Elecrtonics.com.  Am-pli-tu-de mo-du-la-tion am de-mo-d
+u-la-tion.  []$\OT4/cmtt/m/n/10 http :
+ []
 
-Underfull \hbox (badness 2418) in paragraph at lines 186--189
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--225
+\OT4/cmtt/m/n/10 / / www . radio-[]electronics . com / info / rf-[]technology-[
+]design / am-[]reception /
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 233--236
 []\OT4/cmr/m/n/10 Ofer Ro-sen-berg.  In-tro-duc-tion to gpu ar-chi-tec-tu-re.  
 []$\OT4/cmtt/m/n/10 http : / / haifux . org / lectures / 267 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--195
+Underfull \hbox (badness 10000) in paragraph at lines 244--248
 []\OT4/cmr/m/n/10 ST.  Stm32 32-bit arm cor-tex mcus.  []$\OT4/cmtt/m/n/10 http
  : / / www . st . com / en / microcontrollers /
  []
 
-[36])
+
+Underfull \hbox (badness 5302) in paragraph at lines 268--271
+[]\OT4/cmr/m/n/10 Šukasz Wo-ªo-wiec.  Kod splo-to-wy.  []$\OT4/cmtt/m/n/10 http
+ : / / ics . p . lodz . pl / ~wolowiec / kodowanie / Kod %
+ []
+
+)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
- [37]
+ [43]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
  (document.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: 6454E69B7994039D926B06EAE3CC564A;2249.
+(rerunfilecheck)             Checksum: FE830FEFA05E6CB59C9A3953D97BE8FE;2384.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1201,29 +1298,30 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 10285 strings out of 493335
- 145175 string characters out of 3147024
- 525751 words of memory out of 3000000
- 13086 multiletter control sequences out of 15000+200000
+ 10336 strings out of 493335
+ 145130 string characters out of 3147024
+ 508021 words of memory out of 3000000
+ 12968 multiletter control sequences out of 15000+200000
  18643 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,53p,630b,2041s stack positions out of 5000i,500n,10000p,200000b,50000s
-{F:/MiKTex29/fonts/enc/dvips/pl/plmi.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm
-.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plms.enc}{F:/MiKTex29/fonts/enc/dvips/pl/p
+ 40i,8n,60p,630b,2060s stack positions out of 5000i,500n,10000p,200000b,50000s
+{F:/MiKTex29/fonts/enc/dvips/pl/plmi.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plms
+.enc}{F:/MiKTex29/fonts/enc/dvips/pl/plrm.enc}{F:/MiKTex29/fonts/enc/dvips/pl/p
 lsc.enc}{F:/MiKTex29/fonts/enc/dvips/pl/pltt.enc}{F:/MiKTex29/fonts/enc/dvips/p
 l/plit.enc}<F:/MiKTex29/fonts/type1/public/amsfonts/cm/cmmi8.pfb><F:/MiKTex29/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb><F:/MiKTex29/fonts/type1/public/amsfon
 ts/cm/cmsy8.pfb><F:/MiKTex29/fonts/type1/public/pl/plbx10.pfb><F:/MiKTex29/font
 s/type1/public/pl/plbx12.pfb><F:/MiKTex29/fonts/type1/public/pl/plmi10.pfb><F:/
-MiKTex29/fonts/type1/public/pl/plmi7.pfb><F:/MiKTex29/fonts/type1/public/pl/plr
-10.pfb><F:/MiKTex29/fonts/type1/public/pl/plr12.pfb><F:/MiKTex29/fonts/type1/pu
-blic/pl/plr5.pfb><F:/MiKTex29/fonts/type1/public/pl/plr7.pfb><F:/MiKTex29/fonts
-/type1/public/pl/plr8.pfb><F:/MiKTex29/fonts/type1/public/pl/plsy8.pfb><F:/MiKT
-ex29/fonts/type1/public/pl/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10
-.pfb>
-Output written on document.pdf (37 pages, 1299571 bytes).
+MiKTex29/fonts/type1/public/pl/plmi5.pfb><F:/MiKTex29/fonts/type1/public/pl/plm
+i7.pfb><F:/MiKTex29/fonts/type1/public/pl/plr10.pfb><F:/MiKTex29/fonts/type1/pu
+blic/pl/plr12.pfb><F:/MiKTex29/fonts/type1/public/pl/plr5.pfb><F:/MiKTex29/font
+s/type1/public/pl/plr7.pfb><F:/MiKTex29/fonts/type1/public/pl/plr8.pfb><F:/MiKT
+ex29/fonts/type1/public/pl/plsy10.pfb><F:/MiKTex29/fonts/type1/public/pl/plsy7.
+pfb><F:/MiKTex29/fonts/type1/public/pl/plsy8.pfb><F:/MiKTex29/fonts/type1/publi
+c/pl/plti10.pfb><F:/MiKTex29/fonts/type1/public/pl/pltt10.pfb>
+Output written on document.pdf (43 pages, 1677808 bytes).
 PDF statistics:
- 1134 PDF objects out of 1200 (max. 8388607)
- 484 named destinations out of 1000 (max. 500000)
- 315 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1437 PDF objects out of 1440 (max. 8388607)
+ 632 named destinations out of 1000 (max. 500000)
+ 348 words of extra memory for PDF output out of 10000 (max. 10000000)
 

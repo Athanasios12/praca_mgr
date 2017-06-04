@@ -19,6 +19,11 @@
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Przestrze\IeC {\'n} indeksowa OpenCL \cite {OpenCL_spec}}}{23}{figure.3.11}
 \contentsline {figure}{\numberline {3.12}{\ignorespaces Model pami\IeC {\k e}ci urz\IeC {\k a}dzenia OpenCL \cite {OpenCL_spec}}}{24}{figure.3.12}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagram stan\IeC {\'o}w, dla enkodera o 3 bitowym rejestrze przesuwnym i dw\IeC {\'o}ch sumatorach modulo-2 z wielomianami $g_1 = 111, g_2 = 101$ \cite {Comm_Sklar}}}{28}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagram kratowy, dla enkodera o 3 bitowym rejestrze przesuwnym i dw\IeC {\'o}ch sumatorach modulo-2 z wielomianami $g_1 = 111, g_2 = 101$ \cite {Comm_Sklar}}}{29}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Rodzaje modulacji sygna\IeC {\l }u cyfrowego \cite {Comm_Sklar}\cite {modulacja_put}}}{30}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Dekodowanie z wykorzystaniem algorytmu Viterbiego dla sekwencji zakodowanej enkoderem z 3 bitowym rejestrem przesuwnym i dwoma sumatorami modulo-2 o wielomianach $g_1 = 111, g_2 = 101$ \cite {Comm_Sklar}}}{30}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Lokalne tranzycje diagramu kratowego dla obrazu cyfrowego\cite {Mazurek_Robot_Viterbi}}}{31}{figure.4.5}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
