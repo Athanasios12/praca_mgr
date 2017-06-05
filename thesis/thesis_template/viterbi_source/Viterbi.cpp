@@ -402,7 +402,8 @@ int Viterbi::launchViterbiMultiThread(std::vector<unsigned int>& line_x, int g_l
 		{
 			if (start_col < m_img_width - 1)
 			{
-				viterbiThreads[i] = (std::async(launch::async, &Viterbi::viterbiMultiThread, this, g_low, g_high, start_col));
+				viterbiThreads[i] = (std::async(launch::async, 
+				&Viterbi::viterbiMultiThread, this, g_low, g_high, start_col));
 				++start_col;
 				++launched_threads;
 				--to_process;
