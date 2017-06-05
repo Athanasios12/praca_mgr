@@ -73,8 +73,8 @@ kombinacji przejścia pomiędzy jego stanami(patrz rys.\ref{fig:viterbi_trellis}
 Jeśli występuje kilka możliwych przejść do danego stanu, wybierane jest te, które ma największe prawdopodobieństwo - najmniejszą odległość Hamminga, a reszta jest odrzucana. Wybór najlepszego zestawu tranzycji
 dla całego diagramu jest określony przez skumulowaną odległość Hamminga dla końcowego stanu. 
 Na podstawie otrzymanej optymalnej listy przejść odczytywana jest zakodowana informacja .\cite{Comm_Sklar}\cite{viterbi_tutorial}\cite{viterbi_mit}
+ %---------------------------------------------------------section end
  
-%tutaj może jakies podumowanie -patrz tutorial viterbi viterbi mit
 \section{Wykrywanie linii na obrazie cyfrowym z wykorzystaniem algorytmu Viterbiego}
 \indent Algorytm Viterbiego, którego celem jest znalezienie optymalnej ścieżki w diagramie kratowym, może zostać zastosowany w analogiczny sposób do wyznaczenia optymalnego zestawu współrzędnych pikseli na obrazie cyfrowym.
 W tym wypadku piksele odpowiadają stanom rejestru przesuwającego, a odległość Hamminga wykorzystana do obliczenia najlepszej tranzycji jest zastąpiona funkcją intensywności pikseli. Zgodnie z zaproponowanym rozwiązaniem w \cite{viterbi_ch_9} dla każdego piksela określane jest najlepsze przejście do następnej kolumny/wiersza.
@@ -121,29 +121,7 @@ Indeksy są obliczane dla wszystkich rozpatrywanych wierszy. Po wyznaczeniu tabl
 Wsteczne przetwarzanie tablicy indeksów $L$ pozwala wyznaczyć pozycję fragmentu linii dla pierwszej kolumny $y = 1$ \ref{eq:L_back}:
 
 \begin{equation}
-   x_{y-1} = x_y + L_{y-1}^{x,y},\ y = y_max,...,y_{start + 1}
-    \label{eq:L_back}
-\end{equation}
-\myequations{Określenie piksela z największą skumulowaną intensywnością dla ostatniej rozpatrywanej kolumny obrazu\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
-
-\begin{equation}
-   L_{y}^{x, y+1} = \argmax_{g}\limits(V_{x+g, y} + d_{x+g, y}^{x,y+1}),\ g\in\{-2,-1,0,1,2\}
-    \label{eq:L}
-\end{equation}
-\myequations{Wyznaczanie tablicy indeksów dla algorytmu Viterbiego\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
-
-Indeksy są obliczane dla wszystkich rozpatrywanych wierszy. Po wyznaczeniu tablicy $L$ sprawdzany jest ostatni wiersz $y_max$ w celu określenia kolumny z największą skumulowaną intensywnością $x_max$ \ref{eq:xmax}:
-
-\begin{equation}
-   x_{y_{max}} = \max_{x}\limits(V_{x, y_max})
-    \label{eq:xmax}
-\end{equation}
-\myequations{Określenie piksela z największą skumulowaną intensywnością dla ostatniej rozpatrywanej kolumny obrazu\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
-
-Wsteczne przetwarzanie tablicy indeksów $L$ pozwala wyznaczyć pozycję fragmentu linii dla pierwszej kolumny $y = 1$ \ref{eq:L_back}:
-
-\begin{equation}
-   x_{y-1} = x_y + L_{y-1}^{x,y},\ y = y_max,...,y_{start + 1}
+   x_{y-1} = x_y + L_{y-1}^{x,y},\ y = y_{max},...,y_{start + 1}
     \label{eq:L_back}
 \end{equation}
 \myequations{Określenie piksela z największą skumulowaną intensywnością dla ostatniej rozpatrywanej kolumny obrazu\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
@@ -154,31 +132,54 @@ Do obliczenia wyników dla następnych kolumn zwiększa się $y_{start}$ i od no
 \indent Tworząc aplikację wykorzystującą algorytm Viterbiego do lokalizacji linii
 na obrazie cyfrowym skorzystano z nowych funkcjonalności standardu C++11. 
 Zdjęcia na, których szukano linii były wczytywane używając funkcji biblioteki
-CImg. Reprezentowane przez obiekty \code{Cimg<T>}, dane pikseli zdjęcia były kopiowane do
-dynamicznie zaalokowanych tablic przypisanych do obiektów \code{unique\_ptr}. Skorzystano inteligentnego wskaźnika - 
-\code{unique\_ptr} , ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu jego destruktora\code{unique\_ptr}.  
+\code{CImg}. Reprezentowane przez obiekty \code{Cimg<T>}, dane pikseli zdjęcia były kopiowane do
+dynamicznie zaalokowanych tablic przypisanych do obiektów \code{std::unique\_ptr}. Skorzystano inteligentnego wskaźnika \code{std::unique\_ptr} , ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu jego destruktora\code{std::unique\_ptr}.  
 Wszystkie warianty implementacji detekcji linii zostały zawarte w klasie \code{Viterbi}, 
-jako jej metody.
-dynamicznie zaalokowanych tablic jednowymiarowych przypisanych do obiektów \code{unique\_ptr}. 
-Skorzystano z obiektu inteligentengo wskaźnika \code{unique\_ptr} , 
-ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu jego destruktora\code{unique\_ptr}.  
-
+jako jej metody. 
 
 %opis listinigu opencl_viterbi.cpp
 \subsection{Wersja szeregowa}
+\indent Pierwsza podstawowa implementacja algorytmu detekcji linii, w wykonuje wszystkie operacje w sposób sekwencyjny  w ramach tego samego wątku. Została stworzona jako punkt odniesienia szybkości wykonania względem później omawianych algorytmów współbieżnych.
+\\
+\indent Wersja szeregowa algorytmu Viterbiego do detekcji linii jest metodą klasy \code{Viterbi} o nazwie
+\\ \code{viterbiLineDetect}. Przyjmuje trzy argumenty wejściowe:
+\begin{enumerate}
+    \item \code{std::vector<unsigned int> \&line\_x} - referencja kontenera, do którego zapisywane są współrzędne szukanej linii
+    \item \code{int g\_low} i code{int g\_high} : określają zakres rozpatrywanego sąsiedztwa każdego piksela przy
+    wyznaczaniu macierz V(patrz równanie \ref{eq:V}
+\end{enumerate}
+Informacje o intensywności pikseli obrazu pobierane są używając składowej klasy \code{Viterbi} \code{const unsigned char *m\_img}.
+\clearpage
+Kod we wnętrzu funkcji dzieli się na:
+\begin{enumerate}
+    \item Inicjalizację(patrz rys. \ref{lst:viterbi_serial_init})
+    \item Pętlę przejścia przez wszystkie kolumny obrazu, w której dla każdej z nich wykonywane są kroki przedstawione we wzorach \ref{eq:V} do \ref{eq:L_back}.(patrz rys. \ref{lst:viterbi_serial_loop})
+\end{enumerate}
 
-%opisać listingi i pododawać wzory, ew pseudokod 
+\lstinputlisting[language={C++}, label={lst:viterbi_serial_init}, caption=Inicjalizacja zmiennych, linerange=222-238, firstnumber=222]{viterbi_source/Viterbi.cpp} 
+
+\lstinputlisting[language={C++}, label={lst:viterbi_serial_loop}, caption=Główna pętla programu, linerange=238-291, firstnumber=238]{viterbi_source/Viterbi.cpp} 
+
+%Na razie zostawić
 
 %listing z viterbiLineDetect - nie pokazywac całego
-\lstinputlisting[language={C++}, label={lst:viterbi_serial}, caption=Szeregowa implementacja algorytmu Viterbiego do wykrywania linii, linerange=224-297, firstnumber=224]{viterbi_source/Viterbi.cpp} 
+%\lstinputlisting[language={C++}, label={lst:viterbi_serial}, caption=Szeregowa implementacja algorytmu Viterbiego do wykrywania linii, linerange=222-291, firstnumber=222]{viterbi_source/Viterbi.cpp} 
 
-%fragment inicjalizacja
-\lstinputlisting[language={C++}, label={lst:viterbi_serial}, caption=Szeregowa implementacja algorytmu Viterbiego do wykrywania linii, linerange=224-240, firstnumber=224]{viterbi_source/Viterbi.cpp} 
-
-
+%-------------end subsection--------------------
 %opisać wszystkie fragmenty z odniesieniem do schematu ogólnego algorytmu - shcemat z atykułów i wzory
 \subsection{Wersja równoległa - C++11}
-To jest podrozdział 2 rozdziału 2
+%opisać wykorzystanie obiektów std future odniesc do rozdzialu 2 i opisac jak dzielona jest praca
+%wrzucic rysunek jak to działa
+Na podstawie wcześniej opisanego algorytmu detekcji linii oraz opisanej szeregowej implementacji można
+stwierdzić, że możliwe jest oddzielne przetwarzanie kodu dla każdej z kolumn reprezentowanych licznikiem
+\code{i} pętli z listingu \ref{lst:viterbi_serial_loop}. Pierwszym z wariantów, który wykorzystuje 
+podaną cechę algorytmu jest implementacja wielowątkowa. Korzysta ona z funkcji i obiektów nagłówka \code{<thread>}, w tym wypadku używany jest obiekt \code{std::future} do przechowywania rezultatów wykonania
+wątków. Ponadto do uruchamiania nowych wątków stosowana jest funkcja \code{std::async}, która uruchamia dodatkowe wątki(patrz rozdział 3.2.3).
+%listing uruchomianie wątków - poprawić formatowanie - załamac linie 405
+\lstinputlisting[language={C++}, label={lst:viterbi_threads}, caption=Wielowątkowa impleme, linerange=390-423, firstnumber=390]{viterbi_source/Viterbi.cpp} 
+W celu właściwego wykorzystania zasobów procesora stosowana jest funkcja \code{std::thread::hardware\_concurrency()} do określenia rekomendowanej liczby jednocześnie uruchomionych wątków.
+Cały obraz jest przetwarzany fragmentami po \code{num\_of\_threads} wątków na raz, gdzie dla każdego z nich przypisana jest inna kolumna startowa $y_{start}$(patrz równanie \ref{eq:L_back}). Po tym jak wszystkie wątki wykonają swoje obliczenia wynik jest zapisywany i zaczyna się nowa iteracja, w której rozpatrywany jest następny zestaw kolumn obrazu. Pętla będzie się wykonywać dopóki nie zostaną przetworzone wszystkie kolumny, co reprezentowane jest przez wartość licznika \code{to\_process}.
+%cały listing
 \subsection{Wersja równoległa - OpenCL}
 To jest podrozdział 3 rozdziału 2
 \end{document}
