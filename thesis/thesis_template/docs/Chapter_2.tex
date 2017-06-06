@@ -156,30 +156,44 @@ Kod we wnętrzu funkcji dzieli się na:
     \item Pętlę przejścia przez wszystkie kolumny obrazu, w której dla każdej z nich wykonywane są kroki przedstawione we wzorach \ref{eq:V} do \ref{eq:L_back}.(patrz rys. \ref{lst:viterbi_serial_loop})
 \end{enumerate}
 
-\lstinputlisting[language={C++}, label={lst:viterbi_serial_init}, caption=Inicjalizacja zmiennych, linerange=222-238, firstnumber=222]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:viterbi_serial_init}, caption=Inicjalizacja zmiennych, linerange=222-237, firstnumber=222]{viterbi_source/Viterbi.cpp} 
 
 \lstinputlisting[language={C++}, label={lst:viterbi_serial_loop}, caption=Główna pętla programu, linerange=238-291, firstnumber=238]{viterbi_source/Viterbi.cpp} 
 
-%Na razie zostawić
-
-%listing z viterbiLineDetect - nie pokazywac całego
-%\lstinputlisting[language={C++}, label={lst:viterbi_serial}, caption=Szeregowa implementacja algorytmu Viterbiego do wykrywania linii, linerange=222-291, firstnumber=222]{viterbi_source/Viterbi.cpp} 
+%-----------------------------
+%%
+%   Dodac zdjęcie ze zmiennymi z programu pokazujace działanie algorytmu,
+%   podobnie dla reszty - threads, opencl
+%%
+%-----------------------------------------
+\begin{figure}[h]
+\includegraphics[scale=0.45]{viterbi_serial_nodes}
+\caption{Schemat działania algorytmu szeregowego}
+\label{fig:viterbi_serial_nodes}
+\end{figure}
 
 %-------------end subsection--------------------
+\clearpage
 %opisać wszystkie fragmenty z odniesieniem do schematu ogólnego algorytmu - shcemat z atykułów i wzory
 \subsection{Wersja równoległa - C++11}
 %opisać wykorzystanie obiektów std future odniesc do rozdzialu 2 i opisac jak dzielona jest praca
 %wrzucic rysunek jak to działa
-Na podstawie wcześniej opisanego algorytmu detekcji linii oraz opisanej szeregowej implementacji można
+Na podstawie wcześniej przedstawionego algorytmu detekcji linii oraz opisanej szeregowej implementacji można
 stwierdzić, że możliwe jest oddzielne przetwarzanie kodu dla każdej z kolumn reprezentowanych licznikiem
 \code{i} pętli z listingu \ref{lst:viterbi_serial_loop}. Pierwszym z wariantów, który wykorzystuje 
 podaną cechę algorytmu jest implementacja wielowątkowa. Korzysta ona z funkcji i obiektów nagłówka \code{<thread>}, w tym wypadku używany jest obiekt \code{std::future} do przechowywania rezultatów wykonania
-wątków. Ponadto do uruchamiania nowych wątków stosowana jest funkcja \code{std::async}, która uruchamia dodatkowe wątki(patrz rozdział 3.2.3).
+wątków. Ponadto do uruchamiania nowych wątków stosowana jest funkcja \code{std::async()}, która uruchamia dodatkowe wątki(patrz rozdział 3.2.3).
 %listing uruchomianie wątków - poprawić formatowanie - załamac linie 405
 \lstinputlisting[language={C++}, label={lst:viterbi_threads}, caption=Wielowątkowa impleme, linerange=390-423, firstnumber=390]{viterbi_source/Viterbi.cpp} 
 W celu właściwego wykorzystania zasobów procesora stosowana jest funkcja \code{std::thread::hardware\_concurrency()} do określenia rekomendowanej liczby jednocześnie uruchomionych wątków.
-Cały obraz jest przetwarzany fragmentami po \code{num\_of\_threads} wątków na raz, gdzie dla każdego z nich przypisana jest inna kolumna startowa $y_{start}$(patrz równanie \ref{eq:L_back}). Po tym jak wszystkie wątki wykonają swoje obliczenia wynik jest zapisywany i zaczyna się nowa iteracja, w której rozpatrywany jest następny zestaw kolumn obrazu. Pętla będzie się wykonywać dopóki nie zostaną przetworzone wszystkie kolumny, co reprezentowane jest przez wartość licznika \code{to\_process}.
-%cały listing
+Cały obraz jest przetwarzany fragmentami po \code{num\_of\_threads} wątków na raz, gdzie dla każdego z nich przypisana jest inna kolumna startowa $y_{start}$(patrz równanie \ref{eq:L_back}). Po tym jak wszystkie wątki wykonają swoje obliczenia wynik jest zapisywany i zaczyna się nowa iteracja, w której rozpatrywany jest następny zestaw kolumn obrazu. Pętla będzie się wykonywać dopóki nie zostaną przetworzone wszystkie kolumny, co reprezentowane jest przez wartość licznika \code{to\_process}(patrz rys.\ref{fig:threads_viterbi}).
+
+\begin{figure}[h]
+\includegraphics[scale=0.8]{threads_viterbi}
+\caption{Schemat działania algorytmu szeregowego}
+\label{fig:threads_viterbi}
+\end{figure}
+
 \subsection{Wersja równoległa - OpenCL}
 To jest podrozdział 3 rozdziału 2
 \end{document}
