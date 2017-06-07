@@ -25,24 +25,24 @@ Viterbi::~Viterbi()
 bool Viterbi::loadAndBuildKernel()
 {
 	int err = 0;
-	//----------initalization, do it in contsructor - needs to be executed only once
 	std::string source_str;
-	// Load the source code containing the kernel*/
+	// Load the source code containing the kernel
 	size_t source_size = readKernelFile(source_str, VITERBI_KERNEL_FILE);
 	if (source_size == 0)
 	{
-		return 1;
+		return false;
 	}
 	char *source_str_ptr = &source_str[0];
 	 m_program = clCreateProgramWithSource(m_context, 1, (const char **)&source_str_ptr,
 		(const size_t *)&source_size, &err);
 	if (CL_SUCCESS != err)
 	{
-		return err;
+		return false;
 	}
-	// Build Kernel Program */
+	// Build Kernel Program 
 	err = clBuildProgram(m_program, 1, &m_device_id, NULL, NULL, NULL);
-	if (err == CL_BUILD_PROGRAM_FAILURE) {
+	if (err == CL_BUILD_PROGRAM_FAILURE) // check if failed to build the program  
+	{ 
 		// Determine the size of the log
 		size_t log_size;
 		clGetProgramBuildInfo(m_program, m_device_id, CL_PROGRAM_BUILD_LOG, 0, NULL, &log_size);
@@ -56,11 +56,11 @@ bool Viterbi::loadAndBuildKernel()
 		// Print the log
 		printf("%s\n", log);
 		free(log);
+		return false;
 	}
-	// Create OpenCL Kernel */
+	// Create OpenCL Kernel
 	m_viterbiKernel = clCreateKernel(m_program, VITERBI_COLS_FUNCTION, &err);
-	//----------initalization, do it in contsructor - needs to be executed only once
-	return err == CL_SUCCESS;
+	return true;
 }
 
 
@@ -218,7 +218,6 @@ int Viterbi::viterbiLineOpenCL_rows(unsigned int *line_x, int g_low, int g_high)
 	return err;
 }
 
-//template <class pix_type>
 int Viterbi::viterbiLineDetect(std::vector<unsigned int> &line_x, int g_low, int g_high)
 {
 	if (m_img == 0 && m_img_height > 0 && m_img_width > 0)
@@ -302,26 +301,26 @@ int Viterbi::viterbiLineOpenCL_cols(unsigned int *line_x, int g_low, int g_high)
 		return CL_FALSE;
 	}
 	size_t img_size = (m_img_height * m_img_width);
-	size_t global_size = m_img_width; // maybe make it later so it can be divided by Prefered opencl device multiple
+	size_t global_size = m_img_width;
 
-									//check available memory
-	long long dev_memory = 0;
-	err = clGetDeviceInfo(m_device_id, CL_DEVICE_GLOBAL_MEM_SIZE, sizeof(long long), &dev_memory, NULL);
+	//check available memory - makes code portable
+	cl_ulong dev_memory = 0;
+	err = clGetDeviceInfo(m_device_id, CL_DEVICE_GLOBAL_MEM_SIZE, sizeof(cl_ulong), &dev_memory, NULL);
 	cl_ulong max_alloc = 0;
-	err = clGetDeviceInfo(m_device_id, CL_DEVICE_MAX_MEM_ALLOC_SIZE, sizeof(long long), &max_alloc, NULL);
+	err = clGetDeviceInfo(m_device_id, CL_DEVICE_MAX_MEM_ALLOC_SIZE, sizeof(cl_ulong), &max_alloc, NULL);
 	int dev_mem = static_cast<int>(double(dev_memory) / double(1024 * 1024));//MB
 	int max_buff_size = static_cast<int>(double(max_alloc) / double(1024 * 1024));
+	//calculates total size of all buffers
 	int tot_mem = static_cast<int>(double((img_size * global_size * sizeof(float)) +
 		(2 * m_img_height * m_img_width * sizeof(float)) +
 		(2 * m_img_width * sizeof(int)) + (img_size * sizeof(unsigned char))) / double(1024 * 1024));
-	//later delete prints for speed
 #ifdef _DEBUG
 	printf("\nMax buffer size: %d MB\n", max_buff_size);
 	printf("Total available memory : %d MB\n", dev_mem);
 	printf("\nTotal memory used %d MB\n", tot_mem);
 	printf("L indices matrixes size : %d MB", int(double(img_size * global_size * sizeof(float) / double(1024 * 1024))));
 #endif
-	//handle not enough GPU memory
+	//handle if buffer too big - fix global size
 	if (max_buff_size < tot_mem)
 	{
 		int mem_multiple = (int)(tot_mem / max_buff_size);
@@ -369,15 +368,15 @@ int Viterbi::viterbiLineOpenCL_cols(unsigned int *line_x, int g_low, int g_high)
 		start_column += global_size;
 	}
 	line_x[m_img_width - 1] = line_x[m_img_width - 2];
-	//realase resources
-
+	
+	//release resources
 	err = clReleaseMemObject(cmLine_x);
 	err = clReleaseMemObject(cmL);
 	err = clReleaseMemObject(cmImg);
 	err = clReleaseMemObject(cmX_cord);
 	err = clReleaseMemObject(cmV1);
 	err = clReleaseMemObject(cmV2);
-	return CL_SUCCESS;
+	return err;
 }
 
 void Viterbi::setImg(const unsigned char *img, size_t img_height, size_t img_width)

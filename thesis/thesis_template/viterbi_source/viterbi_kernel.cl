@@ -55,7 +55,7 @@ __kernel void viterbi_function(__global const unsigned char *img,
 								int g_low,
 								int first_col)
 {
-	int start_column = get_global_id(0); //start_column - column from global buffer, but data can be bigger than global size
+	int start_column = get_global_id(0);
 	long L_id = img_height * img_width * start_column; 
 	int V_id = img_height *start_column;
 	int global_size = get_global_size(0);
@@ -64,15 +64,21 @@ __kernel void viterbi_function(__global const unsigned char *img,
 	float x_max = 0;
 	float max_val = 0;
 	float pixel_value = 0;
-	__global float *temp_buffer; // maybe may need to be passed with size as argument and set with clSetKernelArgs
+	int n = 0;
+	
+	//buffer for pointer adress change
+	__global float *temp_buffer;
+	
+	//pointers emulating V accumulation matrix
 	__global float *V_old = &V_1[V_id];
 	__global float *V_new = &V_2[V_id];
-	// init first column with zeros
-	int n = 0;
+	
+	// init first column with zeros	
 	for (int m = 0; m < img_height; m++)
 	{
 		V_old[m] = 0;
 	}
+	
 	for (n = start_column; n < (global_size - 1) && ((n + first_col) < (img_width - 1)); n++)
 	{
 		for (int j = 0; j < img_height; j++)
