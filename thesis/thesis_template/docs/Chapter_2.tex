@@ -127,7 +127,8 @@ Wsteczne przetwarzanie tablicy indeksów $L$ pozwala wyznaczyć pozycję fragmen
 \myequations{Określenie piksela z największą skumulowaną intensywnością dla ostatniej rozpatrywanej kolumny obrazu\cite{Mazurek_Robot_Viterbi}\cite{viterbi_ch_6}}
 
 Do obliczenia wyników dla następnych kolumn zwiększa się $y_{start}$ i od nowa oblicza się tablice $V$ i $L$.
-%chyba ok
+%-------------------end section----------------------------------------
+
 \section{Implementacja detekcji linii języku C++}
 \indent Tworząc aplikację wykorzystującą algorytm Viterbiego do lokalizacji linii
 na obrazie cyfrowym skorzystano z nowych funkcjonalności standardu C++11. 
@@ -156,16 +157,10 @@ Kod we wnętrzu funkcji dzieli się na:
     \item Pętlę przejścia przez wszystkie kolumny obrazu, w której dla każdej z nich wykonywane są kroki przedstawione we wzorach \ref{eq:V} do \ref{eq:L_back}.(patrz rys. \ref{lst:viterbi_serial_loop})
 \end{enumerate}
 
-\lstinputlisting[language={C++}, label={lst:viterbi_serial_init}, caption=Inicjalizacja zmiennych, linerange=221-236, firstnumber=222]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:viterbi_serial_init}, caption=Inicjalizacja zmiennych, linerange=219-233, firstnumber=219]{viterbi_source/Viterbi.cpp} 
 
-\lstinputlisting[language={C++}, label={lst:viterbi_serial_loop}, caption=Główna pętla programu, linerange=237-290, firstnumber=237]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:viterbi_serial_loop}, caption=Główna pętla programu, linerange=234-290, firstnumber=234]{viterbi_source/Viterbi.cpp} 
 
-%-----------------------------
-%%
-%   Dodac zdjęcie ze zmiennymi z programu pokazujace działanie algorytmu,
-%   podobnie dla reszty - threads, opencl
-%%
-%-----------------------------------------
 \begin{figure}[h]
 \includegraphics[scale=0.45]{viterbi_serial_nodes}
 \caption{Schemat działania algorytmu szeregowego}
@@ -183,7 +178,7 @@ Kod we wnętrzu funkcji dzieli się na:
 podaną cechę algorytmu jest implementacja wielowątkowa. Korzysta ona z funkcji i obiektów nagłówka \code{<thread>}, w tym wypadku używany jest obiekt \code{std::future} do przechowywania rezultatów wykonania
 wątków. Ponadto do uruchamiania nowych wątków stosowana jest funkcja \code{std::async()}, która uruchamia dodatkowe wątki(patrz rozdział 3.2.3).
 %listing uruchomianie wątków - poprawić formatowanie - załamac linie 405
-\lstinputlisting[language={C++}, label={lst:viterbi_threads}, caption=Wielowątkowa implementacja algorytmu detekcji linii, linerange=389-422, firstnumber=389]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:viterbi_threads}, caption=Wielowątkowa implementacja algorytmu detekcji linii, linerange=383-418, firstnumber=383]{viterbi_source/Viterbi.cpp} 
 
 \indent W celu właściwego wykorzystania zasobów procesora stosowana jest funkcja \code{std::thread::hardware\_concurrency()} do określenia rekomendowanej liczby jednocześnie uruchomionych wątków.
 Cały obraz jest przetwarzany fragmentami po \code{num\_of\_threads} wątków na raz, gdzie dla każdego z nich przypisana jest inna kolumna startowa $y_{start}$(patrz równanie \ref{eq:L_back}). 
@@ -198,9 +193,23 @@ Funkcja wykonywana przez wątki jest bardzo podobna jak dla wersji szeregowej(pa
 \end{figure}
 
 \subsection{Wersja równoległa - wykorzystanie biblioteki OpenCL}
-
+\indent Podobnie jak dla wersji wielowątkowej algorytm wykrywania linii został zmodyfikowany,tak aby 
+zrównoleglić główną pętlę listingu \ref{lst:viterbi_serial_loop} : $y_{start} = 0,1,.., y_{n-1}$.
+Założono, że dla stworzonej przestrzeni indeksowej OpenCL, każda kolumna startowa odpowiada elementowi roboczemu(\textit{work-item}). 
+\indent Pamięć globalna GPU jest zdecydowanie większa od lokalnej, osobnej dla każdej grupy roboczej.
+Z tego powodu zdecydowano się na zdefiniowanie buforów zaalokowanych w pamięci globalnej karty graficznej.
+Wynika to z faktu możliwości przetwarzanie zdjęć o dużej rozdzielczości. Każda karta graficzna posiada różną wielkość dostępnej pamięci globalnej i lokalnej, dlatego w metodzie \code{viterbiLineOpenCL\_cols} odpowiedzialnej za detekcję linii użyto funkcji OpenCL do sprawdzenia dostępnej pamięci globalnej oraz maksymalnego rozmiaru bufora.(patrz funkcja \code{clGetDeviceInfo} z listingu \ref{lst:opencl_memcheck}). Jeśli okaże się, że
+utworzenie jednego z buforów przekracza limit dostępnej pamięci, wtedy obraz jest przetwarzany w fragmentach
+określanych wielkością \code{global\_size} obliczaną w linijkach 324 - 328 listingu  \ref{lst:opencl_memcheck}.
+\indent Dla zbudowanego kernela zdefiniowano bufory:
+\begin{itemize}
+\item \code{cmImg} : bufor do odczytu danych pikseli zdjęcia
+\item \code{cmLine\_x} : bufor do zapisu obliczonych współrzędnych linii
+\item \code{cmV1}, \code{cmV2} : bufory emulujące macierz skumulowanej intensywności $V$
+\item \code{cmL} : trójwymiarowy bufor składający się z \code{global\_size} macierzy indeksów $L$
+\end{itemize}
 %kernel opencl
-\lstinputlisting[language={C}, label={lst:opencl_kernel}, caption=Kernel do detekcji linii, linerange=46-127, firstnumber=1]{viterbi_source/viterbi_kernel.cl} 
+\lstinputlisting[language={C}, label={lst:opencl_kernel}, caption=Kernel do detekcji linii, linerange=1-76, firstnumber=1]{viterbi_source/viterbi_kernel.cl} 
 
 %ładowanie kernela
 \lstinputlisting[language={C++}, label={lst:opencl_load_kernel}, caption=Metoda tworząca kernel OpenCL, linerange=25-64, firstnumber=25]{viterbi_source/Viterbi.cpp} 
@@ -209,14 +218,20 @@ Funkcja wykonywana przez wątki jest bardzo podobna jak dla wersji szeregowej(pa
 %pliku opencl_viterbi.cpp
 
 %memory check
-\lstinputlisting[language={C++}, label={lst:opencl_cols}, caption=Sprawdzanie dostępnej pamięci karty 
-graficznej, linerange=307-329, firstnumber=307]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:opencl_memcheck}, caption=Sprawdzanie dostępnej pamięci karty 
+graficznej, linerange=303-325, firstnumber=307]{viterbi_source/Viterbi.cpp} 
 
 %create buffers
-\lstinputlisting[language={C++}, label={lst:opencl_cols}, caption=Tworzenie buforów wymiany danych, linerange=330-350, firstnumber=330]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:opencl_buffers}, caption=Tworzenie buforów wymiany danych, linerange=326-344, firstnumber=326]{viterbi_source/Viterbi.cpp} 
 
 %read results
-\lstinputlisting[language={C++}, label={lst:opencl_cols}, caption=Wyznaczenie współrzednych linii, linerange=358-369, firstnumber=358]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:opencl_detect}, caption=Wyznaczenie współrzednych linii, linerange=352-364, firstnumber=352]{viterbi_source/Viterbi.cpp} 
 
+
+%-------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!---------
+%
+%   Popraw ryysunek dla C++11 - przy bloku warunkowym dodaj T/N do strzałek
+%
+%--------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!---------
 
 \end{document}

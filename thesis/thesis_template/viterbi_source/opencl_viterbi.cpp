@@ -15,9 +15,9 @@ using namespace cimg_library;
 using namespace std;
 
 //image settings
-const char IMG_FILE[] = "line_error_test_2.bmp";
-const int G_LOW = -8;
-const int G_HIGH = 8;
+const char IMG_FILE[] = "line_2.bmp";
+const int G_LOW = -2;
+const int G_HIGH = 2;
 
 void rgb2Gray(const CImg<unsigned char> &img, CImg<unsigned char> &grayImg)
 {
@@ -311,7 +311,7 @@ void basicTest()
 	if (CL_SUCCESS != initializeCL(command_queue, context, device_id))
 	{
 		printf("\nFailed OpenCl initialization!\n");
-return;
+		return;
 	}
 	CImg<unsigned char> img(IMG_FILE);
 	CImg<unsigned char> gray_img(img.width(), img.height(), 1, 1, 0);
@@ -325,7 +325,7 @@ return;
 	Viterbi viterbi(command_queue, context, device_id);
 	viterbi.setImg(gray_img, img.height(), img.width());
 	clock_t start = clock();
-	viterbi.viterbiLineOpenCL_cols(&line_x[0], G_LOW, G_HIGH);
+	viterbi.viterbiLineOpenCL_cols(&line_x[0], -4, 4);
 	clock_t end = clock();
 	double time_ms = (double)(end - start);
 	for (int i = 0; i < img.width(); i++)
@@ -345,7 +345,7 @@ return;
 	}
 
 	start = clock();
-	viterbi.viterbiLineDetect(line_x, G_LOW, G_HIGH);
+	viterbi.viterbiLineDetect(line_x, -4, 4);
 	end = clock();
 	time_ms = (double)(end - start);
 	for (int i = 0; i < img.width(); i++)
@@ -364,7 +364,7 @@ return;
 	}
 
 	start = clock();
-	viterbi.launchViterbiMultiThread(line_x, G_LOW, G_HIGH);
+	viterbi.launchViterbiMultiThread(line_x, -4, 4);
 	end = clock();
 	time_ms = (double)(end - start);
 	for (int i = 0; i < img.width(); i++)
@@ -400,12 +400,14 @@ return;
 
 int main(void)
 {
+#ifdef _DEBUG
+	basicTest();
+#else
 	//basic tests, later call test viterbi
 	PlotInfo pInfo;
 	//declare list of images - maybe load from file later
-	std::vector<std::string> images{ "line_error_test_0.bmp", "line_error_test_1.bmp", "line_error_test_2.bmp" };// "line_error_test_0.bmp", "line_error_test_1.bmp" , 
-
-	//basicTest();
+	std::vector<std::string> images{"line_error_test_0.bmp", "line_error_test_1.bmp", "line_error_test_2.bmp" };
+	
 	std::vector<std::vector<uint32_t> > test_lines;
 	std::vector<uint32_t> test_line;
 	char buff[100];
@@ -420,15 +422,13 @@ int main(void)
 	if (success)
 	{
 		test_viterbi(images, G_HIGH, G_LOW, 1, pInfo, test_lines); // init g_low, g_high = <-5, 5>
-		//check inside the test viterbi function if errors are indeed the same, if not something is not right, because algorithms results should be indentical
-		//error should be the same for all algorithms, only time should be different
 		std::vector<std::string> columns{ "img_num", "img_size", "g_low", "g_high", "error", "GPU", "SERIAL", "CPU_THREADS" };											
-		generateCsv("../../test_results_clang.csv", pInfo, columns);
+		generateCsv("test_results.csv", pInfo, columns);
 	}
 	else
 	{
 		cout << "Failed reading test line file" << endl;
 	}
-
+#endif
 	return 0;
 }

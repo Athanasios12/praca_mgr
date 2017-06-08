@@ -39,10 +39,9 @@ bool Viterbi::loadAndBuildKernel()
 	{
 		return false;
 	}
-	// Build Kernel Program 
+	// Build Kernel Program
 	err = clBuildProgram(m_program, 1, &m_device_id, NULL, NULL, NULL);
-	if (err == CL_BUILD_PROGRAM_FAILURE) // check if failed to build the program  
-	{ 
+	if (err == CL_BUILD_PROGRAM_FAILURE) {
 		// Determine the size of the log
 		size_t log_size;
 		clGetProgramBuildInfo(m_program, m_device_id, CL_PROGRAM_BUILD_LOG, 0, NULL, &log_size);
@@ -56,11 +55,10 @@ bool Viterbi::loadAndBuildKernel()
 		// Print the log
 		printf("%s\n", log);
 		free(log);
-		return false;
 	}
 	// Create OpenCL Kernel
 	m_viterbiKernel = clCreateKernel(m_program, VITERBI_COLS_FUNCTION, &err);
-	return true;
+	return err == CL_SUCCESS;
 }
 
 
@@ -230,7 +228,6 @@ int Viterbi::viterbiLineDetect(std::vector<unsigned int> &line_x, int g_low, int
 
 	uint32_t P_max = 0;
 	uint32_t x_max = 0;
-	std::vector<uint32_t> x_cord(m_img_width, 0);
 	uint32_t max_val = 0;
 	size_t i = 0;
 	unsigned char pixel_value = 0;
@@ -277,13 +274,13 @@ int Viterbi::viterbiLineDetect(std::vector<unsigned int> &line_x, int g_low, int
 			}
 		}
 		//backwards phase - retrace the path
-		x_cord[(m_img_width - 1)] = x_max;
+		uint32_t x_n = x_max;
 		for (size_t n = (m_img_width - 1); n > i; n--)
 		{
-			x_cord[n - 1] = x_cord[n] + L[(x_cord[n] * m_img_width) + (n - 1)];
+			x_n = x_n + L[(x_n * m_img_width) + (n - 1)];
 		}
 		// save only last pixel position
-		line_x[i] = x_cord[i];
+		line_x[i] = x_n;
 		P_max = 0;
 		x_max = 0;
 		++i;
@@ -298,19 +295,18 @@ int Viterbi::viterbiLineOpenCL_cols(unsigned int *line_x, int g_low, int g_high)
 	if (!m_initalized || m_img == NULL)
 	{
 		cout << "Kernel not initialized" << endl;
-		return CL_FALSE;
+		return err;
 	}
 	size_t img_size = (m_img_height * m_img_width);
-	size_t global_size = m_img_width;
+	size_t global_size = m_img_width; 
 
-	//check available memory - makes code portable
-	cl_ulong dev_memory = 0;
-	err = clGetDeviceInfo(m_device_id, CL_DEVICE_GLOBAL_MEM_SIZE, sizeof(cl_ulong), &dev_memory, NULL);
+	//check available memory
+	long long dev_memory = 0;
+	err = clGetDeviceInfo(m_device_id, CL_DEVICE_GLOBAL_MEM_SIZE, sizeof(long long), &dev_memory, NULL);
 	cl_ulong max_alloc = 0;
-	err = clGetDeviceInfo(m_device_id, CL_DEVICE_MAX_MEM_ALLOC_SIZE, sizeof(cl_ulong), &max_alloc, NULL);
+	err = clGetDeviceInfo(m_device_id, CL_DEVICE_MAX_MEM_ALLOC_SIZE, sizeof(long long), &max_alloc, NULL);
 	int dev_mem = static_cast<int>(double(dev_memory) / double(1024 * 1024));//MB
 	int max_buff_size = static_cast<int>(double(max_alloc) / double(1024 * 1024));
-	//calculates total size of all buffers
 	int tot_mem = static_cast<int>(double((img_size * global_size * sizeof(float)) +
 		(2 * m_img_height * m_img_width * sizeof(float)) +
 		(2 * m_img_width * sizeof(int)) + (img_size * sizeof(unsigned char))) / double(1024 * 1024));
@@ -320,7 +316,7 @@ int Viterbi::viterbiLineOpenCL_cols(unsigned int *line_x, int g_low, int g_high)
 	printf("\nTotal memory used %d MB\n", tot_mem);
 	printf("L indices matrixes size : %d MB", int(double(img_size * global_size * sizeof(float) / double(1024 * 1024))));
 #endif
-	//handle if buffer too big - fix global size
+	//handle not enough GPU memory
 	if (max_buff_size < tot_mem)
 	{
 		int mem_multiple = (int)(tot_mem / max_buff_size);
@@ -332,7 +328,6 @@ int Viterbi::viterbiLineOpenCL_cols(unsigned int *line_x, int g_low, int g_high)
 	err = clEnqueueWriteBuffer(m_command_queue, cmImg, CL_FALSE, 0, sizeof(unsigned char) * img_size, m_img, 0, NULL, NULL);
 
 	cl_mem cmLine_x = clCreateBuffer(m_context, CL_MEM_READ_WRITE, m_img_width * sizeof(int), NULL, &err);
-	cl_mem cmX_cord = clCreateBuffer(m_context, CL_MEM_READ_WRITE, m_img_width * sizeof(int), NULL, &err);
 	cl_mem cmV1 = clCreateBuffer(m_context, CL_MEM_READ_WRITE, m_img_height * m_img_width * sizeof(float), NULL, &err);
 	cl_mem cmV2 = clCreateBuffer(m_context, CL_MEM_READ_WRITE, m_img_height * m_img_width * sizeof(float), NULL, &err);
 	cl_mem cmL = clCreateBuffer(m_context, CL_MEM_READ_WRITE, img_size * global_size * sizeof(float), NULL, &err);
@@ -343,11 +338,10 @@ int Viterbi::viterbiLineOpenCL_cols(unsigned int *line_x, int g_low, int g_high)
 	err |= clSetKernelArg(m_viterbiKernel, 2, sizeof(cl_mem), (void*)&cmLine_x);
 	err |= clSetKernelArg(m_viterbiKernel, 3, sizeof(cl_mem), (void*)&cmV1);
 	err |= clSetKernelArg(m_viterbiKernel, 4, sizeof(cl_mem), (void*)&cmV2);
-	err |= clSetKernelArg(m_viterbiKernel, 5, sizeof(cl_mem), (void*)&cmX_cord);
-	err |= clSetKernelArg(m_viterbiKernel, 6, sizeof(cl_int), (void*)&m_img_height);
-	err |= clSetKernelArg(m_viterbiKernel, 7, sizeof(cl_int), (void*)&m_img_width);
-	err |= clSetKernelArg(m_viterbiKernel, 8, sizeof(cl_int), (void*)&g_high);
-	err |= clSetKernelArg(m_viterbiKernel, 9, sizeof(cl_int), (void*)&g_low);
+	err |= clSetKernelArg(m_viterbiKernel, 5, sizeof(cl_int), (void*)&m_img_height);
+	err |= clSetKernelArg(m_viterbiKernel, 6, sizeof(cl_int), (void*)&m_img_width);
+	err |= clSetKernelArg(m_viterbiKernel, 7, sizeof(cl_int), (void*)&g_high);
+	err |= clSetKernelArg(m_viterbiKernel, 8, sizeof(cl_int), (void*)&g_low);
 
 	if (CL_SUCCESS != err)
 	{
@@ -355,28 +349,28 @@ int Viterbi::viterbiLineOpenCL_cols(unsigned int *line_x, int g_low, int g_high)
 	}
 	//to big buffer will fail with CL_MEM_OBJECT_ALLOCATION_FAILURE - have to process it with chunks
 	//not all columns at the same time, call it couple of times
-	size_t start_column = 0; // each iteration add global_size untile start_column >= img_width
+	size_t start_column = 0; 
 	err = clEnqueueWriteBuffer(m_command_queue, cmLine_x, CL_FALSE, 0, sizeof(int) * m_img_width, line_x, 0, NULL, NULL);
 	while (start_column < m_img_width && !err)
 	{
-		err = clSetKernelArg(m_viterbiKernel, 10, sizeof(cl_int), (void*)&start_column);
+		err = clSetKernelArg(m_viterbiKernel, 9, sizeof(cl_int), (void*)&start_column);
 		err |= clEnqueueNDRangeKernel(m_command_queue, m_viterbiKernel, 1, NULL, &global_size, NULL, 0, NULL, NULL);
 
-		// Copy results from the memory buffer */
+		// Copy results from the memory buffer 
 		err |= clEnqueueReadBuffer(m_command_queue, cmLine_x, CL_TRUE, 0,
 			m_img_width * sizeof(int), line_x, 0, NULL, NULL);
 		start_column += global_size;
 	}
+	
 	line_x[m_img_width - 1] = line_x[m_img_width - 2];
 	
-	//release resources
+	//realase resources
 	err = clReleaseMemObject(cmLine_x);
 	err = clReleaseMemObject(cmL);
 	err = clReleaseMemObject(cmImg);
-	err = clReleaseMemObject(cmX_cord);
 	err = clReleaseMemObject(cmV1);
 	err = clReleaseMemObject(cmV2);
-	return err;
+	return CL_SUCCESS;
 }
 
 void Viterbi::setImg(const unsigned char *img, size_t img_height, size_t img_width)
@@ -401,8 +395,8 @@ int Viterbi::launchViterbiMultiThread(std::vector<unsigned int>& line_x, int g_l
 		{
 			if (start_col < m_img_width - 1)
 			{
-				viterbiThreads[i] = (std::async(launch::async, 
-				&Viterbi::viterbiMultiThread, this, g_low, g_high, start_col));
+				viterbiThreads[i] = (std::async(launch::async,
+					&Viterbi::viterbiMultiThread, this, g_low, g_high, start_col));
 				++start_col;
 				++launched_threads;
 				--to_process;
@@ -433,7 +427,6 @@ unsigned int Viterbi::viterbiMultiThread(int g_low, int g_high, unsigned int sta
 	std::vector<int> L(m_img_height * m_img_width, 0);
 	std::vector<uint32_t> V(m_img_height * m_img_width, 0);
 
-	std::vector<uint32_t> x_cord(m_img_width, 0);
 	uint32_t max_val = 0;
 	unsigned char pixel_value = 0;
 	// init first column with zeros
@@ -480,11 +473,11 @@ unsigned int Viterbi::viterbiMultiThread(int g_low, int g_high, unsigned int sta
 		}
 	}
 	//backwards phase - retrace the path
-	x_cord[(m_img_width - 1)] = x_max;
+	uint32_t x_n = x_max;
 	for (size_t n = (m_img_width - 1); n > start_col; n--)
 	{
-		x_cord[n - 1] = x_cord[n] + L[(x_cord[n] * m_img_width) + (n - 1)];
+		x_n = x_n + L[(x_n * m_img_width) + (n - 1)];
 	}
-	// save only last pixel position
-	return static_cast<unsigned int>(x_cord[start_col]);
+	// save last pixel position
+	return static_cast<unsigned int>(x_n);
 }
