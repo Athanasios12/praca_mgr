@@ -75,7 +75,7 @@ dla całego diagramu jest określony przez skumulowaną odległość Hamminga dl
 Na podstawie otrzymanej optymalnej listy przejść odczytywana jest zakodowana informacja .\cite{Comm_Sklar}\cite{viterbi_tutorial}\cite{viterbi_mit}
  %---------------------------------------------------------section end
  
-\section{Wykrywanie linii na obrazie cyfrowym z wykorzystaniem algorytmu Viterbiego}
+\section{Wykrywanie linii na obrazie cyfrowym z wykorzystaniem algorytmu Viterbiego}\label{viterbi_line}
 \indent Algorytm Viterbiego, którego celem jest znalezienie optymalnej ścieżki w diagramie kratowym, może zostać zastosowany w analogiczny sposób do wyznaczenia optymalnego zestawu współrzędnych pikseli na obrazie cyfrowym.
 W tym wypadku piksele odpowiadają stanom rejestru przesuwającego, a odległość Hamminga wykorzystana do obliczenia najlepszej tranzycji jest zastąpiona funkcją intensywności pikseli. Zgodnie z zaproponowanym rozwiązaniem w \cite{viterbi_ch_9} dla każdego piksela określane jest najlepsze przejście do następnej kolumny/wiersza.
 
@@ -133,7 +133,7 @@ Do obliczenia wyników dla następnych kolumn zwiększa się $y_{start}$ i od no
 \indent Tworząc aplikację wykorzystującą algorytm Viterbiego do lokalizacji linii
 na obrazie cyfrowym skorzystano z nowych funkcjonalności standardu C++11. 
 Zdjęcia na, których szukano linii były wczytywane używając funkcji biblioteki
-\code{CImg}. Reprezentowane przez obiekty \code{Cimg<T>}, dane pikseli zdjęcia były kopiowane do
+\code{CImg}\cite{cimg_doc}. Reprezentowane przez obiekty \code{Cimg<T>}, dane pikseli zdjęcia były kopiowane do
 dynamicznie zaalokowanych tablic przypisanych do obiektów \code{std::unique\_ptr}. Skorzystano inteligentnego wskaźnika \code{std::unique\_ptr} , ze względu na funkcję automatycznego zwalniania zaalokowanych zasobów po wywołaniu jego destruktora\code{std::unique\_ptr}.  
 Wszystkie warianty implementacji detekcji linii zostały zawarte w klasie \code{Viterbi}, 
 jako jej metody. 
@@ -147,9 +147,9 @@ jako jej metody.
 \begin{enumerate}
     \item \code{std::vector<unsigned int> \&line\_x} - referencja kontenera, do którego zapisywane są współrzędne szukanej linii
     \item \code{int g\_low} i code{int g\_high} : określają zakres rozpatrywanego sąsiedztwa każdego piksela przy
-    wyznaczaniu macierz V(patrz równanie \ref{eq:V}
+    wyznaczaniu macierz V(patrz równanie \ref{eq:V})
 \end{enumerate}
-Informacje o intensywności pikseli obrazu pobierane są używając składowej klasy \code{Viterbi} \code{const unsigned char *m\_img}.
+Informacje o intensywności pikseli obrazu pobierane są używając składowej \code{const unsigned char *m\_img}.
 \clearpage
 Kod we wnętrzu funkcji dzieli się na:
 \begin{enumerate}
@@ -192,6 +192,7 @@ Funkcja wykonywana przez wątki jest bardzo podobna jak dla wersji szeregowej(pa
 \label{fig:threads_viterbi}
 \end{figure}
 
+\clearpage
 \subsection{Wersja równoległa - wykorzystanie biblioteki OpenCL}
 \indent Podobnie jak dla wersji wielowątkowej algorytm wykrywania linii został zmodyfikowany,tak aby 
 zrównoleglić główną pętlę listingu \ref{lst:viterbi_serial_loop} : $y_{start} = 0,1,.., y_{n-1}$.
@@ -200,37 +201,61 @@ Założono, że dla stworzonej przestrzeni indeksowej OpenCL, każda kolumna sta
 Z tego powodu zdecydowano się na zdefiniowanie buforów zaalokowanych w pamięci globalnej karty graficznej.
 Wynika to z faktu możliwości przetwarzanie zdjęć o dużej rozdzielczości. Każda karta graficzna posiada różną wielkość dostępnej pamięci globalnej i lokalnej, dlatego w metodzie \code{viterbiLineOpenCL\_cols} odpowiedzialnej za detekcję linii użyto funkcji OpenCL do sprawdzenia dostępnej pamięci globalnej oraz maksymalnego rozmiaru bufora.(patrz funkcja \code{clGetDeviceInfo} z listingu \ref{lst:opencl_memcheck}). Jeśli okaże się, że
 utworzenie jednego z buforów przekracza limit dostępnej pamięci, wtedy obraz jest przetwarzany w fragmentach
-określanych wielkością \code{global\_size} obliczaną w linijkach 324 - 328 listingu  \ref{lst:opencl_memcheck}.
-\indent Dla zbudowanego kernela zdefiniowano bufory:
+określanych wielkością \code{global\_size} obliczaną w linijkach 324 - 328 listingu \ref{lst:opencl_memcheck}.
+
+%memory check
+\lstinputlisting[language={C++}, label={lst:opencl_memcheck}, caption=Sprawdzanie dostępnej pamięci karty 
+graficznej, linerange=303-324, firstnumber=303]{viterbi_source/Viterbi.cpp} 
+
+\indent Dla zbudowanego kernela zdefiniowano bufory(patrz listing \ref{lst:opencl_buffers}):
 \begin{itemize}
 \item \code{cmImg} : bufor do odczytu danych pikseli zdjęcia
 \item \code{cmLine\_x} : bufor do zapisu obliczonych współrzędnych linii
 \item \code{cmV1}, \code{cmV2} : bufory emulujące macierz skumulowanej intensywności $V$
 \item \code{cmL} : trójwymiarowy bufor składający się z \code{global\_size} macierzy indeksów $L$
 \end{itemize}
+Bufory \code{V1} i \code{V2} zostały stworzone w celu zminimalizowania wykorzystania pamięci karty graficznej.
+Zamiast użycia całej macierzy V, rozpatrywane są tylko dwie kolumny - obecna i następna. Kolumna
+\code{V1} jest inicjalizowana zerami(patrz rozdział \ref{viterbi_line}), następnie wyniki dla poszczególnych 
+wierszy są zapisywane w \code{V2}. W następnej iteracji w kolumnie \code{V1} są zapisywane wyniki na podstawie rezultatów poprzedniej iteracji zapisanych w \code{V2}. W analogiczny sposób przetwarzane są pozostałe kolumny z zakresu $\langle$\code{start\_column} ; \code{global\_size}$\rangle$.
+
+%create buffers
+\lstinputlisting[language={C++}, label={lst:opencl_buffers}, caption=Tworzenie buforów wymiany danych i ustawienie
+argumentów kernela, linerange=326-344, firstnumber=326]{viterbi_source/Viterbi.cpp} 
+
+%opis kernela - dodać rysunki buforów L i V1, V2 z naniesionymi zmiennymi kernela
+\indent Oprócz stworzonych buforów, jako argumenty do kernela podawane są szerokość, wysokość zdjęcia oraz 
+zakres lokalnie rozpatrywanych wierszy \code{g} $\in \langle$\code{g\_low}; \code{g\_high} $\rangle$.
+Wnętrze kodu kernela (patrz listing \ref{lst:opencl_kernel}) jest bardzo podobne do wersji szeregowej
+dla CPU, ale tak jak dla wersji wielowątkowej wyeliminowana jest główna pętla przetwarzająca wszystkie
+$y_{start}$(patrz rozdział \ref{viterbi_line}). Każde $y_{start}$ odpowiada globalnemu id poszczególnego
+elementu roboczego, otrzymanego po wywołaniu funkcji \code{get\_global\_id}.
+Każdemu elementowi roboczemu odpowiada fragment trójwymiarowego bufora \code{L} określany przez zmienną
+\code{L\_id}, otrzymany na podstawie wyznaczonej kolumny startowej. Dodatkowo decyduje ona
+o numerze kolumny dla zmiennych \code{V1} i \code{V2}. Ostatnim wyróżniającym fragmentem kodu jest zapisanie
+pozycji piksela z największą skumulowaną intensywnością - \code{x\_n}. Indeks bufora \code{line\_x} nie jest
+decydowany tylko przez wyznaczony numer kolumny startowej, ale również na podstawie przyjętego argumentu
+\code{first\_col}.
+
 %kernel opencl
 \lstinputlisting[language={C}, label={lst:opencl_kernel}, caption=Kernel do detekcji linii, linerange=1-76, firstnumber=1]{viterbi_source/viterbi_kernel.cl} 
 
-%ładowanie kernela
-\lstinputlisting[language={C++}, label={lst:opencl_load_kernel}, caption=Metoda tworząca kernel OpenCL, linerange=25-64, firstnumber=25]{viterbi_source/Viterbi.cpp} 
+%dodać zdjęcia buforów i będzie stykać
 
-%viterbi cols opencl initialization zrobic odniesienie do załącznika - funkcja initialize CL z 
-%pliku opencl_viterbi.cpp
-
-%memory check
-\lstinputlisting[language={C++}, label={lst:opencl_memcheck}, caption=Sprawdzanie dostępnej pamięci karty 
-graficznej, linerange=303-325, firstnumber=307]{viterbi_source/Viterbi.cpp} 
-
-%create buffers
-\lstinputlisting[language={C++}, label={lst:opencl_buffers}, caption=Tworzenie buforów wymiany danych, linerange=326-344, firstnumber=326]{viterbi_source/Viterbi.cpp} 
+\indent Parametr \code{first\_col} jest wyznaczany na podstawie wielkości przetwarzanego zdjęcia,
+na początku ma wartość 0, ale w kolejnych iteracjach pętli z listingu \ref{lst:opencl_detect},
+zwiększany jest o rozmiar \code{global\_size}, aż będzie równy szerokości zdjęcia \code{m\_img\_width}.
+Wyniki po wykonaniu kernela przez wszystkie elementy robocze są odczytywane z bufora \code{cmLine\_x} i 
+kopiowane do kontenera \code{line\_x} używając funkcji \code{clEnqueueReadBuffer}(patrz linijka 360 z listingu
+\ref{lst:opencl_detect})
 
 %read results
-\lstinputlisting[language={C++}, label={lst:opencl_detect}, caption=Wyznaczenie współrzednych linii, linerange=352-364, firstnumber=352]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:opencl_detect}, caption=Wyznaczenie współrzędnych linii, linerange=352-364, firstnumber=352]{viterbi_source/Viterbi.cpp} 
 
 
 %-------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!---------
 %
-%   Popraw ryysunek dla C++11 - przy bloku warunkowym dodaj T/N do strzałek
+%   Popraw rysunek dla C++11 - przy bloku warunkowym dodaj T/N do strzałek
 %
 %--------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!---------
 
