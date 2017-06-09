@@ -32,6 +32,8 @@ public:
 	void setImg(const unsigned char *img, size_t img_height, size_t img_width);
 
 	int launchViterbiMultiThread(std::vector<unsigned int>& line_x, int g_low, int g_high);
+	
+	int launchHybridViterbi(std::vector<unsigned int>& line_x, int g_low, int g_high);
 
 private:
 	//methods
@@ -42,7 +44,8 @@ private:
 	void fixGlobalSize(size_t &global_size, const size_t &local_size);
 	unsigned int viterbiMultiThread(int g_low, int g_high, unsigned int start_col);
 	bool loadAndBuildKernel();
-	
+	double viterbiHybridCPU(std::vector<unsigned int> line_x, int g_lo, int g_high, uint32_t start_col, uint32_t end_col);
+	double viterbiHybridGPU(std::vector<unsigned int> line_x, int g_lo, int g_high, uint32_t start_col, uint32_t end_col);
 	//class memebers
 	const unsigned char *m_img;
 	size_t m_img_width;
@@ -53,6 +56,8 @@ private:
 	bool m_initalized = false;
 	cl_program m_program;
 	cl_kernel m_viterbiKernel;
+	bool m_set_hybrid_rate;
+	std::pair<double, double> m_hybrid_rate;
 };
 
 #endif //VITERBI_H

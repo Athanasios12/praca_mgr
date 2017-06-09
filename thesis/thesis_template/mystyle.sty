@@ -73,3 +73,8 @@
 \usepackage{amsmath}
 \def\argmax{\operatorname{argmax}\limits}
 \def\max{\operatorname{max}\limits}
+%usuwa rozdział x z gory strony
+\usepackage[pagestyles]{titlesec}
+\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}
+\newpagestyle{mystyle}
+{\sethead[\thepage][][\chaptertitle]{}{}{\thepage}}
