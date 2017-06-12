@@ -180,14 +180,15 @@ wątków. Ponadto do uruchamiania nowych wątków stosowana jest funkcja \code{s
 %listing uruchomianie wątków - poprawić formatowanie - załamac linie 405
 \lstinputlisting[language={C++}, label={lst:viterbi_threads}, caption=Wielowątkowa implementacja algorytmu detekcji linii, linerange=383-418, firstnumber=383]{viterbi_source/Viterbi.cpp} 
 
-\indent W celu właściwego wykorzystania zasobów procesora stosowana jest funkcja \code{std::thread::hardware\_concurrency()} do określenia rekomendowanej liczby jednocześnie uruchomionych wątków.
+\indent W celu właściwego wykorzystania zasobów procesora stosowana jest funkcja z nagłówka \code{<thread>} - \code{hardware\_concurrency()} do określenia rekomendowanej liczby jednocześnie uruchomionych wątków.
 Cały obraz jest przetwarzany fragmentami po \code{num\_of\_threads} wątków na raz, gdzie dla każdego z nich przypisana jest inna kolumna startowa $y_{start}$(patrz równanie \ref{eq:L_back}). 
-Funkcja wykonywana przez wątki jest bardzo podobna jak dla wersji szeregowej(patrz listingi \ref{lst:viterbi_serial_loop} i \ref{lst:viterbi_serial_init}). Różni się brakiem głównej pętli - nie jest potrzebna iteracja po wszystkich możliwych $y_{start}$, rozpatrywana jest tylko kolumna odpowiadająca zmiennej \code{start\_col} z listingu \ref{lst:viterbi_threads}. Ponadto nie jest przekazywana referencja do wektora \code{line\_x} tylko wynik jest zwracany przez wątek i zapisywany w \code{line\_x} przez funkcję tworzącą wątki(\code{launchViterbiMultiThread}). 
-\clearpage
+Funkcja wykonywana przez wątki jest bardzo podobna jak dla wersji szeregowej(patrz listingi \ref{lst:viterbi_serial_loop} i \ref{lst:viterbi_serial_init}). Różni się brakiem głównej pętli - nie jest potrzebna iteracja po wszystkich możliwych $y_{start}$, rozpatrywana jest tylko kolumna odpowiadająca zmiennej \code{start\_col} z listingu \ref{lst:viterbi_threads}.
+Ponadto nie jest przekazywana referencja do wektora \code{line\_x} tylko wynik jest zwracany przez wątek i zapisywany w \code{line\_x} przez funkcję tworzącą wątki(\code{launchViterbiMultiThread}). 
+\\
 \indent Po tym jak wszystkie wątki wykonają swoje obliczenia wynik jest zapisywany i zaczyna się nowa iteracja, w której rozpatrywany jest następny zestaw kolumn obrazu. Pętla będzie się wykonywać dopóki nie zostaną przetworzone wszystkie kolumny, co reprezentowane jest przez wartość licznika \code{to\_process}(patrz rys.\ref{fig:threads_viterbi}).
 
 \begin{figure}[h]
-\includegraphics[scale=0.7]{threads_viterbi}
+\includegraphics[scale=0.5]{threads_viterbi}
 \caption{Schemat działania algorytmu szeregowego}
 \label{fig:threads_viterbi}
 \end{figure}
@@ -223,6 +224,19 @@ wierszy są zapisywane w \code{V2}. W następnej iteracji w kolumnie \code{V1} s
 \lstinputlisting[language={C++}, label={lst:opencl_buffers}, caption=Tworzenie buforów wymiany danych i ustawienie
 argumentów kernela, linerange=326-344, firstnumber=326]{viterbi_source/Viterbi.cpp} 
 
+%rysunki buforów
+\begin{figure}[h]
+\includegraphics[scale=0.6]{cmL_matrix}
+\caption{Struktura bufora \code{cmL}}
+\label{fig:cmL}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.7]{cmV1V2}
+\caption{Schemat działania emulacji macierzy $V$ wykorzystując bufory \code{V1} i \code{V2}}
+\label{fig:cmV1V2}
+\end{figure}
+
 %opis kernela - dodać rysunki buforów L i V1, V2 z naniesionymi zmiennymi kernela
 \indent Oprócz stworzonych buforów, jako argumenty do kernela podawane są szerokość, wysokość zdjęcia oraz 
 zakres lokalnie rozpatrywanych wierszy \code{g} $\in \langle$\code{g\_low}; \code{g\_high} $\rangle$.
@@ -251,12 +265,5 @@ kopiowane do kontenera \code{line\_x} używając funkcji \code{clEnqueueReadBuff
 
 %read results
 \lstinputlisting[language={C++}, label={lst:opencl_detect}, caption=Wyznaczenie współrzędnych linii, linerange=352-364, firstnumber=352]{viterbi_source/Viterbi.cpp} 
-
-
-%-------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!---------
-%
-%   Popraw rysunek dla C++11 - przy bloku warunkowym dodaj T/N do strzałek
-%
-%--------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!---------
 
 \end{document}
