@@ -1,10 +1,48 @@
 \documentclass[document.tex]{subfiles}
 \begin{document}
-\chapter{Wyniki badań doświadczalnych implementacji algorytmu Viterbiego}
+\chapter{Wyniki badań doświadczalnych \\ implementacji algorytmu Viterbiego}
+\indent Do sprawdzenia poprawności algorytmu Viterbiego do detekcji linii, wykorzystano
+zdjęcia linii z różnym poziomem zaszumienia. W celu porównania szybkości
+działania poszczególnych implementacji algorytmu zdefiniowano zestaw zdjęć testowych
+o różnym rozmiarze. Do przedstawienia wyników zestawień parametrów algorytmu Viterbiego
+dla jego różnych wersji, napisana została funkcja automatycznie generująca plik .csv,
+zawierający tabelę z parametrami wejściowymi i zestawienie szybkości przetwarzania danego zdjęcia.
+Na podstawie otrzymanego pliku zostały stworzone wykresy wizualizujące i umożliwiające
+analizę i wyciągnięcie wniosków z przeprowadzonych badań.
+
+%wrzucić zdjęcia pokazujące przykładowe wyniki detekcji linii dla różnych rodzajów obrazu - 3
+%zdjęcia z przed i po
+
+
+
 \section{Porównanie czasu działania dla implementacji szeregowej, wielowątkowej
 oraz z wykorzystaniem biblioteki OpenCL}
-To jest rozdział 1
+\indent W celu przetestowania szybkości opracowanego algorytmu wykorzystującego
+kartę graficzną, porównano go z dwoma innymi implementacjami algorytmu Viterbiego.
+Dodatkowo kod programu został skompilowany używając trzech różnych kompilatorów C/C++
+\begin{itemize}
+    \item Microsoft Visual C++
+    \item LLVM Clang
+    \item MinGW
+\end{itemize}
+Dla każdego z nich w parametrach kompilacji została ustawiona optymalizacja szybkości
+wykonywania programu : opcja \code{-O2}. Dzięki temu zaobserwowano diametralny wzrost
+szybkości wykonywania algorytmów wykorzystujących wyłącznie CPU. W związku z tym 
+zdecydowana się na porównanie wersji korzystającej z GPU, tylko z maksymalnie
+zoptymalizowanymi pozostałymi algorytmami, w celu nałożenia surowszych wymagań
+na wydajność rozpatrywanej implementacji.
+\indent Algorytmy były porównywane na podstawie szybkości przetwarzania zdjęć
+w zależności od ich rozmiaru oraz zakresu lokalnego sąsiedztwa $g\in \langle g_l, g_h \rangle$
+(patrz rozdział \ref{viterbi_line}). 
+%tu wrzucić wyniki z lapka
+%tabela z wynikami
+
+%wykresy
+
 
 \section{Porównanie szybkości algorytmów dla różnych konfiguracji sprzętowych}
-To jest rozdział 2
+%porównać tu wyniki z pc'ta, dodać wykres porównujący średni
+% czas wykonania algorytmu dla każdej z implementacji - nanieść/osobno wykres lapka i wykres pc'ta
+
+
 \end{document}
