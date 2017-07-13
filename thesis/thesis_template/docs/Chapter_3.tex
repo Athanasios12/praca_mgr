@@ -29,34 +29,190 @@ analizę i wyciągnięcie wniosków z przeprowadzonych badań.
 \section{Porównanie czasu działania dla implementacji szeregowej, wielowątkowej
 oraz z wykorzystaniem biblioteki OpenCL}
 \indent W celu przetestowania szybkości opracowanego algorytmu wykorzystującego
-kartę graficzną, porównano go z dwoma innymi implementacjami algorytmu Viterbiego.
-Dodatkowo kod programu został skompilowany używając trzech różnych kompilatorów C/C++
-\begin{itemize}
-    \item Microsoft Visual C++
-    \item LLVM Clang
-    \item MinGW
-\end{itemize}
-Dla każdego z nich w parametrach kompilacji została ustawiona optymalizacja szybkości
-wykonywania programu : opcja \code{-O2}. Dzięki temu zaobserwowano diametralny wzrost
-szybkości wykonywania algorytmów wykorzystujących wyłącznie CPU. W związku z tym 
-zdecydowano się na porównanie wersji korzystającej z GPU tylko z maksymalnie
-zoptymalizowanymi pozostałymi algorytmami, w celu nałożenia surowszych wymagań
-na wydajność rozpatrywanej implementacji.
+kartę graficzną, porównano go z czterema innymi implementacjami algorytmu Viterbiego opisanymi
+w rozdziale \ref{viterbi_chapter}.
+W celu bardziej wymagającej oceny implementacji na GPU względem algorytmów wykorzystujących CPU, dodano
+do flag kompilatora opcję \code{-O2} w celu włączenia optymalizacji kodu programu.
+Dzięki temu zaobserwowano diametralny wzrost szybkości wykonywania tych algorytmów.
 \\
 \indent Algorytmy były porównywane na podstawie szybkości przetwarzania zdjęć
 w zależności od ich rozmiaru oraz zakresu lokalnego sąsiedztwa $g\in \langle g_l, g_h \rangle$
-(patrz rozdział \ref{viterbi_line}). Zastosowanie różnych kompilatorów C/C++ miało
-na celu określenie kompilatora generującego najszybszy kod implementacji wersji szeregowej
-i równoległej dla CPU.
-%tu wrzucić wyniki z lapka
-%tabela z wynikami
+(patrz rozdział \ref{viterbi_line}). Poniżej zostały przedstawione wyniki dla konfiguracji sprzętowej 
+Intel i7-4790 4GHz, NVIDIA GeForce GTX 960 4GB, 16GB RAM oraz zestawienie wykresów.
+
+%tabela z wynikami pc----------------------------------------------
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_pc_serial}
+\caption{Wyniki badań dla algorytmu szeregowego}
+\label{fig:results_pc_serial}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_pc_cpp11_threads.jpg}
+\caption{Wyniki badań dla algorytmu wielowątkowego korzystającego z C++11}
+\label{fig:results_pc_cpp11_threads}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_pc_openmp_threads.jpg}
+\caption{Wyniki badań dla algorytmu wielowątkowego OpenMP}
+\label{fig:results_pc_openmp_threads}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_pc_gpu.jpg}
+\caption{Wyniki badań dla algorytmu OpenCL}
+\label{fig:results_pc_gpu}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_pc_hybrid.jpg}
+\caption{Wyniki badań dla algorytmu hybrydowego}
+\label{fig:results_pc_hybrid}
+\end{figure}
+
+%--------------------------------------------------------------
+
+%wykresy--------------------------------------------------------
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot0_pc.png}
+\caption*{}
+\label{fig:results_pc_hybrid}
+\end{figure}
 
 %wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot7_pc.png}
+\caption{Zestawienie czasu wykonania algorytmów dla zdjęcia o rozmiarze 120kB, 
+        w zależności od zakresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$ }
+\label{fig:results_pc_hybrid}
+\end{figure}
 
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot5_pc.png}
+\caption*{}
+\label{fig:results_pc_hybrid}
+\end{figure}
 
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot4_pc.png}
+\caption{Zestawienie czasu wykonania algorytmów dla zdjęcia o rozmiarze 455kB, 
+        w zależności od zakresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$ }
+\label{fig:results_pc_hybrid}
+\end{figure}
+
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot6_pc.png}
+\caption*{}
+\label{fig:results_pc_hybrid}
+\end{figure}
+
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot1_pc.png}
+\caption{Zestawienie czasu wykonania algorytmów dla zdjęcia o rozmiarze 833kB, 
+        w zależności od zakresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$ }
+\label{fig:results_pc_hybrid}
+\end{figure}
+
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot2_pc.png}
+\caption{Średni czas przetwarzania zdjęcia w zależności od jego rozmiaru, dla akresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$}
+\label{fig:results_pc_hybrid}
+\end{figure}
+
+%----------------lapek---------------------------------
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_lap_serial}
+\caption{Wyniki badań dla algorytmu szeregowego}
+\label{fig:results_lap_serial}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_lap_cpp11_threads.jpg}
+\caption{Wyniki badań dla algorytmu wielowątkowego korzystającego z C++11}
+\label{fig:results_lap_cpp11_threads}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_lap_openmp_threads.jpg}
+\caption{Wyniki badań dla algorytmu wielowątkowego OpenMP}
+\label{fig:results_lap_openmp_threads}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_lap_gpu.jpg}
+\caption{Wyniki badań dla algorytmu OpenCL}
+\label{fig:results_lap_gpu}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_lap_hybrid.jpg}
+\caption{Wyniki badań dla algorytmu hybrydowego}
+\label{fig:results_lap_hybrid}
+\end{figure}
+
+%--------------------------------------------------------------
+
+%wykresy--------------------------------------------------------
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot0_lap.png}
+\caption*{}
+\label{fig:results_lap_hybrid}
+\end{figure}
+
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot7_lap.png}
+\caption{Zestawienie czasu wykonania algorytmów dla zdjęcia o rozmiarze 120kB, 
+        w zależności od zakresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$ }
+\label{fig:results_lap_hybrid}
+\end{figure}
+
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot5_lap.png}
+\caption*{}
+\label{fig:results_lap_hybrid}
+\end{figure}
+
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot4_lap.png}
+\caption{Zestawienie czasu wykonania algorytmów dla zdjęcia o rozmiarze 455kB, 
+        w zależności od zakresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$ }
+\label{fig:results_lap_hybrid}
+\end{figure}
+
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot6_lap.png}
+\caption*{}
+\label{fig:results_lap_hybrid}
+\end{figure}
+
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot1_lap.png}
+\caption{Zestawienie czasu wykonania algorytmów dla zdjęcia o rozmiarze 833kB, 
+        w zależności od zakresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$ }
+\label{fig:results_lap_hybrid}
+\end{figure}
+
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.85]{imgs/plot2_lap.png}
+\caption{Średni czas przetwarzania zdjęcia w zależności od jego rozmiaru, dla akresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$}
+\label{fig:results_lap_hybrid}
+\end{figure}
+\clearpage
 \section{Porównanie szybkości algorytmów dla różnych konfiguracji sprzętowych}
 %porównać tu wyniki z pc'ta, dodać wykres porównujący średni
-% czas wykonania algorytmu dla każdej z implementacji - nanieść/osobno wykres lapka i wykres pc'ta
+% czas wykonania algorytmu dla każdej z implementacji - nanieść/osobno wykres lapka i wykres lap'ta
 
 
 \end{document}

@@ -1,7 +1,7 @@
 \documentclass[document.tex]{subfiles}
 \begin{document}
 
-\chapter{Algorytm Viterbiego}
+\chapter{Algorytm Viterbiego}\label{viterbi_chapter}
 \section{Opis działania i zastosowania}
 \indent Alogorytm Viterbiego został stworzony i przeanalizowany przez A.J. Viterbiego w 1967r. Jego zadaniem było dekodowanie kodów splotowych. Później odkryto że posiada cechy programowania dynamicznego i wykorzystuje maksymalne prawdopodobieństwo do określenia optymalnego zestawu tranzycji pomiędzy stanami. Algorytm został oryginalnie opracowany z myślą o zastosowaniach w telekomunikacji, ale znalazł zastosowanie w innych dziedzinach, m.in. w przetwarzanie obrazów, lokalizacji i rozpoznawaniu obiektów.\cite{viterbi_tutorial}
 \\
@@ -74,6 +74,9 @@ Jeśli występuje kilka możliwych przejść do danego stanu, wybierane jest te,
 dla całego diagramu jest określony przez skumulowaną odległość Hamminga dla końcowego stanu. 
 Na podstawie otrzymanej optymalnej listy przejść odczytywana jest zakodowana informacja .\cite{Comm_Sklar}\cite{viterbi_tutorial}\cite{viterbi_mit}
  %---------------------------------------------------------section end
+ %%
+ %
+ %------------------------------------------------------------------
  
 \section{Wykrywanie linii na obrazie cyfrowym z wykorzystaniem algorytmu Viterbiego}\label{viterbi_line}
 \indent Algorytm Viterbiego, którego celem jest znalezienie optymalnej ścieżki w diagramie kratowym, może zostać zastosowany w analogiczny sposób do wyznaczenia optymalnego zestawu współrzędnych pikseli na obrazie cyfrowym.
@@ -146,8 +149,7 @@ jako jej metody.
 \\ \code{viterbiLineDetect}. Przyjmuje trzy argumenty wejściowe:
 \begin{enumerate}
     \item \code{std::vector<unsigned int> \&line\_x} - referencja kontenera, do którego zapisywane są współrzędne szukanej linii
-    \item \code{int g\_low} i code{int g\_high} : określają zakres rozpatrywanego sąsiedztwa każdego piksela przy
-    wyznaczaniu macierz V(patrz równanie \ref{eq:V})
+    \item \code{int g\_low} i \code{int g\_high} : określają zakres rozpatrywanego sąsiedztwa każdego piksela przy wyznaczaniu macierz V(patrz równanie \ref{eq:V})
 \end{enumerate}
 Informacje o intensywności pikseli obrazu pobierane są używając składowej \code{const unsigned char *m\_img}.
 \clearpage
@@ -157,9 +159,9 @@ Kod we wnętrzu funkcji dzieli się na:
     \item Pętlę przejścia przez wszystkie kolumny obrazu, w której dla każdej z nich wykonywane są kroki przedstawione we wzorach \ref{eq:V} do \ref{eq:L_back}.(patrz rys. \ref{lst:viterbi_serial_loop})
 \end{enumerate}
 
-\lstinputlisting[language={C++}, label={lst:viterbi_serial_init}, caption=Inicjalizacja zmiennych, linerange=219-233, firstnumber=219]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:viterbi_serial_init}, caption=Inicjalizacja zmiennych, linerange=101-115, firstnumber=101]{viterbi_source/Viterbi.cpp} 
 
-\lstinputlisting[language={C++}, label={lst:viterbi_serial_loop}, caption=Główna pętla programu, linerange=234-290, firstnumber=234]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:viterbi_serial_loop}, caption=Główna pętla programu, linerange=116-173, firstnumber=116]{viterbi_source/Viterbi.cpp} 
 
 \begin{figure}[h]
 \includegraphics[scale=0.45]{viterbi_serial_nodes}
@@ -178,7 +180,7 @@ Kod we wnętrzu funkcji dzieli się na:
 podaną cechę algorytmu jest implementacja wielowątkowa. Korzysta ona z funkcji i obiektów nagłówka \code{<thread>}, w tym wypadku używany jest obiekt \code{std::future} do przechowywania rezultatów wykonania
 wątków. Ponadto do uruchamiania nowych wątków stosowana jest funkcja \code{std::async()}, która uruchamia dodatkowe wątki(patrz rozdział 3.2.3).
 %listing uruchomianie wątków - poprawić formatowanie - załamac linie 405
-\lstinputlisting[language={C++}, label={lst:viterbi_threads}, caption=Wielowątkowa implementacja algorytmu detekcji linii, linerange=383-418, firstnumber=383]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:viterbi_threads}, caption=Wielowątkowa implementacja algorytmu detekcji linii, linerange=280-315, firstnumber=280]{viterbi_source/Viterbi.cpp} 
 
 \indent W celu właściwego wykorzystania zasobów procesora stosowana jest funkcja z nagłówka \code{<thread>} - \code{hardware\_concurrency()} do określenia rekomendowanej liczby jednocześnie uruchomionych wątków.
 Cały obraz jest przetwarzany fragmentami po \code{num\_of\_threads} wątków na raz, gdzie dla każdego z nich przypisana jest inna kolumna startowa $y_{start}$(patrz równanie \ref{eq:L_back}). 
@@ -192,9 +194,21 @@ Ponadto nie jest przekazywana referencja do wektora \code{line\_x} tylko wynik j
 \caption{Schemat działania algorytmu szeregowego}
 \label{fig:threads_viterbi}
 \end{figure}
+\clearpage
+\subsection{Wersja równoległa - OpenMP}
+\indent W celu porównania szybkości wielowątkowego przetwarzania danych oraz lepszego poznania
+możliwych metod współbieżnego pisania aplikacji, oprócz wykorzystania nowych funkcjonalności języka C++11,
+dodatkowo opracowano implementację omawianego algorytmu wykorzystując instrukcje preprocesora biblioteki 
+OpenMP. Funkcja jest prawie identyczna jak implementacja szeregowa, poza tym że objęto deklarację lokalnych zmiennych oraz główną blokiem \code{\#pragma omp parallel} oraz dodano dyrektywę \code{\#pragma omp for} przed główną pętlą funkcji(patrz listing \ref{lst:openmp_fun}). Zastosowanie opisanych dyrektyw preprocesora powoduje automatyczny
+podział przydziału przetwarzania fragmentów pętli następującej po \code{\#pragma omp for}(patrz rozdział \ref{openmp_chapter}. Dodatkowo niesprecyzowanie pożądanej liczby stworzonych wątków skutkuje określeniem jej
+w trakcie egzekucji programu.\cite{openmp_guide}Wersja implementacji z wykorzystaniem standardu C++11 określa jasno ile zostanie stworzonych wątków oraz jaki będzie podział obliczania rozwiązania dla wszystkich możliwych kolumn startowych $y_{start}$.
+
+%opencl openmp viterbi
+\lstinputlisting[language={C++}, label={lst:openmp_fun}, caption=Fragment współbieżnego bloku funkcji \code{viterbiOpenMP()}, linerange=545-555, firstnumber=186]{viterbi_source/Viterbi.cpp} 
+
 
 \clearpage
-\subsection{Wersja równoległa - wykorzystanie biblioteki OpenCL}
+\subsection{Wersja równoległa - wykorzystanie biblioteki OpenCL}\label{opencl_version}
 \indent Podobnie jak dla wersji wielowątkowej algorytm wykrywania linii został zmodyfikowany,tak aby 
 zrównoleglić główną pętlę listingu \ref{lst:viterbi_serial_loop} : $y_{start} = 0,1,.., y_{n-1}$.
 Założono, że dla stworzonej przestrzeni indeksowej OpenCL, każda kolumna startowa odpowiada elementowi roboczemu(\textit{work-item}). 
@@ -202,11 +216,11 @@ Założono, że dla stworzonej przestrzeni indeksowej OpenCL, każda kolumna sta
 Z tego powodu zdecydowano się na zdefiniowanie buforów zaalokowanych w pamięci globalnej karty graficznej.
 Wynika to z faktu możliwości przetwarzanie zdjęć o dużej rozdzielczości. Każda karta graficzna posiada różną wielkość dostępnej pamięci globalnej i lokalnej, dlatego w metodzie \code{viterbiLineOpenCL\_cols} odpowiedzialnej za detekcję linii użyto funkcji OpenCL do sprawdzenia dostępnej pamięci globalnej oraz maksymalnego rozmiaru bufora.(patrz funkcja \code{clGetDeviceInfo} z listingu \ref{lst:opencl_memcheck}). Jeśli okaże się, że
 utworzenie jednego z buforów przekracza limit dostępnej pamięci, wtedy obraz jest przetwarzany w fragmentach
-określanych wielkością \code{global\_size} obliczaną w linijkach 324 - 328 listingu \ref{lst:opencl_memcheck}.
+określanych wielkością \code{global\_size} obliczaną w linijkach 202 - 206 listingu \ref{lst:opencl_memcheck}.
 
 %memory check
 \lstinputlisting[language={C++}, label={lst:opencl_memcheck}, caption=Sprawdzanie dostępnej pamięci karty 
-graficznej, linerange=303-324, firstnumber=303]{viterbi_source/Viterbi.cpp} 
+graficznej, linerange=186-206, firstnumber=186]{viterbi_source/Viterbi.cpp} 
 
 \indent Dla zbudowanego kernela zdefiniowano bufory(patrz listing \ref{lst:opencl_buffers}):
 \begin{itemize}
@@ -222,7 +236,7 @@ wierszy są zapisywane w \code{V2}. W następnej iteracji w kolumnie \code{V1} s
 
 %create buffers
 \lstinputlisting[language={C++}, label={lst:opencl_buffers}, caption=Tworzenie buforów wymiany danych i ustawienie
-argumentów kernela, linerange=326-344, firstnumber=326]{viterbi_source/Viterbi.cpp} 
+argumentów kernela, linerange=209-226, firstnumber=209]{viterbi_source/Viterbi.cpp} 
 
 %rysunki buforów
 \begin{figure}[h]
@@ -250,20 +264,39 @@ o numerze kolumny dla zmiennych \code{V1} i \code{V2}. Ostatnim wyróżniającym
 pozycji piksela z największą skumulowaną intensywnością - \code{x\_n}. Indeks bufora \code{line\_x} nie jest
 decydowany tylko przez wyznaczony numer kolumny startowej, ale również na podstawie przyjętego argumentu
 \code{first\_col}.
-
-%kernel opencl
-\lstinputlisting[language={C}, label={lst:opencl_kernel}, caption=Kernel do detekcji linii, linerange=1-76, firstnumber=1]{viterbi_source/viterbi_kernel.cl} 
-
-%dodać zdjęcia buforów i będzie stykać
-
 \indent Parametr \code{first\_col} jest wyznaczany na podstawie wielkości przetwarzanego zdjęcia,
 na początku ma wartość 0, ale w kolejnych iteracjach pętli z listingu \ref{lst:opencl_detect},
 zwiększany jest o rozmiar \code{global\_size}, aż będzie równy szerokości zdjęcia \code{m\_img\_width}.
 Wyniki po wykonaniu kernela przez wszystkie elementy robocze są odczytywane z bufora \code{cmLine\_x} i 
-kopiowane do kontenera \code{line\_x} używając funkcji \code{clEnqueueReadBuffer}(patrz linijka 360 z listingu
+kopiowane do kontenera \code{line\_x} używając funkcji \code{clEnqueueReadBuffer}(patrz linijka 243 z listingu
 \ref{lst:opencl_detect})
 
+%kernel opencl
+\lstinputlisting[language={C}, label={lst:opencl_kernel}, caption=Kernel do detekcji linii, linerange=1-76, firstnumber=1]{viterbi_source/viterbi_kernel.cl} 
+
 %read results
-\lstinputlisting[language={C++}, label={lst:opencl_detect}, caption=Wyznaczenie współrzędnych linii, linerange=352-364, firstnumber=352]{viterbi_source/Viterbi.cpp} 
+\lstinputlisting[language={C++}, label={lst:opencl_detect}, caption=Wyznaczenie współrzędnych linii, linerange=235-246, firstnumber=235]{viterbi_source/Viterbi.cpp} 
+
+%--------------end subsection ------------------
+\subsection{Wersja równoległa - hybryda CPU i GPU}
+\indent Po stworzeniu opisanych implementacji algorytmu dla CPU oraz GPU, zdecydowano się
+na sprawdzenie możliwości dodatkowego przyspieszenia obliczeń, tworząc algorytm, który będzie
+korzystał zarówno z możliwości CPU jak i procesora karty graficznej. Podział przetwarzania
+wszystkich możliwych $y_{start}$ jest wyznaczany w czasie inicjalizacji, proporcjonalnie do czasu
+wykonania obliczeń dla wersji wielowątkowej oraz korzystającej ze standardu OpenCL. 
+Następnie tworzone są dwa wątki, pierwszy wywołuje funkcję \code{viterbiHybridOpenMP\_CPU()},
+która zwraca czas wykonanych obliczeń. Drugi z wątków uruchamia funkcję \code{viterbiHybridGPU()} i 
+również zapisuje czas jej wykonania(listing \ref{lst:opencl_hybrid}. Stworzono osobny kernel, do przetwarzania fragmentu obrazu,który dodatkowo również umożliwia dzielenie obliczeń na mniejsze bloki, podobnie jak dla
+poprzednio użytego kernela, opisanego w rozdziale \ref{opencl_version}(patrz rys. \ref{fig:hybrid_viterbi}.
+
+\lstinputlisting[language={C++}, label={lst:opencl_hybrid}, caption=Metoda dzieląca obliczenia
+ pomiędzy CPU i GPU, linerange=497-533, firstnumber=497]{viterbi_source/Viterbi.cpp} 
+
+%rysunek wizualizujący podział gpu cpu i jak określane są kolejne kolumny dla kernela gpu
+\begin{figure}[h]
+\includegraphics[scale=0.6]{opencl_viterbi}
+\caption{Podział przetwarzania zdjęcia pomiędzy CPU i GPU}
+\label{fig:hybrid_viterbi}
+\end{figure}
 
 \end{document}
