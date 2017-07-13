@@ -29,27 +29,21 @@ analizę i wyciągnięcie wniosków z przeprowadzonych badań.
 \section{Porównanie czasu działania dla implementacji szeregowej, wielowątkowej
 oraz z wykorzystaniem biblioteki OpenCL}
 \indent W celu przetestowania szybkości opracowanego algorytmu wykorzystującego
-kartę graficzną, porównano go z dwoma innymi implementacjami algorytmu Viterbiego.
-Dodatkowo kod programu został skompilowany używając trzech różnych kompilatorów C/C++
-\begin{itemize}
-    \item Microsoft Visual C++
-    \item LLVM Clang
-    \item MinGW
-\end{itemize}
-Dla każdego z nich w parametrach kompilacji została ustawiona optymalizacja szybkości
-wykonywania programu : opcja \code{-O2}. Dzięki temu zaobserwowano diametralny wzrost
-szybkości wykonywania algorytmów wykorzystujących wyłącznie CPU. W związku z tym 
-zdecydowano się na porównanie wersji korzystającej z GPU tylko z maksymalnie
-zoptymalizowanymi pozostałymi algorytmami, w celu nałożenia surowszych wymagań
-na wydajność rozpatrywanej implementacji.
+kartę graficzną, porównano go z trzema innymi implementacjami algorytmu Viterbiego opisanymi
+w rozdziale \ref{viterbi_chapter}.
+W celu bardziej wymagającej oceny implementacji na GPU względem algorytmów wykorzystujących wyłącznie CPU, dodano
+do flag kompilatora opcję \code{-O2} w celu włączenia optymalizacji programu.
+Dzięki temu zaobserwowano diametralny wzrost szybkości wykonywania tych algorytmów.
 \\
 \indent Algorytmy były porównywane na podstawie szybkości przetwarzania zdjęć
 w zależności od ich rozmiaru oraz zakresu lokalnego sąsiedztwa $g\in \langle g_l, g_h \rangle$
-(patrz rozdział \ref{viterbi_line}). Zastosowanie różnych kompilatorów C/C++ miało
-na celu określenie kompilatora generującego najszybszy kod implementacji wersji szeregowej
-i równoległej dla CPU.
+(patrz rozdział \ref{viterbi_line}).
+
 %tu wrzucić wyniki z lapka
 %tabela z wynikami
+
+%napisac ze różnice w szybkości egzekucji pomiędzy kompilatorami w większości przypadków są pomijalnie małe
+%dlatego nie jest rozpatrywane szybkość implementacji ze względu na rodzaj kompilatora
 
 %wykresy
 
