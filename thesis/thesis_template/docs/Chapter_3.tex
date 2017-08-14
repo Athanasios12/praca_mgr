@@ -37,8 +37,32 @@ Dzięki temu zaobserwowano diametralny wzrost szybkości wykonywania tych algory
 \\
 \indent Algorytmy były porównywane na podstawie szybkości przetwarzania zdjęć
 w zależności od ich rozmiaru oraz zakresu lokalnego sąsiedztwa $g\in \langle g_l, g_h \rangle$
-(patrz rozdział \ref{viterbi_line}). Poniżej zostały przedstawione wyniki dla konfiguracji sprzętowej 
-Intel i7-4790 4GHz, NVIDIA GeForce GTX 960 4GB, 16GB RAM oraz zestawienie wykresów.
+(patrz rozdział \ref{viterbi_line}). Od niego zależała dokładność wykrycia linii, 
+jeśli został dobrany zbyt mały zakres $g$ linia nie była wykrywana poprawnie jeśli, 
+występowały większe jej kierunku(patrz rys.\ref{fig:g_range_results}). Dokładność wyznaczenia położenia linii
+została przedstawiona wskaźnikiem błędu skumulowanego:
+
+\begin{equation}
+   Ec = \sum_{i=0}^{width - 1} |l_i - r_i|
+    \label{eq:total_error}
+\end{equation}
+\myequations{Skumulowany błąd wyznaczenia położenia linii algorytmem Viterbiego}
+
+, gdzie $r_i$ to i-ta współrzędna linii będąca wynikiem zastosowania algorytmu Viterbiego, 
+\\$l_i$: i-ta rzeczywista współrzędna linii na obrazie, $Ec$ - błąd całkowity, 
+$width$: szerokość zdjecia.
+
+\begin{figure}[h]
+\includegraphics[scale=0.045]{imgs/g_range_results.jpg}
+\caption{Porównanie dokładności wykrycia linii dla \textbf{A} $g\in \langle -1, 1 \rangle$ i 
+\textbf{B} $g\in \langle -6, 6 \rangle$}
+\label{fig:g_range_results}
+\end{figure}
+
+\clearpage
+\subsection{Zestawienie wynikow dla konfiguracji sprzętowej 
+Intel i7-4790 4GHz, NVIDIA GeForce GTX 960}
+
 
 %tabela z wynikami pc----------------------------------------------
 \begin{figure}[h]
@@ -121,11 +145,18 @@ Intel i7-4790 4GHz, NVIDIA GeForce GTX 960 4GB, 16GB RAM oraz zestawienie wykres
 %wykresy
 \begin{figure}[h]
 \includegraphics[scale=0.85]{imgs/plot2_pc.png}
-\caption{Średni czas przetwarzania zdjęcia w zależności od jego rozmiaru, dla akresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$}
+\caption{Średni czas przetwarzania zdjęcia w zależności od jego rozmiaru, dla zakresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$}
 \label{fig:results_pc_hybrid}
 \end{figure}
 
+%------------Analiza wykresów--PC----------------------
+
+
 %----------------lapek---------------------------------
+\clearpage
+\subsection{Zestawienie wynikow dla konfiguracji sprzętowej 
+Intel i5-6300U 2.4GHz, Intel HD Graphics 520}
+
 \begin{figure}[h]
 \includegraphics[scale=0.75]{imgs/results_lap_serial}
 \caption{Wyniki badań dla algorytmu szeregowego}
@@ -206,13 +237,13 @@ Intel i7-4790 4GHz, NVIDIA GeForce GTX 960 4GB, 16GB RAM oraz zestawienie wykres
 %wykresy
 \begin{figure}[h]
 \includegraphics[scale=0.85]{imgs/plot2_lap.png}
-\caption{Średni czas przetwarzania zdjęcia w zależności od jego rozmiaru, dla akresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$}
+\caption{Średni czas przetwarzania zdjęcia w zależności od jego rozmiaru, dla zakresu sąsiedztwa $g\in \langle -8, 8 \rangle$ : $g\in \langle -1, 1 \rangle$}
 \label{fig:results_lap_hybrid}
 \end{figure}
 \clearpage
-\section{Porównanie szybkości algorytmów dla różnych konfiguracji sprzętowych}
-%porównać tu wyniki z pc'ta, dodać wykres porównujący średni
-% czas wykonania algorytmu dla każdej z implementacji - nanieść/osobno wykres lapka i wykres lap'ta
 
+%------------podsumowanie
+\subsection{Analiza wyników badań i porównanie konfiguracji sprzętowych}
+\indent Na podsajakdjaskd
 
 \end{document}
