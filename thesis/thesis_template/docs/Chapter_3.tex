@@ -61,7 +61,7 @@ $width$: szerokość zdjecia.
 
 \clearpage
 \subsection{Zestawienie wynikow dla konfiguracji sprzętowej 
-Intel i7-4790 4GHz, NVIDIA GeForce GTX 960}
+Intel i7-4790k 4GHz, NVIDIA GeForce GTX 960}
 
 
 %tabela z wynikami pc----------------------------------------------
@@ -244,6 +244,38 @@ Intel i5-6300U 2.4GHz, Intel HD Graphics 520}
 
 %------------podsumowanie
 \subsection{Analiza wyników badań i porównanie konfiguracji sprzętowych}
-\indent Na podsajakdjaskd
+\indent Zgodnie z przedstawionymi wynikami testów szybkości opracowanych wersji algorytmu Viterbiego, 
+można zauważyć, że dla obydwu konfiguracji sprzętowych, im większy był rozmiar zdjęcia tym lepsze
+osiągi w porównaniu do reszty implementacji posiadały algorytmy wykorzystujące GPU.
+Wnikało to ze zwiększenia ilości równolegle przetwarzanych kolumn, czego karta graficzna nie mogła
+całkowicie wykorzystać dla małych zdjęć, gdzie przewagę w obliczeniach pozostałych pętli algorytmu
+miały algorytmy wykorzystujące CPU. Architektura SIMD GPU najlepiej nadaje się do złożonych 
+obliczeń zmiennoprzecinkowych(patrz rozdział \ref{chapter_gpu}), gdzie w przypadku algorytmu
+one nie występują - kod kernel'a zawiera wiele pętli i instrukcji warunkowych, które 
+generują czasochłonne instrukcje skoku, obsługiwane lepiej przez CPU. 
+\\
+\indent Najlepsze osiągi dla obu specyfikacji sprzętowych w przypadku pierwszego zdjęcia 
+wykazują algorytmy wielowątkowe i algorytm hybrydowy. Wraz ze zwiększeniem rozmiaru dla drugiego zdjęcia
+w przypadku konfiguracji z wbudowanym procesorem graficznym, następuje diametralny wzrost wydajności 
+implementacji OpenCL względem wszystkich wykorzystujących CPU. Nie można zaobserwować tego zjawiska
+w przypadku pierwszej konfiguracji sprzętowej z dużo lepszym procesorem - dwa razy większa ilość rdzeni, gdzie
+o każdy z nich posiada prawie 2 razy większą częstotliwość taktowania. 
+\\
+\indent Osiągi implementacji OpenCL są praktycznie takie same dla obu konfiguracji sprzętowych 
+pomimo zastosowania lepszej karty Geforce 960 GTX.
+Wynika to z kodu kernel'a, który zawiera wiele pętli i instrukcji warunkowych spowalniających na tyle
+wykonanie obliczeń przez GPU, że nie można zaobserwować znacznego wzrostu wydajności dla lepszej karty graficznej.
+Ponadto ze względu na konieczność korzystania z dużych buforów pamięci, nie można było zastosować 
+szybszej lokalnej pamięci GPU. Duża ilość wygenerowanych instrukcji zapisu i odczytu pamięci globalnej 
+dodatkowo ogranicza szybkość wykonywanych obliczeń.
+\\
+\indent W przypadku zastosowania lepszego procesora można zaobserwować zwiększenie
+szybkości algorytmu hybrydowego, w szczególności dla zdjęcia drugiego. Dzięki temu
+wyrasta on na optymalny kompromis pomiędzy możliwościami CPU i GPU dla pierwszej konfiguracji.
+\\
+\indent Podsumowując, opłacalność zastosowania algorytmów równoległych wzrasta wraz z ilością
+danych do przetworzenia. Wynika to ze zmniejszenia istotności opóźnień wynikających z wywłaszczania wątków i
+błędów odczytu z pamięci cache(\textit{cache miss}) dla implementacji wielowątkowych oraz
+zwiększenia wykorzystania dostępnych zasobów karty graficznej(większa ilość wykorzystywanych elementów roboczych OpenCL).
 
 \end{document}
