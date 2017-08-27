@@ -1,4 +1,34 @@
 \documentclass[document.tex]{subfiles}
 \begin{document}
 \chapter{Wnioski końcowe}
+\indent Opracowane oraz analiza zagadnień teoretyczne dotyczące współbieżności oraz architektury procesorów
+umożliwiła lepsze rozeznanie oraz wyciągnięcie wniosków z przeprowadzonych badań. Zestawione metody
+implementacji algorytmu Viterbiego pokazały ich możliwości, wady oraz zalety w zastosowaniu 
+do obliczania w czasie rzeczywistym położenia linii na obrazie cyfrowym. Głównym celem pracy 
+było przeprowadzenie badań mających na celu pomoc w wyborze odpowiedniej implementacji
+algorytmu Viterbiego w sterowaniu robotem mobilnym ze sprzężeniem wizyjnym.
+Na podstawie otrzymanych wyników można zauważyć, żę dla wszystkich testowanych zdjęć zakres sąsiedztwa
+$g\in \langle -4, 4 \rangle$ umożliwia dokładne wykrycie linii nawet na bardzo zaszumionym obrazie 
+wejściowym.
+\\
+\indent Dodatkowo jeśli chodzi o szybkość przetwarzania zdjęć nie jest opłacalna analiza 
+całego obrazu dla każdego przechwytywanego obrazu w celu sterowania w czasie rzeczywistym.
+Bardziej opłacalna jest analiza tylko fragmentu zdjęcia potrzebnego do określenia nowego
+położenia robota, gdzie ilość rozpatrywanych kolumn, bądź wierszy odpowiada szybkości 
+kamery oraz założonej prędkości ruchu robota. W celu możliwości zastosowania
+opracowanych implementacji potrzebna jest ich modyfikacja tak aby dodatkowo zależały
+one od parametrów kamery oraz robota mobilnego.
+\\
+\indent Analizując otrzymane wyniki w rozdziale \ref{chapter_3}, można wywnioskować
+że w celu osiągnięcia jak najszybszej dokładnego położenia linii prowadzącej ruch robota 
+mobilnego, niezbędne jest zastosowanie osobnego urządzenia wyłącznie przeznaczonego
+do przeprowadzania obliczeń sterowania. Aby ograniczyć pobór prądu nie powinno być ono
+podłączone do źródła zasilania robota, tylko powinno się komunikować z nim bezprzewodowo.
+Procesor robota mobilnego odpowiedzialny byłby tylko za akwizycję obrazu z kamery oraz
+sterowanie silnikami.
+\\
+\indent W celu uzyskania lepszych osiągów warte jest przetestowanie opracowanych
+algorytmów dla GPU, używając nowocześniejszych kart graficznych, dedykowanych do obliczeń równoległych,
+takich jak NVIDIA Titan\cite{titan_spec}. Dodatkowo chcąc zwiększyć szybkość implementacji hybrydowej i wielowątkowej
+warto jest zastosować CPU z rodziny procesorów Intel Xeon(do 14 rdzeni i 48 wątków systemowych\cite{xeon_spec}).
 \end{document}

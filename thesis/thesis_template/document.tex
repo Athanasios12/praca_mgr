@@ -14,6 +14,7 @@
 \subfile{docs/Title_Page}
 
 \subfile{docs/Declaration}
+\addcontentsline{toc}{chapter}{Oświadczenie autora}
 
 \subfile{docs/Abstract}
 
@@ -28,17 +29,31 @@
 
 \subfile{docs/Summary}
 
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Załącznik A}
 \subfile{docs/Appendix_1}
 
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Załącznik B}
 \subfile{docs/Appendix_2}
 
+\clearpage
 \listoffigures
 
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstlistlistingname}
 \lstlistoflistings
 
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listequationsname}
 \listofmyequations
 
 \bibliographystyle{plain}
 \bibliography{bibliogr} 
+
 
 \end{document}  
