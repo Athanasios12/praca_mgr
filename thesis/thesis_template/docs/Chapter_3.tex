@@ -14,7 +14,7 @@ analizę i wyciągnięcie wniosków z przeprowadzonych badań.
 %zdjęcia z przed i po
 \begin{figure}[h]
 \includegraphics[scale=0.05]{detect_diff_0}
-\caption{Przykład detekcji linii za pomocą algorytmu przedstawionego w rozdziale \ref{viterbi_line}}
+\caption{Przykład detekcji linii za pomocą algorytmu przedstawionego w rozdziale \ref{viterbi_line}[opracowanie własne]}
 \label{fig:sample_detect_0}
 \end{figure}
 
@@ -22,7 +22,7 @@ analizę i wyciągnięcie wniosków z przeprowadzonych badań.
 
 \begin{figure}[h]
 \includegraphics[scale=0.05]{detect_diff_1}
-\caption{Przykład detekcji linii za pomocą algorytmu przedstawionego w rozdziale \ref{viterbi_line}}
+\caption{Przykład detekcji linii za pomocą algorytmu przedstawionego w rozdziale \ref{viterbi_line}[opracowanie własne]}
 \label{fig:sample_detect_1}
 \end{figure}
 
@@ -55,7 +55,7 @@ $width$: szerokość zdjecia.
 \begin{figure}[h]
 \includegraphics[scale=0.045]{imgs/g_range_results.jpg}
 \caption{Porównanie dokładności wykrycia linii dla \textbf{A} $g\in \langle -1, 1 \rangle$ i 
-\textbf{B} $g\in \langle -6, 6 \rangle$}
+\textbf{B} $g\in \langle -6, 6 \rangle$[opracowanie własne]}
 \label{fig:g_range_results}
 \end{figure}
 
@@ -250,9 +250,9 @@ Intel i5-6300U 2.4GHz, Intel HD Graphics 520}
 można zauważyć, że dla obydwu konfiguracji sprzętowych, im większy był rozmiar zdjęcia tym lepsze
 osiągi w porównaniu do reszty implementacji posiadały algorytmy wykorzystujące GPU.
 Wnikało to ze zwiększenia ilości równolegle przetwarzanych kolumn, czego karta graficzna nie mogła
-całkowicie wykorzystać dla małych zdjęć, gdzie przewagę w obliczeniach pozostałych pętli algorytmu
-miały algorytmy wykorzystujące CPU. Architektura SIMD GPU najlepiej nadaje się do złożonych 
-obliczeń zmiennoprzecinkowych(patrz rozdział \ref{chapter_gpu}), gdzie w przypadku algorytmu
+całkowicie wykorzystać dla małych zdjęć, gdzie przewagę w obliczeniach wewnętrznych pętli algorytmu
+miały implementacje wykorzystujące CPU. Architektura SIMD GPU najlepiej nadaje się do złożonych 
+obliczeń zmiennoprzecinkowych(patrz rozdział \ref{chapter_gpu}), gdzie w przypadku opracowanego algorytmu
 one nie występują - kod kernel'a zawiera wiele pętli i instrukcji warunkowych, które 
 generują czasochłonne instrukcje skoku, obsługiwane lepiej przez CPU. 
 \\
@@ -260,8 +260,8 @@ generują czasochłonne instrukcje skoku, obsługiwane lepiej przez CPU.
 wykazują algorytmy wielowątkowe i algorytm hybrydowy. Wraz ze zwiększeniem rozmiaru dla drugiego zdjęcia
 w przypadku konfiguracji z wbudowanym procesorem graficznym, następuje diametralny wzrost wydajności 
 implementacji OpenCL względem wszystkich wykorzystujących CPU. Nie można zaobserwować tego zjawiska
-w przypadku pierwszej konfiguracji sprzętowej z dużo lepszym procesorem - dwa razy większa ilość rdzeni, gdzie
-o każdy z nich posiada prawie 2 razy większą częstotliwość taktowania. 
+w przypadku pierwszej konfiguracji sprzętowej z dużo lepszym procesorem - spowodowane jest to dwa razy większą ilością rdzeni, 
+gdzie, każdy z nich posiada prawie 2 razy większą częstotliwość taktowania. 
 \\
 \indent Osiągi implementacji OpenCL są praktycznie takie same dla obu konfiguracji sprzętowych 
 pomimo zastosowania lepszej karty Geforce 960 GTX.
@@ -280,4 +280,11 @@ danych do przetworzenia. Wynika to ze zmniejszenia istotności opóźnień wynik
 błędów odczytu z pamięci cache(\textit{cache miss}) dla implementacji wielowątkowych oraz
 zwiększenia wykorzystania dostępnych zasobów karty graficznej(większa ilość wykorzystywanych elementów roboczych OpenCL).
 
+%wykresy
+\begin{figure}[h]
+\includegraphics[scale=0.75]{imgs/results_best.jpg}
+\caption{Zestawienie najlepszych algorytmów w zależności od rozmiaru zdjęcia, pozwalające dobrać
+właściwą implementację [opracowanie własne]}
+\label{fig:results_best}
+\end{figure}
 \end{document}
